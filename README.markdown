@@ -10,12 +10,12 @@
 
 ## Options
 
-    -help | -h      --> help");
-    -index | -i     --> creates index.js");
-    -test | -t      --> creates test directory with index.js ");
-    -gitignore | -g --> creates .gitignore");
-    -readme | -r    --> creates README.markdown");
-    -all | -a       --> creates all");
+    -help | -h      --> help
+    -index | -i     --> creates index.js"
+    -test | -t      --> creates test directory with index.js "
+    -gitignore | -g --> creates .gitignore"
+    -readme | -r    --> creates README.markdown"
+    -all | -a       --> creates all"
 
 ## Steps
 - create index.js (from template)

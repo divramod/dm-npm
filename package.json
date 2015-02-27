@@ -1,0 +1,23 @@
+{
+  "name": "dm-npm",
+  "version": "0.0.0",
+  "description": "npm helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r nyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/divramod/dm-npm.git"
+  },
+  "keywords": [
+    "npm",
+    "template"
+  ],
+  "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divramod/dm-npm/issues"
+  },
+  "homepage": "https://github.com/divramod/dm-npm"
+}

@@ -1,6 +1,6 @@
 var should = require('chai').should();
-var npmName = require('../index');
-var start = npmName.start;
+var dmNpmName = require('../index');
+var start = dmNpmName.start;
 
 describe('Start', function() {
     it('should return String "start"', function() {

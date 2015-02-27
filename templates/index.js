@@ -1,9 +1,9 @@
-var npmName = {};
+var dmNpmName = {};
 
-// =========== [ npmName.start ] ===========
-npmName.start = function() {
+// =========== [ dmNpmName.start ] ===========
+dmNpmName.start = function() {
 
     return "start";
-}; // npmName.start
+}; // dmNpmName.start
 
-module.exports = npmName;
+module.exports = dmNpmName;

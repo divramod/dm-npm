@@ -1,33 +1,34 @@
 {
-    "name": "dm-npm",
-    "version": "0.0.1",
-    "description": "npm helper",
-    "main": "index.js",
-    "scripts": {
-        "test": "mocha --reporter nyan"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/divramod/dm-npm.git"
-    },
-    "keywords": [
-        "npm",
-        "template"
-    ],
-    "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/divramod/dm-npm/issues"
-    },
-    "homepage": "https://github.com/divramod/dm-npm",
-    "devDependencies": {
-        "chai": "^2.1.0",
-        "mocha": "^2.1.0"
-    },
-    "dependencies": {
-        "shelljs": "^0.3.0"
-    },
-    "bin": {
-        "dm-npm": "./bin/dm-npm"
-    }
+  "name": "dm-npm",
+  "version": "0.0.1",
+  "description": "npm helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter nyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/divramod/dm-npm.git"
+  },
+  "keywords": [
+    "npm",
+    "template"
+  ],
+  "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divramod/dm-npm/issues"
+  },
+  "homepage": "https://github.com/divramod/dm-npm",
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.3.0",
+    "colors": "~1.0.3"
+  },
+  "bin": {
+    "dmnpm": "./bin/dm-npm"
+  }
 }

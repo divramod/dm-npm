@@ -1,4 +1,4 @@
-# dmName
+# dmNpmName
 
 ## Description
 

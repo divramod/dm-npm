@@ -1,6 +1,6 @@
 {
   "name": "dm-npm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "npm helper",
   "main": "index.js",
   "scripts": {

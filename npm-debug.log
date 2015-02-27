@@ -1,0 +1,164 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '.',
+1 verbose cli   '-g' ]
+2 info using npm@1.3.25
+3 info using node@v0.11.11
+4 verbose cache add [ '.', null ]
+5 verbose cache add name=undefined spec="." args=[".",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: '.',
+6 verbose parsed url   path: '.',
+6 verbose parsed url   href: '.' }
+7 silly lockFile 3a52ce78- .
+8 verbose lock . /home/mod/.npm/3a52ce78-.lock
+9 verbose tar pack [ '/home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz',
+9 verbose tar pack   '.' ]
+10 verbose tarball /home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+11 verbose folder .
+12 info prepublish dm-npm@0.0.0
+13 silly lockFile 1f1177db-tar tar://.
+14 verbose lock tar://. /home/mod/.npm/1f1177db-tar.lock
+15 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+16 verbose lock tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz /home/mod/.npm/4f0b6a26-74782-0-4718725858256221-tmp-tgz.lock
+17 silly lockFile 1f1177db-tar tar://.
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+20 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+21 verbose tar unpack /home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+22 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+23 verbose lock tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package /home/mod/.npm/66ee8701-74782-0-4718725858256221-package.lock
+24 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+25 verbose lock tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz /home/mod/.npm/4f0b6a26-74782-0-4718725858256221-tmp-tgz.lock
+26 silly gunzTarPerm modes [ '755', '644' ]
+27 silly gunzTarPerm extractEntry package.json
+28 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+31 silly gunzTarPerm extractEntry index.js
+32 silly gunzTarPerm modified mode [ 'index.js', 436, 420 ]
+33 silly gunzTarPerm extractEntry README.markdown
+34 silly gunzTarPerm modified mode [ 'README.markdown', 436, 420 ]
+35 silly gunzTarPerm extractEntry templates/index.js
+36 silly gunzTarPerm modified mode [ 'templates/index.js', 436, 420 ]
+37 silly gunzTarPerm extractEntry templates/README.markdown
+38 silly gunzTarPerm modified mode [ 'templates/README.markdown', 436, 420 ]
+39 silly gunzTarPerm extractEntry templates/gitignore
+40 silly gunzTarPerm modified mode [ 'templates/gitignore', 436, 420 ]
+41 silly gunzTarPerm extractEntry templates/test/index.js
+42 silly gunzTarPerm modified mode [ 'templates/test/index.js', 436, 420 ]
+43 silly gunzTarPerm extractEntry test/index.js
+44 silly gunzTarPerm modified mode [ 'test/index.js', 436, 420 ]
+45 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+46 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+47 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+48 silly lockFile 4f0b6a26-74782-0-4718725858256221-tmp-tgz tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/tmp.tgz
+49 verbose tar pack [ '/home/mod/.npm/dm-npm/0.0.0/package.tgz',
+49 verbose tar pack   '/home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package' ]
+50 verbose tarball /home/mod/.npm/dm-npm/0.0.0/package.tgz
+51 verbose folder /home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+52 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+53 verbose lock tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package /home/mod/.npm/66ee8701-74782-0-4718725858256221-package.lock
+54 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+55 verbose lock tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz /home/mod/.npm/3cad519c-mod-npm-dm-npm-0-0-0-package-tgz.lock
+56 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+57 silly lockFile 66ee8701-74782-0-4718725858256221-package tar:///home/mod/tmp/npm-23890-E-qB8WfI/1424996374782-0.4718725858256221/package
+58 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+59 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+60 silly lockFile 081d6c95-ome-mod-npm-dm-npm-0-0-0-package /home/mod/.npm/dm-npm/0.0.0/package
+61 verbose lock /home/mod/.npm/dm-npm/0.0.0/package /home/mod/.npm/081d6c95-ome-mod-npm-dm-npm-0-0-0-package.lock
+62 silly lockFile 081d6c95-ome-mod-npm-dm-npm-0-0-0-package /home/mod/.npm/dm-npm/0.0.0/package
+63 silly lockFile 081d6c95-ome-mod-npm-dm-npm-0-0-0-package /home/mod/.npm/dm-npm/0.0.0/package
+64 verbose tar unpack /home/mod/.npm/dm-npm/0.0.0/package.tgz
+65 silly lockFile f44afb9e-ome-mod-npm-dm-npm-0-0-0-package tar:///home/mod/.npm/dm-npm/0.0.0/package
+66 verbose lock tar:///home/mod/.npm/dm-npm/0.0.0/package /home/mod/.npm/f44afb9e-ome-mod-npm-dm-npm-0-0-0-package.lock
+67 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+68 verbose lock tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz /home/mod/.npm/3cad519c-mod-npm-dm-npm-0-0-0-package-tgz.lock
+69 silly gunzTarPerm modes [ '755', '644' ]
+70 silly gunzTarPerm extractEntry package.json
+71 silly gunzTarPerm extractEntry .npmignore
+72 silly gunzTarPerm extractEntry index.js
+73 silly gunzTarPerm extractEntry README.markdown
+74 silly gunzTarPerm extractEntry templates/index.js
+75 silly gunzTarPerm extractEntry templates/README.markdown
+76 silly gunzTarPerm extractEntry templates/gitignore
+77 silly gunzTarPerm extractEntry templates/test/index.js
+78 silly gunzTarPerm extractEntry test/index.js
+79 silly lockFile f44afb9e-ome-mod-npm-dm-npm-0-0-0-package tar:///home/mod/.npm/dm-npm/0.0.0/package
+80 silly lockFile f44afb9e-ome-mod-npm-dm-npm-0-0-0-package tar:///home/mod/.npm/dm-npm/0.0.0/package
+81 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+82 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+83 verbose chmod /home/mod/.npm/dm-npm/0.0.0/package.tgz 644
+84 verbose chown /home/mod/.npm/dm-npm/0.0.0/package.tgz [ 1000, 1000 ]
+85 silly lockFile 3a52ce78- .
+86 silly lockFile 3a52ce78- .
+87 silly resolved [ { name: 'dm-npm',
+87 silly resolved     version: '0.0.0',
+87 silly resolved     description: 'npm helper',
+87 silly resolved     main: 'index.js',
+87 silly resolved     scripts: { test: 'mocha --reporter nyan' },
+87 silly resolved     repository: { type: 'git', url: 'https://github.com/divramod/dm-npm.git' },
+87 silly resolved     keywords: [ 'npm', 'template' ],
+87 silly resolved     author:
+87 silly resolved      { name: 'Arvid Petermann',
+87 silly resolved        email: 'arvidpetermann@gmail.com',
+87 silly resolved        url: 'http://arvidpetermann.com/' },
+87 silly resolved     license: 'ISC',
+87 silly resolved     bugs: { url: 'https://github.com/divramod/dm-npm/issues' },
+87 silly resolved     homepage: 'https://github.com/divramod/dm-npm',
+87 silly resolved     devDependencies: { chai: '^2.1.0', mocha: '^2.1.0' },
+87 silly resolved     dependencies: { shelljs: '^0.3.0' },
+87 silly resolved     readme: '# dmName\n\n## Description\n\n## Installation\n\n## Prerequisits\n\n## Steps\n- create index.js (from template)\n- create test/index.js (from template)\n- create .gitignore (from template)\n- create README.md\n- RUN npm init\n- RUN npm install mocha --save-dev\n- RUN npm install chai --save-dev\n- RUN initial test\n- RUN npm publish\n',
+87 silly resolved     readmeFilename: 'README.markdown',
+87 silly resolved     _id: 'dm-npm@0.0.0',
+87 silly resolved     dist: { shasum: 'dcde2459c0600d2f6b257cef49a45e8b4b23a26d' },
+87 silly resolved     _from: '.' } ]
+88 info install dm-npm@0.0.0 into /usr/local/lib
+89 info installOne dm-npm@0.0.0
+90 info /usr/local/lib/node_modules/dm-npm unbuild
+91 verbose tar unpack /home/mod/.npm/dm-npm/0.0.0/package.tgz
+92 silly lockFile e798720a-sr-local-lib-node-modules-dm-npm tar:///usr/local/lib/node_modules/dm-npm
+93 verbose lock tar:///usr/local/lib/node_modules/dm-npm /home/mod/.npm/e798720a-sr-local-lib-node-modules-dm-npm.lock
+94 silly lockFile 3cad519c-mod-npm-dm-npm-0-0-0-package-tgz tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz
+95 verbose lock tar:///home/mod/.npm/dm-npm/0.0.0/package.tgz /home/mod/.npm/3cad519c-mod-npm-dm-npm-0-0-0-package-tgz.lock
+96 silly gunzTarPerm modes [ '755', '644' ]
+97 error Error: EACCES, mkdir '/usr/local/lib/node_modules/dm-npm'
+97 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/dm-npm']
+97 error   stack: 'Error: EACCES, mkdir \'/usr/local/lib/node_modules/dm-npm\'',
+97 error   errno: -13,
+97 error   code: 'EACCES',
+97 error   path: '/usr/local/lib/node_modules/dm-npm',
+97 error   fstream_type: 'Directory',
+97 error   fstream_path: '/usr/local/lib/node_modules/dm-npm',
+97 error   fstream_class: 'DirWriter',
+97 error   fstream_stack:
+97 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+97 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+97 error      'Object.oncomplete (fs.js:97:15)' ] }
+98 error Please try running this command again as root/Administrator.
+99 error System Linux 3.16.0-30-generic
+100 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "." "-g"
+101 error cwd /home/mod/code/npm/dm-npm
+102 error node -v v0.11.11
+103 error npm -v 1.3.25
+104 error path /usr/local/lib/node_modules/dm-npm
+105 error fstream_path /usr/local/lib/node_modules/dm-npm
+106 error fstream_type Directory
+107 error fstream_class DirWriter
+108 error code EACCES
+109 error errno -13
+110 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/dm-npm'
+111 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+111 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+111 error fstream_stack Object.oncomplete (fs.js:97:15)
+112 verbose exit [ -13, true ]

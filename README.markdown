@@ -1,10 +1,21 @@
 # dmName
 
 ## Description
+- tested with node 0.11.11 and 0.12.0
 
 ## Installation
+- npm install dm-npm -g
 
 ## Prerequisits
+
+## Options
+
+    -help | -h      --> help");
+    -index | -i     --> creates index.js");
+    -test | -t      --> creates test directory with index.js ");
+    -gitignore | -g --> creates .gitignore");
+    -readme | -r    --> creates README.markdown");
+    -all | -a       --> creates all");
 
 ## Steps
 - create index.js (from template)

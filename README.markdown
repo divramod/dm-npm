@@ -18,6 +18,7 @@
 - RUN npm publish
 
 ## Links
-- npm access problem: http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo
-- node global acces problem: http://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package
-- creating and publishing a node-js module: https://quickleft.com/blog/creating-and-publishing-a-node-js-module/
+- [npm access problem](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo)
+- [node global acces problem](http://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package)
+- [creating and publishing a node-js module](https://quickleft.com/blog/creating-and-publishing-a-node-js-module/)
+- [npm run script environment](https://oncletom.io/2014/self-contained-node-scripts/)

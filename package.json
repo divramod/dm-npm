@@ -4,7 +4,7 @@
   "description": "npm helper",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r nyan"
+    "test": "mocha --reporter nyan"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/divramod/dm-npm/issues"
   },
-  "homepage": "https://github.com/divramod/dm-npm"
+  "homepage": "https://github.com/divramod/dm-npm",
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.3.0"
+  }
 }

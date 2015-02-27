@@ -1,9 +1,10 @@
 var should = require('chai').should();
 var npmName = require('../index');
 var start = npmName.start;
+require("shelljs/global");
 
-describe('Start', function() {
-    it('should return String "start"', function() {
+describe('dm-npm ', function() {
+    it('index.js should be existent', function() {
         start().should.equal('start');
     });
 });

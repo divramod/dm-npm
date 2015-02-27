@@ -1,4 +1,5 @@
 # dmName
+alias dmnpm
 
 ## Description
 - tested with node 0.11.11 and 0.12.0

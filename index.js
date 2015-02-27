@@ -44,7 +44,7 @@ dmNpm.start = function() {
 // =========== [ dmNpm.help() ] ===========
 dmNpm.help = function() {
 
-    var version = require(pwd() + "/package.json").version;
+    var version = require(__dirname + "/package.json").version;
     console.log();
     console.log("          dmnpm (".yellow + version.yellow + ") help".yellow);
     console.log("==============================================");

@@ -28,6 +28,6 @@
         "shelljs": "^0.3.0"
     },
     "bin": {
-        "forever": "./bin/dm-npm"
-    },
+        "dm-npm": "./bin/dm-npm"
+    }
 }

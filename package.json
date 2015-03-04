@@ -1,10 +1,11 @@
 {
   "name": "dm-npm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "npm helper",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter nyan"
+    "test": "mocha --reporter nyan",
+    "start": "node --harmony ./bin/dm-npm"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,15 @@
     "mocha": "^2.1.0"
   },
   "dependencies": {
+    "co": "^4.4.0",
+    "co-prompt": "^1.0.0",
+    "colors": "~1.0.3",
+    "commander": "^2.6.0",
     "shelljs": "^0.3.0",
-    "colors": "~1.0.3"
+    "suppose": "^0.3.0"
   },
   "bin": {
-    "dmnpm": "./bin/dm-npm"
+    "dmnpm": "./bin/dm-npm",
+    "npmdm": "./bin/dm-npm"
   }
 }

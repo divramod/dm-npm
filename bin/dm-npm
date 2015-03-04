@@ -1,3 +1,3 @@
-#!/usr/bin/env node
+#! node --harmony
 
 require('../index.js').start();

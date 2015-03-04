@@ -1,4 +1,6 @@
 // =========== [ REQUIRE ] ===========
+var co = require("co");
+var prompt = require("co-prompt");
 var colors = require("colors");
 require("shelljs/global");
 
@@ -18,11 +20,14 @@ dmNpm.start = function() {
         } else {
             if (dmNpm.proofPrerequisits()) {
 
-                if (arg === "-index" || arg === "-i") {
+                if (arg === "-index") {
                     dmNpm.createIndexJs();
                 }
                 if (arg === "-test" || arg === "-t") {
                     dmNpm.createTest();
+                }
+                if (arg === "test") {
+                    dmNpm.test();
                 }
                 if (arg === "-gitignore" || arg === "-g") {
                     dmNpm.createGitignore();
@@ -30,16 +35,74 @@ dmNpm.start = function() {
                 if (arg === "-readme" || arg === "-r") {
                     dmNpm.createReadme();
                 }
-                if (arg === "-all" || arg === "-a") {
-                    dmNpm.createIndexJs();
-                    dmNpm.createTest();
-                    dmNpm.createGitignore();
-                    dmNpm.createReadme();
+                if (arg === "-init" || arg === "-i" || arg === "init") {
+                    dmNpm.init();
+                }
+                if (arg === "-install" || arg === "-in" || arg === "install") {
+                    dmNpm.install();
                 }
             }
         }
     }
 }; // npmName.start
+
+// =========== [ dmNpm.test() ] ===========
+// TODO
+dmNpm.test = function() {
+    var spawn = require('child_process').spawn;
+
+    // Create a child process
+    var child = spawn('tail', ['-f', '/var/log/system.log']);
+
+    child.stdout.on('data',
+        function(data) {
+            console.log('tail output: ' + data);
+        }
+    );
+
+    child.stderr.on('data',
+        function(data) {
+            console.log('err data: ' + data);
+        }
+    );
+
+}; //dmNpm.test()
+
+
+// =========== [ dmNpm.install() ] ===========
+// TODO
+dmNpm.install = function() {
+    exec('sudo npm install . -g', {
+        silent: false
+    });
+}; //dmNpm.install()
+
+// =========== [ dmNpm.init() ] ===========
+// TODO
+dmNpm.init = function() {
+
+    co(function*() {
+        var projectName =
+            yield prompt('project name: '.blue);
+        process.stdin.pause();
+
+        console.log("projectName", projectName);
+
+        exec('mkdir ' + projectName + " && cd " + projectName, {
+            silent: false
+        });
+        exec('npm init', {
+            silent: false
+        });
+        dmNpm.createIndexJs();
+        dmNpm.createTest();
+        dmNpm.createGitignore();
+        dmNpm.createReadme();
+        console.log("dmNpm.init");
+    });
+
+}; //dmNpm.init()
+
 
 // =========== [ dmNpm.help() ] ===========
 dmNpm.help = function() {
@@ -49,11 +112,11 @@ dmNpm.help = function() {
     console.log("          dmnpm (".yellow + version.yellow + ") help".yellow);
     console.log("==============================================");
     console.log("-help | -h".yellow + "      --> help");
-    console.log("-index | -i".yellow + "     --> creates index.js");
+    console.log("-index".yellow + "          --> creates index.js");
     console.log("-test | -t".yellow + "      --> creates test directory with index.js ");
     console.log("-gitignore | -g".yellow + " --> creates .gitignore");
     console.log("-readme | -r".yellow + "    --> creates README.markdown");
-    console.log("-all | -a".yellow + "       --> creates all");
+    console.log("-init | -i".yellow + "      --> initialized npm module");
 }; //dmNpm.help()
 
 

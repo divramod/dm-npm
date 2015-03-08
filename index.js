@@ -17,6 +17,7 @@ job.start = co.wrap(function*(path) {
     // TODO npm install
     job.npmInstallAll(pwd());
 
+
     return yield Promise.resolve(result);
 }); // job.index()
 

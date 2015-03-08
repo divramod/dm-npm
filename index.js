@@ -10,6 +10,11 @@ var job = {};
 job.start = co.wrap(function*(path) {
     var result = {};
     result.pwd = pwd();
+    // TODO clone project
+    // TODO checkout master branches
+    // TODO bower install
+    // TODO restart docker container
+    // TODO npm install
     job.npmInstallAll(pwd());
 
     return yield Promise.resolve(result);

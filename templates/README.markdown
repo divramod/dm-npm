@@ -1,7 +1,0 @@
-# dmNpmName
-
-## Description
-
-## Installation
-
-## Prerequisits

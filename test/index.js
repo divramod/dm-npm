@@ -1,10 +1,13 @@
 var should = require('chai').should();
-var npmName = require('../index');
-var start = npmName.start;
+var index = require('../index');
 require("shelljs/global");
 
-describe('dm-npm ', function() {
-    it('index.js should be existent', function() {
-        start().should.equal();
+// =========== [  ] ===========
+// TODO
+describe('dm-deploy ', function() {
+    it('should not create a tag if tag already existent', function*() {
+        var result =
+            yield index.start();
+        result.pwd.should.equal("test");
     });
 });

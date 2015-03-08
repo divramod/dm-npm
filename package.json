@@ -1,10 +1,11 @@
 {
+  "private": false,
   "name": "dm-npm",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "npm helper",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter nyan",
+    "test": "mocha --harmony --require co-mocha --watch --reporter landing",
     "start": "node --harmony ./bin/dm-npm"
   },
   "repository": {
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/divramod/dm-npm",
   "devDependencies": {
     "chai": "^2.1.0",
+    "co-mocha": "^1.1.0",
     "mocha": "^2.1.0"
   },
   "dependencies": {
@@ -34,7 +36,7 @@
     "suppose": "^0.3.0"
   },
   "bin": {
-    "dmnpm": "./bin/dm-npm",
-    "npmdm": "./bin/dm-npm"
+    "dmdeploy": "./bin/dm-deploy",
+    "deploydm": "./bin/dm-deploy"
   }
 }

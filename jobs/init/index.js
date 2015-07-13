@@ -5,7 +5,6 @@
  *      module name
  *      module shortcut
  * TODO set git remote
- * TODO create local link
  */
 
 // =========== [ REQUIRE ] ===========
@@ -87,6 +86,11 @@ job.run = co.wrap(function* initRun(result) {
         var createJobsDirTask = require("./taskCreateJobsDir.js");
         var createJobsDirResult =
             yield createJobsDirTask.create(templateDirPath, npmModuleName);
+
+        // =========== [ npm install ] ===========
+        var npmInstallTask = require("./taskNpmInstall.js");
+        var npmInstallResult =
+            yield npmInstallTask.create();
 
         // =========== [ create local link ] ===========
         var createLocalLinkTask = require("./taskCreateLocalLink.js");

@@ -2,11 +2,10 @@ var should = require('chai').should();
 var index = require('../index').index;
 var colors = require("colors");
 
-// =========== [ dm-npm TESTS ] ===========
-// TODO
-describe('dm-npm', function() {
+// =========== [ NPM_MODULE_NAME TESTS ] ===========
+describe('NPM_MODULE_NAME', function() {
 
-    console.log("run dm-npm tests".blue);
+    console.log("run NPM_MODULE_NAME tests".blue);
 
     // =========== [ help ] ===========
     it('job undefined', function* testUndefined() {
@@ -26,15 +25,4 @@ describe('dm-npm', function() {
         result.success.should.equal(true);
     });
 
-    // =========== [ init ] ===========
-    it('job init', function* testInit() {
-
-        process.env.dmnJob = "init";
-
-        var result =
-            yield index();
-
-        result.job.should.equal("init");
-        result.success.should.equal(true);
-    });
 });

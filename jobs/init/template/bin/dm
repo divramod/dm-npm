@@ -1,0 +1,3 @@
+#! node --harmony
+
+require('../index.js').index();

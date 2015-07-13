@@ -1,3 +1,7 @@
+/**
+ * NPM_MODULE_NAME
+ */
+
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var colors = require("colors");
@@ -15,9 +19,9 @@ jobs.index = co.wrap(function*() {
         yield jobs.help();
     } else if (result.job === "start") {
         yield jobs.start();
-    } else if (result.job === "init") {
-        var initJob = require("./jobs/init/index.js");
-        yield initJob.run(result);
+    } else if (result.job === "job") {
+        var jobJob = require("./jobs/job/index.js");
+        yield jobJob.run(result);
     } else {
         result.job = "undefined";
         result.success = true;
@@ -40,7 +44,6 @@ jobs.index = co.wrap(function*() {
 // =========== [ jobs.help ] ===========
 jobs.help = co.wrap(function*() {
     result.success = true;
-
     return yield Promise.resolve();
 }); // jobs.help
 

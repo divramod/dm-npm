@@ -1,16 +1,16 @@
 {
   "private": false,
-  "name": "dm-npm",
-  "version": "0.0.5",
-  "description": "npm helper",
+  "name": "NPM_MODULE_NAME",
+  "version": "0.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha --harmony --require co-mocha --watch --reporter landing",
-    "start": "node --harmony ./bin/dm-npm"
+    "start": "node --harmony ./bin/NPM_MODULE_NAME"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/divramod/dm-npm.git"
+    "url": "https://github.com/divramod/NPM_MODULE_NAME.git"
   },
   "keywords": [
     "npm",
@@ -19,9 +19,9 @@
   "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/divramod/dm-npm/issues"
+    "url": "https://github.com/divramod/NPM_MODULE_NAME/issues"
   },
-  "homepage": "https://github.com/divramod/dm-npm",
+  "homepage": "https://github.com/divramod/NPM_MODULE_NAME",
   "devDependencies": {
     "chai": "^2.1.0",
     "co-mocha": "^1.1.0",
@@ -36,6 +36,6 @@
     "suppose": "^0.3.0"
   },
   "bin": {
-    "dmn": "./bin/dm-npm"
+    "NPM_MODULE_SHORTCUT": "./bin/NPM_MODULE_NAME"
   }
 }

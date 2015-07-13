@@ -20,66 +20,85 @@ var job = {};
 job.run = co.wrap(function* initRun(result) {
     var args = process.argv;
 
-    var npmModuleName = args[3];
-    var npmModuleShortcut = args[4];
-    var templateDirPath = __dirname + "/template/";
+    // =========== [ proof for correct parameters set ] ===========
+    var npmModuleNamePassed = true;
+    var npmModuleShortcutPassed = true;
 
-    // =========== [ start ] ===========
-    console.log("\njob init started".yellow);
+    if (!args[3]) {
+        npmModuleNamePassed = false;
+        console.log("You forgat to pass a module name!".red);
+        console.log('For example: dmn init "YOUR_MODULE_NAME_HERE" "YOUR_MODULE_SHORTCUT_HERE"'.blue);
+    }
 
-    result.message = "init job";
-    result.success = false;
+    if (!args[4]) {
+        npmModuleShortcutPassed = false;
+        console.log("You forgat to pass a module shortcut!".red);
+        console.log('For example: dmn init "YOUR_MODULE_NAME_HERE" "YOUR_MODULE_SHORTCUT_HERE"'.blue);
+    }
 
-    // =========== [ .npmignore ] ===========
-    var npmignoreTask = require("./taskCreateNpmignore.js");
-    var npmignoreResult =
-        yield npmignoreTask.create(templateDirPath);
+    if (npmModuleNamePassed && npmModuleShortcutPassed) {
 
-    // =========== [ .gitignore ] ===========
-    var gitignoreTask = require("./taskCreateGitignore.js");
-    var gitignoreResult =
-        yield gitignoreTask.create(templateDirPath);
+        var npmModuleName = args[3];
+        var npmModuleShortcut = args[4];
+        var templateDirPath = __dirname + "/template/";
 
-    // =========== [ package.json ] ===========
-    var packageJsonTask = require("./taskCreatePackageJson.js");
-    var packageJsonResult =
-        yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+        // =========== [ start ] ===========
+        console.log("\njob init started".yellow);
 
-    // =========== [ index.js ] ===========
-    var indexJsTask = require("./taskCreateIndexJs.js");
-    var indexJsResult =
-        yield indexJsTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+        result.message = "init job";
+        result.success = false;
 
-    // =========== [ README.md ] ===========
-    var readmeMdTask = require("./taskCreateReadmeMd.js");
-    var readmeMdResult =
-        yield readmeMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+        // =========== [ .npmignore ] ===========
+        var npmignoreTask = require("./taskCreateNpmignore.js");
+        var npmignoreResult =
+            yield npmignoreTask.create(templateDirPath);
 
-    // =========== [ test directory ] ===========
-    var createTestDirTask = require("./taskCreateTestDir.js");
-    var createTestDirResult =
-        yield createTestDirTask.create(templateDirPath, npmModuleName);
+        // =========== [ .gitignore ] ===========
+        var gitignoreTask = require("./taskCreateGitignore.js");
+        var gitignoreResult =
+            yield gitignoreTask.create(templateDirPath);
 
-    // =========== [ bin directory ] ===========
-    var createBinDirTask = require("./taskCreateBinDir.js");
-    var createBinDirResult =
-        yield createBinDirTask.create(templateDirPath, npmModuleName);
+        // =========== [ package.json ] ===========
+        var packageJsonTask = require("./taskCreatePackageJson.js");
+        var packageJsonResult =
+            yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
-    // =========== [ jobs directory ] ===========
-    var createJobsDirTask = require("./taskCreateJobsDir.js");
-    var createJobsDirResult =
-        yield createJobsDirTask.create(templateDirPath, npmModuleName);
+        // =========== [ index.js ] ===========
+        var indexJsTask = require("./taskCreateIndexJs.js");
+        var indexJsResult =
+            yield indexJsTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
-    // =========== [ create local link ] ===========
-    var createLocalLinkTask = require("./taskCreateLocalLink.js");
-    var codeDirName = "docker_test";
-    var codeDirPath= "~/code/dm";
-    var localDirName = "/usr/local/bin";
-    var createLocalLinkResult =
-        yield createLocalLinkTask.create(codeDirPath, localDirName, codeDirName, npmModuleShortcut);
+        // =========== [ README.md ] ===========
+        var readmeMdTask = require("./taskCreateReadmeMd.js");
+        var readmeMdResult =
+            yield readmeMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
-    // =========== [ done ] ===========
-    console.log("init done".yellow);
+        // =========== [ test directory ] ===========
+        var createTestDirTask = require("./taskCreateTestDir.js");
+        var createTestDirResult =
+            yield createTestDirTask.create(templateDirPath, npmModuleName);
+
+        // =========== [ bin directory ] ===========
+        var createBinDirTask = require("./taskCreateBinDir.js");
+        var createBinDirResult =
+            yield createBinDirTask.create(templateDirPath, npmModuleName);
+
+        // =========== [ jobs directory ] ===========
+        var createJobsDirTask = require("./taskCreateJobsDir.js");
+        var createJobsDirResult =
+            yield createJobsDirTask.create(templateDirPath, npmModuleName);
+
+        // =========== [ create local link ] ===========
+        var createLocalLinkTask = require("./taskCreateLocalLink.js");
+        var codeDirName = npmModuleName;
+        var codeDirPath = "~/code/dm";
+        var localDirName = "/usr/local/bin";
+        var createLocalLinkResult =
+            yield createLocalLinkTask.create(codeDirPath, localDirName, codeDirName, npmModuleShortcut);
+
+        // =========== [ done ] ===========
+        console.log("init done".yellow);
+    }
 
     return yield Promise.resolve();
 }); // job.run

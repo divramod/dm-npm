@@ -1,5 +1,6 @@
 /**
- * 
+ * Create a link to the local dev directory.
+ * Used to avoid to reinstall the npm module globally to save time.
  */
 
 // =========== [ REQUIRE ] ===========
@@ -11,20 +12,17 @@ require("shelljs/global");
 var job = {};
 
 // =========== [ job.create ] ===========
-/**
- * Create file .npmignore if it does not exists
- */
 job.create = co.wrap(function*(dirPathCode, dirPathLocal, npmModuleName, npmModuleShortcut) {
     console.log("task create local link started".yellow);
 
     var taskResult = {};
 
     // =========== [ create local link ] ===========
-    var command = 'ls -s ' + dirPathCode + "/bin/" + npmModuleName + " " + dirPathLocal + "/" + npmModuleShortcut;
+    var command = 'ln -s ' + dirPathCode + "/" + npmModuleName + "/bin/" + npmModuleName + " " + dirPathLocal + "/" + npmModuleShortcut;
     console.log(command);
-    //exec(command, {
-        //silent: false
-    //});
+    exec(command, {
+        silent: false
+    });
 
     // =========== [ test ] ===========
     if (test('-f', dirPathLocal + "/" + npmModuleShortcut)) {

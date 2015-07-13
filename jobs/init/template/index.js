@@ -44,6 +44,7 @@ jobs.index = co.wrap(function*() {
 // =========== [ jobs.help ] ===========
 jobs.help = co.wrap(function*() {
     result.success = true;
+    console.log("Help for ".blue);
     return yield Promise.resolve();
 }); // jobs.help
 

@@ -1,59 +1,34 @@
-/**
- * NPM_MODULE_NAME
- */
-
-// =========== [ REQUIRE ] ===========
-var co = require("co");
 var colors = require("colors");
-
-// =========== [ MODULE DEFINE ] ===========
+var co = require("co");
+require("shelljs/global");
 var jobs = {};
 var result = {};
+var module_path = __dirname;
 
 // =========== [ job.index() ] ===========
 jobs.index = co.wrap(function*() {
 
-    // =========== [ Tasks ] ===========
+    // =========== [ get params from user input ] ===========
     result.job = process.env.dmnJob || process.argv[2] || "help";
-    if (result.job === "help") {
-        yield jobs.help();
-    } else if (result.job === "start") {
-        yield jobs.start();
-    } else if (result.job === "job") {
-        var jobJob = require("./jobs/job/index.js");
-        yield jobJob.run(result);
-    } else {
-        result.job = "undefined";
-        result.success = true;
-        result.message = "job " + result.job + " not existent!";
-    }
 
-    // =========== [ Logging ] ===========
-    if (result.success === true) {
-        result.message = result.job + " succeeded!";
-        //console.log(result.message.green);
-    } else {
-        console.log("\n");
-        console.log(result.message.red);
-        console.log("\n");
+    // =========== [ help ] ===========
+    if (result.job === "help" || result.job === "-h" || result.job === "-help") {
+        var task = require("./tasks/help/index.js");
+        yield task.start(module_path);
+    }
+    // =========== [ test ] ===========
+    else if (["test", "t", "-t"].indexOf(result.job) > -1) {
+        var task = require("./tasks/test/index.js");
+        yield task.start();
+    }
+    // =========== [ help ] ===========
+    else {
+        var task = require("./tasks/help/index.js");
+        yield task.start(module_path);
     }
 
     return Promise.resolve(result);
 }); // job.index()
-
-// =========== [ jobs.help ] ===========
-jobs.help = co.wrap(function*() {
-    result.success = true;
-    console.log("Help for ".blue);
-    return yield Promise.resolve();
-}); // jobs.help
-
-// =========== [ jobs.start ] ===========
-jobs.start = co.wrap(function*() {
-    result.success = true;
-
-    return yield Promise.resolve();
-}); // jobs.start
 
 // =========== [ MODULE EXPORT ] ===========
 module.exports = jobs;

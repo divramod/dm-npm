@@ -105,6 +105,16 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
     var createJobsDirResult =
         yield createJobsDirTask.create(templateDirPath, npmModuleName);
 
+    // =========== [ tasks directory ] ===========
+    var task = require("./taskCreateTasksDir.js");
+    var taskResult =
+        yield task.create(templateDirPath, npmModuleName);
+
+    // =========== [ docs directory ] ===========
+    var task = require("./taskCreateDocsDir.js");
+    var taskResult =
+        yield task.create(templateDirPath, npmModuleName);
+
     // =========== [ npm install ] ===========
     var npmInstallTask = require("./taskNpmInstall.js");
     var npmInstallResult =

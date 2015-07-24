@@ -36,6 +36,7 @@
     "suppose": "^0.3.0"
   },
   "bin": {
-    "NPM_MODULE_SHORTCUT": "./bin/NPM_MODULE_NAME"
+    "NPM_MODULE_SHORTCUT": "./bin/NPM_MODULE_NAME",
+    "NPM_MODULE_NAME": "./bin/NPM_MODULE_NAME"
   }
 }

@@ -1,78 +1,54 @@
 var colors = require("colors");
 var co = require("co");
 require("shelljs/global");
-
-// =========== [ MODULE DEFINE ] ===========
 var jobs = {};
 var result = {};
+var module_path = __dirname;
 
 // =========== [ job.index() ] ===========
 jobs.index = co.wrap(function*() {
 
-    // =========== [ Tasks ] ===========
+    // =========== [ get params from user input ] ===========
     result.job = process.env.dmnJob || process.argv[2] || "help";
+
+    // =========== [ help ] ===========
     if (result.job === "help" || result.job === "-h" || result.job === "-help") {
-        yield jobs.help();
-    } else if (result.job === "start") {
-        yield jobs.start();
-    } else if (result.job === "init") {
-        var initJob = require("./jobs/init/index.js");
-        initJob.run();
-    } else if (result.job === "test") {
-        var job = require("./tasks/test/index.js");
+        var task = require("./tasks/help/index.js");
+        yield task.start(module_path);
+    }
+    // =========== [ init ] ===========
+    else if (["init", "i", "-i"].indexOf(result.job) > -1) {
+        var job = require("./jobs/init/index.js");
+        job.run();
+    }
+    // =========== [ publish ] ===========
+    else if (["p", "-p", "publish"].indexOf(result.job) > -1) {
+        var job = require("./jobs/publish/index.js");
         yield job.start();
-    } else if (result.job === "linkLocal" || result.job === "local") {
-        var linkLocalJob = require("./tasks/linkLocal/index.js");
-        yield linkLocalJob.run(result);
-    } else if (result.job === "installGlobal" || result.job === "global") {
-        var linkLocalJob = require("./tasks/installGlobal/index.js");
-        yield linkLocalJob.run(result);
-    } else {
-        yield jobs.help();
+    }
+    // =========== [ test ] ===========
+    else if (["test"].indexOf(result.job) > -1) {
+        var task = require("./tasks/test/index.js");
+        yield task.start();
+    }
+    // =========== [ link local ] ===========
+    else if (["linkLocal", "-l", "l", "local"].indexOf(result.job) > -1) {
+        var task = require("./tasks/linkLocal/index.js");
+        yield task.run(result);
+    }
+    // =========== [ install global ] ===========
+    else if (["installGlobal", "-g", "g", "global"].indexOf(result.job) > -1) {
+        var task = require("./tasks/installGlobal/index.js");
+        yield task.run(result);
+    }
+    // =========== [ help ] ===========
+    else {
+        var task = require("./tasks/help/index.js");
+        yield task.start(module_path);
     }
 
     return Promise.resolve(result);
 }); // job.index()
-
-// =========== [ jobs.help ] ===========
-jobs.help = co.wrap(function*() {
-
-    //result.success = true;
-
-    // =========== [ JOBS ] ===========
-    var command = "cat " + __dirname + "/JOBS.md";
-    var jobsDocs = exec(command, {
-        silent: true
-    }).output;
-
-    // =========== [ TASKS ] ===========
-    var command = "cat " + __dirname + "/TASKS.md";
-    var tasksDocs = exec(command, {
-        silent: true
-    }).output;
-
-    // =========== [ HEADER ] ===========
-    console.log("dm-npm\n========================================\n".yellow);
-
-    // =========== [ SWITCH ] ===========
-    if (process.argv[3] === "jobs") {
-        console.log(jobsDocs.green);
-    } else if (process.argv[3] === "tasks") {
-        console.log(tasksDocs.blue);
-    } else {
-        console.log(jobsDocs.green);
-        console.log(tasksDocs.blue);
-    }
-
-    return yield Promise.resolve();
-}); // jobs.help
-
-// =========== [ jobs.start ] ===========
-jobs.start = co.wrap(function*() {
-    result.success = true;
-
-    return yield Promise.resolve();
-}); // jobs.start
 
 // =========== [ MODULE EXPORT ] ===========
 module.exports = jobs;

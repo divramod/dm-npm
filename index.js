@@ -24,7 +24,7 @@ jobs.index = co.wrap(function*() {
     // =========== [ publish ] ===========
     else if (["p", "-p", "publish"].indexOf(result.job) > -1) {
         var job = require("./jobs/publish/index.js");
-        yield job.start();
+        yield job.start(module_path);
     }
     // =========== [ test ] ===========
     else if (["test"].indexOf(result.job) > -1) {

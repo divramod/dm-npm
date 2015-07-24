@@ -12,7 +12,7 @@ var job = {};
 job.start = co.wrap(function*() {
     console.log("bump version");
 
-    inquirer.prompt([{
+    yield inquirer.prompt([{
         type: "list",
         name: "release_type",
         message: "What do you want to do?",
@@ -35,6 +35,7 @@ job.start = co.wrap(function*() {
         console.log(oldVersionString.yellow);
         console.log(newVersionString.green);
 
+        //return yield Promise.resolve();
     });
 }); // job.start()
 

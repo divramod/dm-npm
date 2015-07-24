@@ -10,6 +10,7 @@
 var co = require("co");
 var colors = require("colors");
 var fs = require("fs");
+var inquirer = require("inquirer");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -46,8 +47,11 @@ job.run = co.wrap(function*() {
             for (var key in p) {
                 if (p.hasOwnProperty(key)) {
                     var linkTarget = pathBin + "/" + key;
-                    if (test("-e", linkTarget)) {
+                    console.log(linkTarget);
+                    if (test("-L", linkTarget)) {
+                      console.log(linkTarget + " extist");
                         rm(linkTarget);
+            rm("-rf", linkTarget);
                     }
                     var commandLinkBinToNode = "ln -s " + pathNodeModules + "/" + moduleName + "/" + p[key].substring(2, p[key].length) + " " + pathBin + "/" + key;
                     //console.log(commandLinkBinToNode);

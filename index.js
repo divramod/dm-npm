@@ -17,7 +17,10 @@ jobs.index = co.wrap(function*() {
         yield jobs.start();
     } else if (result.job === "init") {
         var initJob = require("./jobs/init/index.js");
-        yield initJob.run(result);
+        initJob.run();
+    } else if (result.job === "test") {
+        var job = require("./tasks/test/index.js");
+        yield job.start();
     } else if (result.job === "linkLocal" || result.job === "local") {
         var linkLocalJob = require("./tasks/linkLocal/index.js");
         yield linkLocalJob.run(result);
@@ -26,19 +29,6 @@ jobs.index = co.wrap(function*() {
         yield linkLocalJob.run(result);
     } else {
         yield jobs.help();
-        //result.job = "undefined";
-        //result.success = true;
-        //result.message = "job " + result.job + " not existent!";
-    }
-
-    // =========== [ Logging ] ===========
-    if (result.success === true) {
-        result.message = result.job + " succeeded!";
-        //console.log(result.message.green);
-    } else {
-        console.log("\n");
-        console.log(result.message.red);
-        console.log("\n");
     }
 
     return Promise.resolve(result);

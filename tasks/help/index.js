@@ -21,7 +21,7 @@ job.start = co.wrap(function*(module_path) {
     }).output;
 
     // =========== [ HEADER ] ===========
-    console.log("dm-npm\n========================================\n".yellow);
+    console.log("Help\n========================================\n".yellow);
 
     // =========== [ SWITCH ] ===========
     if (process.argv[3] === "jobs") {

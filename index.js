@@ -41,6 +41,11 @@ jobs.index = co.wrap(function*() {
         var task = require("./tasks/installGlobal/index.js");
         yield task.run(result);
     }
+    // =========== [ bump Version ] ===========
+    else if (["bump", "-b", "b"].indexOf(result.job) > -1) {
+        var task = require("./tasks/bumpVersion/index.js");
+        yield task.start(module_path);
+    }
     // =========== [ help ] ===========
     else {
         var task = require("./tasks/help/index.js");

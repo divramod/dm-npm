@@ -39,8 +39,7 @@ job.start = co.wrap(function*() {
 
         var newVersionString = "new version: " + newVersion;
         var oldVersionString = "old version: " + packageJson.version
-        console.log(oldVersionString.yellow);
-        console.log(newVersionString.green);
+        console.log(oldVersionString.yellow, newVersionString.green);
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
     }

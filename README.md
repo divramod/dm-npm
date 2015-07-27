@@ -11,7 +11,7 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
 - npm install dm-npm -g
 
 ## Prerequisits
-- for publishing a module you have to create a account on:
+- for publishing a module you have to create accounts on:
   - [npmjs.com]( http://npmjs.com )
   - [github.com](http://github.com)
 

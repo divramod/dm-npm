@@ -26,12 +26,8 @@ job.start = co.wrap(function*() {
                 "prerelease"
             ]
         };
-
         var answers =
             yield Prompt(question);
-
-        console.log(answers);
-
         var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
         var newVersion = semver.inc(packageJson.version, answers.release_type);
         sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+"/, '"version": "' + newVersion + '"', 'package.json');

@@ -20,17 +20,17 @@ jobs.index = co.wrap(function*() {
         result.job = process.env.dmnJob || process.argv[2] || "help";
 
         // =========== [ help ] ===========
-        if (result.job === "help" || result.job === "-h" || result.job === "-help") {
+        if (["help", "-help", "h", "-h"].indexOf(result.job) > -1) {
             var task = require("./tasks/help/index.js");
             yield task.start(module_path);
         }
         // =========== [ init ] ===========
-        else if (["init", "i", "-i"].indexOf(result.job) > -1) {
+        else if (["init", "-init", "i", "-i"].indexOf(result.job) > -1) {
             var job = require("./jobs/init/index.js");
             job.run();
         }
         // =========== [ publish ] ===========
-        else if (["p", "-p", "publish"].indexOf(result.job) > -1) {
+        else if (["publish", "-publish", "p", "-p"].indexOf(result.job) > -1) {
             var job = require("./jobs/publish/index.js");
             yield job.start(module_path);
         }
@@ -50,7 +50,7 @@ jobs.index = co.wrap(function*() {
             yield task.run(result);
         }
         // =========== [ bump Version ] ===========
-        else if (["bump", "-b", "b"].indexOf(result.job) > -1) {
+        else if (["bump", "-bump", "-b", "b"].indexOf(result.job) > -1) {
             var task = require("./tasks/bumpVersion/index.js");
             yield task.start(module_path);
         }

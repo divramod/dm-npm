@@ -12,7 +12,6 @@ var job = {};
 job.start = co.wrap(function*() {
     try {
 
-        console.log("bump version");
         var question = {
             type: "list",
             name: "release_type",

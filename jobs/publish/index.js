@@ -13,7 +13,7 @@ job.start = co.wrap(function* publishStart(module_path) {
         console.log("publish job");
         var executionPath = process.cwd();
 
-        //TODO git status, git commit changes if existent (unique)
+        // git status, git commit changes if existent (unique)
         exec('git status', {
             silent: false
         });

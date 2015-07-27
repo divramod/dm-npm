@@ -34,7 +34,7 @@ jobs.index = co.wrap(function*() {
             yield job.start(module_path);
         }
         // =========== [ test ] ===========
-        else if (["test"].indexOf(result.job) > -1) {
+        else if (["test", "t"].indexOf(result.job) > -1) {
             var task = require("./tasks/test/index.js");
             yield task.start();
         }

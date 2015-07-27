@@ -1,37 +1,70 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
+var fs = require("fs");
+var Prompt = require("./../../lib/prompt.js");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.start() ] ===========
-// TODO
-job.start = co.wrap(function*(module_path) {
-    console.log("publishe");
-    var executionPath = process.cwd();
+job.start = co.wrap(function* publishStart(module_path) {
+    try {
+        console.log("publish job");
+        var executionPath = process.cwd();
 
-    //TODO git status, git commit changes if existent (unique)
+        //TODO git status, git commit changes if existent (unique)
+        exec('git status', {
+            silent: false
+        });
 
-    // bump version
-    var bumpJob = require(module_path + "/tasks/bumpVersion/index.js");
-    yield bumpJob.start();
-    console.log("after bump");
+        var promptAnswer =
+            yield Prompt({
+                type: "input",
+                name: "commitMessage",
+                message: "Please enter your commit message: "
+            });
+        var commitMessage = promptAnswer.commitMessage;
+        exec('git add -A && git commit -m "' + commitMessage + '"', {
+            silent: false
+        });
 
-    //TODO git commit "bumped version to ..."
-    var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    var version = packageJson.version;
-    console.log(packageJson);
-    //exec('git add -A && git commit -m "bumped version to ' + version + '"', {
-      //silent: false
-    //});
+        // bump version
+        var bumpJob = require(module_path + "/tasks/bumpVersion/index.js");
+        var bumpSuccessful =
+            yield bumpJob.start();
 
-    //TODO git tag 
+        // git commit "bumped version to ..."
+        var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+        var version = packageJson.version;
+        exec('git add -A && git commit -m "bumped version to ' + version + '"', {
+            silent: false
+        });
 
-    //TODO git push tags
+        // push commit
+        exec('git push -u origin master', {
+            silent: false
+        });
 
-    //TODO npm publish
+        // git tag 
+        exec('git tag -a ' + version + ' -m "version ' + version + ' tagged"', {
+            silent: false
+        });
 
+        // git push tags
+        exec('git push origin --tags', {
+            silent: false
+        });
+
+        // npm publish
+        exec('npm publish', {
+            silent: false
+        });
+
+    } catch (e) {
+        console.log("Filename: ", __filename, "\n", e.stack);
+        /* handle error */
+    }
     return yield Promise.resolve();
 }); // job.start()
 

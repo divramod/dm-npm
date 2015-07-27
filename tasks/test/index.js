@@ -39,6 +39,7 @@ job.start = co.wrap(function*() {
         }
     }];
 
+    //console.log("in");
     var name =
         yield Prompt(questions);
 

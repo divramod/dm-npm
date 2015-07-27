@@ -2,7 +2,7 @@
 var co = require("co");
 var semver = require("semver");
 var fs = require('fs');
-var inquirer = require("inquirer");
+var Prompt = require("./../../lib/prompt.js");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -10,22 +10,29 @@ var job = {};
 
 // =========== [ job.start() ] ===========
 job.start = co.wrap(function*() {
-    console.log("bump version");
+    try {
 
-    yield inquirer.prompt([{
-        type: "list",
-        name: "release_type",
-        message: "What do you want to do?",
-        choices: [
-            "patch",
-            "minor",
-            "major",
-            "premajor",
-            "preminor",
-            "prepatch",
-            "prerelease"
-        ]
-    }], function(answers) {
+        console.log("bump version");
+        var question = {
+            type: "list",
+            name: "release_type",
+            message: "What do you want to do?",
+            choices: [
+                "patch",
+                "minor",
+                "major",
+                "premajor",
+                "preminor",
+                "prepatch",
+                "prerelease"
+            ]
+        };
+
+        var answers =
+            yield Prompt(question);
+
+        console.log(answers);
+
         var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
         var newVersion = semver.inc(packageJson.version, answers.release_type);
         sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+"/, '"version": "' + newVersion + '"', 'package.json');
@@ -34,9 +41,10 @@ job.start = co.wrap(function*() {
         var oldVersionString = "old version: " + packageJson.version
         console.log(oldVersionString.yellow);
         console.log(newVersionString.green);
+    } catch (e) {
+        console.log("Filename: ", __filename, "\n", e.stack);
+    }
 
-        //return yield Promise.resolve();
-    });
 }); // job.start()
 
 // =========== [ MODULE EXPORT ] ===========

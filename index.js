@@ -5,15 +5,16 @@ var jobs = {};
 var result = {};
 var module_path = __dirname;
 
+process.on('exit', function(code) {
+    console.log(code);
+});
+process.on('uncaughtException', function(code) {
+    console.log(code);
+});
+
 // =========== [ job.index() ] ===========
 jobs.index = co.wrap(function*() {
     try {
-        process.on('exit', function(code) {
-            console.log(code);
-        });
-        process.on('uncaughtException', function(code) {
-            console.log(code);
-        });
 
         // =========== [ get params from user input ] ===========
         result.job = process.env.dmnJob || process.argv[2] || "help";

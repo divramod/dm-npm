@@ -31,6 +31,7 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
     help | -help | -h | h               --> help
     init | -init | i | -i               --> init a npm module from a empty git repository
     publish | -publish | p | -p         --> publish the current module (commit, bump version, tag, ...)
+    reinstall | -reinstall | r | -r     --> reinstall node modules (remove node_modules dir and npm install)
 
 ## Options Tasks
     linkLocal | local | -l | l          --> linking the current module locally for global usage (prevents to reinstall module globally after every change)

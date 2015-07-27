@@ -8,6 +8,13 @@ var module_path = __dirname;
 // =========== [ job.index() ] ===========
 jobs.index = co.wrap(function*() {
 
+    process.on('exit', function(code) {
+        console.log(code);
+    });
+    process.on('uncaughtException', function(code) {
+        console.log(code);
+    });
+
     // =========== [ get params from user input ] ===========
     result.job = process.env.dmnJob || process.argv[2] || "help";
 
@@ -28,6 +35,7 @@ jobs.index = co.wrap(function*() {
     }
     // =========== [ test ] ===========
     else if (["test"].indexOf(result.job) > -1) {
+        console.log("test");
         var task = require("./tasks/test/index.js");
         yield task.start();
     }

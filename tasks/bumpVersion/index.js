@@ -34,11 +34,10 @@ job.start = co.wrap(function*() {
         var tags = exec('git tag', {
             silent: false
         }).output;
-        if (tags.indexOf(packageJson.version) > -1) {
+        var newVersion = semver.inc(packageJson.version, answers.release_type);
+        if (tags.indexOf(newVersion) > -1) {
             var lines = tags.split(/\r?\n/).sort();
-            var newVersion = semver.inc(lines[lines.length - 1], answers.release_type);
-        } else {
-            var newVersion = semver.inc(packageJson.version, answers.release_type);
+            newVersion = semver.inc(lines[lines.length - 1], answers.release_type);
         }
         sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+"/, '"version": "' + newVersion + '"', 'package.json');
 

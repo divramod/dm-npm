@@ -28,8 +28,18 @@ job.start = co.wrap(function*() {
         };
         var answers =
             yield Prompt(question);
+
+
         var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-        var newVersion = semver.inc(packageJson.version, answers.release_type);
+        var tags = exec('git tag', {
+            silent: false
+        }).output;
+        if (tags.indexOf(packageJson.version) > -1) {
+            var lines = tags.split(/\r?\n/).sort();
+            var newVersion = semver.inc(lines[lines.length - 1], answers.release_type);
+        } else {
+            var newVersion = semver.inc(packageJson.version, answers.release_type);
+        }
         sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+"/, '"version": "' + newVersion + '"', 'package.json');
 
         var newVersionString = "new version: " + newVersion;

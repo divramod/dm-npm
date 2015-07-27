@@ -82,6 +82,11 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
         var indexJsResult =
             yield indexJsTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
+        // =========== [ global.js ] ===========
+        var globalJsTask = require("./taskCreateGlobalJs.js");
+        var globalJsResult =
+            yield globalJsTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+
         // =========== [ README.md ] ===========
         var readmeMdTask = require("./taskCreateReadmeMd.js");
         var readmeMdResult =

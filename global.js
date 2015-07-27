@@ -39,6 +39,11 @@ jobs.index = co.wrap(function*() {
             var job = require("./jobs/reinstall/index.js");
             yield job.start(module_path);
         }
+        // =========== [ reininit] ===========
+        else if (["reinit", "-reinit"].indexOf(result.job) > -1) {
+            var job = require("./jobs/reinit/index.js");
+            yield job.start(module_path);
+        }
         // =========== [ test ] ===========
         else if (["test", "-test", "t", "-t"].indexOf(result.job) > -1) {
             var task = require("./tasks/test/index.js");

@@ -56,9 +56,9 @@
 17 silly publish   bin: { dmn: './bin/dm-npm', 'dm-npm': './bin/dm-npm' },
 17 silly publish   readme: '# dmName\nalias dmnpm\n\n## Description\nThis command line tool helps to fulfill the daily jobs you have to do when working with npm modules.\n\n## Environment\n- tested with node 0.11.11 and 0.12.0\n\n## Installation\n\n    npm install dm-npm -g\n\n## Prerequisits\n- for publishing a module you have to create accounts on:\n  - [npmjs.com]( http://npmjs.com )\n  - [github.com](http://github.com)\n\n## Init a npm module\n- create github repository (online)\n- clone the repository (local)\n- cd into the repository (local)\n- run (local)\n    dmn init\n- run (local)\n    npm install\n- run (local)\n    dmn publish\n\n## Options jobs\n\n    help | -help | -h | h               --> help\n    init | -init | i | -i               --> init a npm module from a empty git repository\n    publish | -publish | p | -p         --> publish the current module (commit, bump version, tag, ...)\n    reinstall | -reinstall | r | -r     --> reinstall node modules (remove node_modules dir and npm install)\n\n## Options Tasks\n    linkLocal | local | -l | l          --> linking the current module locally for global usage (prevents to reinstall module globally after every change)\n    installGlobal | global | -g | g     --> installs the module global (ie npm install -g .)\n    bump | -bump | -b | b               --> bumps the version in package.json\n\n\n## Links\n- [npm access problem](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo)\n- [node global acces problem](http://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package)\n- [creating and publishing a node-js module]( https://quickleft.com/blog/creating-and-publishing-a-node-js-module/ )\n- [npm run script environment](https://oncletom.io/2014/self-contained-node-scripts/)\n',
 17 silly publish   readmeFilename: 'README.md',
-17 silly publish   gitHead: '9be6398bb4d4419a2d0243f9d9ded6c9c4c9415e',
+17 silly publish   gitHead: 'ec66c4e7d7093a9c8321247e799d24942ca898ea',
 17 silly publish   _id: 'dm-npm@0.0.10',
-17 silly publish   _shasum: 'a8df69f997bec11287594f7b690de26f1fc0cd7f',
+17 silly publish   _shasum: 'a507d51a10d391a2ff630233a645eb650c6d8bf8',
 17 silly publish   _from: '.' }
 18 silly mapToRegistry name dm-npm
 19 silly mapToRegistry using default registry
@@ -68,22 +68,22 @@
 23 silly publish uploading /home/mod/.npm/dm-npm/0.0.10/package.tgz
 24 verbose request uri https://registry.npmjs.org/dm-npm
 25 verbose request sending authorization for write operation
-26 info attempt registry request try #1 at 7:07:40 PM
+26 info attempt registry request try #1 at 7:09:59 PM
 27 verbose request using bearer token for auth
-28 verbose request id 9862e7b8dce9316b
+28 verbose request id cc9cd75d35f2f14e
 29 http request PUT https://registry.npmjs.org/dm-npm
 30 http 403 https://registry.npmjs.org/dm-npm
 31 verbose headers { 'content-type': 'application/json',
 31 verbose headers   'cache-control': 'max-age=60',
 31 verbose headers   'content-length': '96',
 31 verbose headers   'accept-ranges': 'bytes',
-31 verbose headers   date: 'Mon, 27 Jul 2015 17:07:42 GMT',
+31 verbose headers   date: 'Mon, 27 Jul 2015 17:10:00 GMT',
 31 verbose headers   via: '1.1 varnish',
 31 verbose headers   connection: 'keep-alive',
 31 verbose headers   'x-served-by': 'cache-fra1220-FRA',
 31 verbose headers   'x-cache': 'MISS',
 31 verbose headers   'x-cache-hits': '0',
-31 verbose headers   'x-timer': 'S1438016861.043550,VS0,VE1103' }
+31 verbose headers   'x-timer': 'S1438016999.951133,VS0,VE877' }
 32 verbose request invalidating /home/mod/.npm/registry.npmjs.org/dm-npm on PUT
 33 error publish Failed PUT 403
 34 verbose stack Error: "You cannot publish over the previously published version 0.0.10." : dm-npm

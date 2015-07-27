@@ -31,13 +31,15 @@ job.start = co.wrap(function*() {
 
 
         var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-        var tags = exec('git tag', {
-            silent: false
+        var lines = exec('git tag', {
+            silent: true
         }).output;
         var newVersion = semver.inc(packageJson.version, answers.release_type);
-        if (tags.indexOf(newVersion) > -1) {
-            var lines = tags.split(/\r?\n/).sort();
-            newVersion = semver.inc(lines[lines.length - 1], answers.release_type);
+        if (lines.indexOf(newVersion) > -1) {
+            var tags = lines.split(/\r?\n/);
+            tags.pop();
+            tags.sort(semver.compare);
+            newVersion = semver.inc(tags[tags.length - 1], answers.release_type);
         }
         sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+"/, '"version": "' + newVersion + '"', 'package.json');
 

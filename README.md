@@ -12,8 +12,8 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
 
 ## Prerequisits
 - for publishing a module you have to create a account on:
-  - http://npmjs.com
-  - http://github.com
+  - [npmjs.com]( http://npmjs.com )
+  - [github.com](http://github.com)
 
 ## Init a npm module
 - create github repository (online)

@@ -33,12 +33,13 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
     init | -init | i | -i               --> init a npm module from a empty git repository
     publish | -publish | p | -p         --> publish the current module (commit, bump version, tag, ...)
     reinstall | -reinstall | r | -r     --> reinstall node modules (remove node_modules dir and npm install)
+    reininit | -reininit                --> reinitialize the node module (deletes all current files and creates them new from the template files)
 
 ## Options Tasks
     linkLocal | local | -l | l          --> linking the current module locally for global usage (prevents to reinstall module globally after every change)
     installGlobal | global | -g | g     --> installs the module global (ie npm install -g .)
     bump | -bump | -b | b               --> bumps the version in package.json
-
+    linkNode | ln | -ln                 --> links local existing direcotries in the node_modules folder (for being able to use the current stage of development from modules the module is dependent on)  
 
 ## Links
 - [npm access problem](http://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo)

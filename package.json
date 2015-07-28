@@ -40,7 +40,8 @@
     "promptly": "^0.2.1",
     "semver": "^5.0.1",
     "shelljs": "^0.3.0",
-    "suppose": "^0.3.0"
+    "suppose": "^0.3.0",
+    "underscore": "^1.8.3"
   },
   "bin": {
     "dmn": "./bin/dm-npm",

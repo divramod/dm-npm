@@ -64,6 +64,11 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/bumpVersion/index.js");
             yield task.start(module_path);
         }
+          // =========== [ link modules to node_modules ] ===========
+          else if (["linkNodeModules"].indexOf(result.job) > -1) {
+            var task = require("./tasks/linkNodeModules/index.js");
+            yield task.start(module_path);
+          }
         // =========== [ help ] ===========
         else {
             var task = require("./tasks/help/index.js");

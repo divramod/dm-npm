@@ -65,7 +65,7 @@ jobs.index = co.wrap(function*() {
             yield task.start(module_path);
         }
         // =========== [ link modules to node_modules ] ===========
-        else if (["linkNode", "ln", "-ln"].indexOf(result.job) > -1) {
+        else if (["linkNode", "node", "ln", "-ln"].indexOf(result.job) > -1) {
             var task = require("./tasks/linkNodeModules/index.js");
             yield task.start(module_path);
         }

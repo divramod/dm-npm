@@ -46,8 +46,8 @@ job.start = co.wrap(function*() {
                 var linkPath = directory + v;
 
                 var linkCommand = "ln -s " + linkPath + " node_modules/" + v;
-                exec('rm node_modules/' + v, {
-                    silent: true
+                exec('rm -rf node_modules/' + v, {
+                    silent: false
                 });
                 exec(linkCommand, {
                     silent: true

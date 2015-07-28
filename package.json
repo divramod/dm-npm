@@ -1,50 +1,51 @@
 {
-  "private": false,
-  "name": "dm-npm",
-  "shortcut": "dmn",
-  "version": "0.0.18",
-  "description": "npm helper",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --harmony --require co-mocha --watch --reporter landing",
-    "start": "node --harmony ./bin/dm-npm"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/divramod/dm-npm.git"
-  },
-  "keywords": [
-    "npm",
-    "template"
-  ],
-  "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/divramod/dm-npm/issues"
-  },
-  "homepage": "https://github.com/divramod/dm-npm",
-  "devDependencies": {
-    "chai": "^2.1.0",
-    "co-mocha": "^1.1.0",
-    "mocha": "^2.1.0"
-  },
-  "dependencies": {
-    "bluebird": "^2.9.34",
-    "co": "^4.4.0",
-    "co-prompt": "^1.0.0",
-    "colors": "~1.0.3",
-    "commander": "^2.6.0",
-    "dm-util": "^0.0.2",
-    "inquirer": "^0.9.0",
-    "lodash": "^3.10.0",
-    "promptly": "^0.2.1",
-    "semver": "^5.0.1",
-    "shelljs": "^0.3.0",
-    "suppose": "^0.3.0",
-    "underscore": "^1.8.3"
-  },
-  "bin": {
-    "dmn": "./bin/dm-npm",
-    "dm-npm": "./bin/dm-npm"
-  }
+    "private": false,
+    "name": "dm-npm",
+    "shortcut": "dmn",
+    "version": "0.0.18",
+    "description": "npm helper",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --harmony --require co-mocha --watch --reporter landing",
+        "start": "node --harmony ./bin/dm-npm"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/divramod/dm-npm.git"
+    },
+    "keywords": [
+        "npm",
+        "template"
+    ],
+    "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/divramod/dm-npm/issues"
+    },
+    "homepage": "https://github.com/divramod/dm-npm",
+    "devDependencies": {
+        "chai": "^2.1.0",
+        "co-mocha": "^1.1.0",
+        "mocha": "^2.1.0"
+    },
+    "dependencies": {
+        "bluebird": "^2.9.34",
+        "co": "^4.4.0",
+        "co-prompt": "^1.0.0",
+        "colors": "~1.0.3",
+        "commander": "^2.6.0",
+        "dm-prompt": "^0.1.9",
+        "dm-util": "0.0.2",
+        "inquirer": "^0.9.0",
+        "lodash": "^3.10.0",
+        "promptly": "^0.2.1",
+        "semver": "^5.0.1",
+        "shelljs": "^0.3.0",
+        "suppose": "^0.3.0",
+        "underscore": "^1.8.3"
+    },
+    "bin": {
+        "dmn": "./bin/dm-npm",
+        "dm-npm": "./bin/dm-npm"
+    }
 }

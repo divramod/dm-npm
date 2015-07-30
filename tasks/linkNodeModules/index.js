@@ -1,7 +1,7 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var colors = require("colors");
-var dmPrompt = require("dm-prompt");
+var dmPrompt = require("dm-prompt").Inquirer;
 var _ = require("underscore");
 require("shelljs/global");
 

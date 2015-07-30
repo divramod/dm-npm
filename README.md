@@ -46,6 +46,8 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
     dmn [installGlobal|global|-g|g]     --> installs the module global (ie npm install -g .)
     dmn [bump|-bump|-b|b]               --> bumps the version in package.json
     dmn [linkNode|node|ln|-ln]          --> links local existing direcotries in the node_modules folder (for being able to use the current stage of development from modules the module is dependent on)
+    dmn [task|-task|t|-t] [add]         --> creates a bootstrapped task in diretory tasks (if the folder modules is existent you can choose one of them as target)
+    dmn [job|-job|j|-j] [add]           --> creates a bootstrapped job in directory jobs (if the folder modules is existent you can choose one of them as target)
 
 ### npm
 

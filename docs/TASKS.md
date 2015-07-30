@@ -13,6 +13,10 @@ dm-npm Tasks
 
     dmn [installGlobal|-g|g|global]
 
+# link node_modules from directory instead of installing them
+
+    dmn [linkNode|node|ln|-ln]
+
 # help
 
     dmn [|help|-help|-h]

@@ -21,7 +21,6 @@ job.start = co.wrap(function*() {
                 message: "Please enter the Task Name:"
             });
         var taskName = taskNameAnswer.taskName;
-        console.log(taskName);
 
         // get possible task pathes (all folders under modules and top level tasks)
         var possiblePathes = [];

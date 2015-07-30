@@ -25,6 +25,10 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/help/index.js");
             yield task.start(module_path);
         }
+
+        // =========== [ JOBS ] ===========
+        // =================================
+        
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
             var job = require("./jobs/init/index.js");
@@ -45,6 +49,10 @@ jobs.index = co.wrap(function*() {
             var job = require("./jobs/reinit/index.js");
             yield job.start(module_path);
         }
+
+        // =========== [ TASKS ] ===========
+        // =================================
+        
         // =========== [ test ] ===========
         else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
             var task = require("./tasks/test/index.js");
@@ -80,9 +88,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/addJob/index.js");
             yield task.start(module_path);
         }
-
-
-
         // =========== [ help ] ===========
         else {
             var task = require("./tasks/help/index.js");

@@ -33,6 +33,7 @@ job.run = co.wrap(function*() {
         // =========== [ create link from pathNodeModules to current Directory ] ===========
         var linkTarget = pathNodeModules + "/" + moduleName;
         if (test("-e", linkTarget)) {
+          console.log("linkTarget", linkTarget);
             rm("-rf", linkTarget);
         }
         var commandNodeModules = "ln -s " + currentDirectory + " " + pathNodeModules + "/" + moduleName;

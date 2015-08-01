@@ -28,8 +28,11 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
 - run (local)
     dmn publish
 
+## Generators
+Most of the jobs and tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
+
 ## Jobs and Tasks
-- For running the jobs and tasks, you have cd into the module you want to work with.
+- For running the jobs and tasks, you have to cd into the module you want to work with.
 - I devided the todos i have to solve in a npm project into tasks (mostly one simple command) and jobs (a more complex combination of tasks).
 
 ### Jobs
@@ -63,3 +66,6 @@ This command line tool helps to fulfill the daily jobs you have to do when worki
 - [node global acces problem](http://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package)
 - [creating and publishing a node-js module]( https://quickleft.com/blog/creating-and-publishing-a-node-js-module/ )
 - [npm run script environment](https://oncletom.io/2014/self-contained-node-scripts/)
+
+# ToDo
+- [portable node](https://gist.github.com/domenic/2790533)

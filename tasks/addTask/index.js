@@ -40,6 +40,8 @@ job.start = co.wrap(function*() {
         var taskPath = taskPathAnswer.taskPath;
         if (taskPath !== "tasks") {
             taskPath = "modules/" + taskPath + "/tasks/" + taskName;
+        } else {
+            taskPath = "tasks/" + taskName;
         }
         taskPath = process.cwd() + '/' + taskPath;
         console.log(taskPath);

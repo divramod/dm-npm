@@ -8,6 +8,7 @@ var job = {};
 job.start = co.wrap(function*() {
     try {
         console.log("start test");
+
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
     }

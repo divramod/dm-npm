@@ -3,6 +3,7 @@ var co = require("co");
 var colors = require("colors");
 var dmPrompt = require("dm-prompt").Inquirer;
 var dmUtil = require("dm-util");
+var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -37,13 +38,14 @@ job.start = co.wrap(function*() {
                 message: "Please choose the path for the task:",
                 choices: possiblePathes
             });
+
         var taskPath = taskPathAnswer.taskPath;
         if (taskPath !== "tasks") {
-            taskPath = "modules/" + taskPath + "/tasks/" + taskName;
+            taskPath = path.join("modules", taskPath, "tasks", taskName);
         } else {
-            taskPath = "tasks/" + taskName;
+            taskPath = path.join("tasks", taskName);
         }
-        taskPath = process.cwd() + '/' + taskPath;
+        taskPath = path.join(process.cwd(), taskPath);
         console.log(taskPath);
 
         // create task
@@ -67,7 +69,7 @@ job.start = co.wrap(function*() {
         console.log("Filename: ", __filename, "\n", e.stack);
     }
     return yield Promise.resolve();
-}); // job.start()
+}); // task.start()
 
 // =========== [ MODULE EXPORT ] ===========
 module.exports = job;

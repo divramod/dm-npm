@@ -3,13 +3,13 @@ var co = require("co");
 var colors = require("colors");
 var dmPrompt = require("dm-prompt").Inquirer;
 var dmUtil = require("dm-util");
+var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.start() ] ===========
-// TODO
 job.start = co.wrap(function*() {
     try {
 
@@ -40,9 +40,13 @@ job.start = co.wrap(function*() {
             });
         var jobPath = jobPathAnswer.jobPath;
         if (jobPath !== "jobs") {
-            jobPath = "modules/" + jobPath + "/jobs/" + jobName;
+            jobPath = path.join("modules", jobPath, "jobs", jobName);
+        } else {
+            jobPath = path.join("jobs", jobName);
         }
-        jobPath = process.cwd() + '/' + jobPath;
+        jobPath = path.join(process.cwd(), jobPath);
+
+        console.log(jobPath);
 
         // create job
         var configJob = {

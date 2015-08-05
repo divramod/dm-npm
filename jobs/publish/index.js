@@ -11,6 +11,7 @@ var job = {};
 job.start = co.wrap(function* publishStart(module_path) {
     try {
         console.log("Publish Module\n===============");
+        console.log(module_path);
 
         // get path
         var executionPath = process.cwd();

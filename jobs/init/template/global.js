@@ -10,15 +10,15 @@ jobs.index = co.wrap(function*() {
     try {
 
         // =========== [ get params from user input ] ===========
-        result.job = process.env.dmnJob || process.argv[2] || "help";
+        var argv2 = process.env.dmnJob || process.argv[2] || "help";
 
         // =========== [ help ] ===========
-        if (["help", "-help", "h", "-h"].indexOf(result.job) > -1) {
+        if (["help", "-help", "h", "-h"].indexOf(argv2) > -1) {
             var task = require("./tasks/help/index.js");
             yield task.start(module_path);
         }
         // =========== [ test ] ===========
-        else if (["test", "-test", "t", "-t"].indexOf(result.job) > -1) {
+        else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
             var task = require("./tasks/test/index.js");
             yield task.start();
         }

@@ -6,7 +6,7 @@
     "description": "npm helper",
     "main": "index.js",
     "scripts": {
-        "test": "mocha --harmony --require co-mocha --watch --reporter landing",
+        "test": "mocha --harmony --require co-mocha --watch --reporter landing jobs/**/*",
         "start": "node --harmony ./bin/dm-npm"
     },
     "repository": {

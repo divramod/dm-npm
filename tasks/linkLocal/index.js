@@ -33,7 +33,7 @@ job.run = co.wrap(function*() {
         // =========== [ create link from pathNodeModules to current Directory ] ===========
         var linkTarget = pathNodeModules + "/" + moduleName;
         if (test("-e", linkTarget)) {
-          console.log("linkTarget", linkTarget);
+            console.log("linkTarget", linkTarget);
             rm("-rf", linkTarget);
         }
         var commandNodeModules = "ln -s " + currentDirectory + " " + pathNodeModules + "/" + moduleName;
@@ -48,11 +48,8 @@ job.run = co.wrap(function*() {
             for (var key in p) {
                 if (p.hasOwnProperty(key)) {
                     var linkTarget = pathBin + "/" + key;
-                    console.log(linkTarget);
                     if (test("-L", linkTarget)) {
-                      console.log(linkTarget + " extist");
-                        rm(linkTarget);
-            rm("-rf", linkTarget);
+                        rm("-rf", linkTarget);
                     }
                     var commandLinkBinToNode = "ln -s " + pathNodeModules + "/" + moduleName + "/" + p[key].substring(2, p[key].length) + " " + pathBin + "/" + key;
                     //console.log(commandLinkBinToNode);

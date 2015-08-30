@@ -76,7 +76,7 @@ jobs.index = co.wrap(function*() {
         // =========== [ bump Version ] ===========
         else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
             var task = require("./tasks/bumpVersion/index.js");
-            yield task.start(module_path);
+            yield task.start();
         }
         // =========== [ link modules to node_modules ] ===========
         else if (["linkNode", "node", "ln", "-ln"].indexOf(argv2) > -1) {

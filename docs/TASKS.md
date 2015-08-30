@@ -1,9 +1,9 @@
 dm-npm Tasks
 ========================================
 
-# bump Version
+# dmn [bump|b|-b]
+- bump Version
 
-   dmn [bump|b|-b]
 
 # link local files globally
 
@@ -20,3 +20,7 @@ dm-npm Tasks
 # help
 
     dmn [|help|-help|-h]
+
+# create config file for npm module
+
+    dmn [config|configFileAdd|c|-c]

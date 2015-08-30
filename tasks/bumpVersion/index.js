@@ -10,28 +10,33 @@ require("shelljs/global");
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function*() {
+job.start = co.wrap(function*(filepath) {
     try {
-        var files = ls("*.json");
-        if (files.length > 1) {
+        var filepath = filepath || undefined;
+        if (!filepath) {
+            var files = ls("*.json");
+            if (test('-f', 'package.js')) {
+                files.push("package.js");
+            }
+            if (files.length > 1) {
 
-            var fileQuestion = {
-                type: "list",
-                name: "file",
-                message: "Which file do you want to bump:",
-                choices: files
-            };
-            var fileAnswer =
-                yield dmPrompt(fileQuestion);
-            var file = fileAnswer.file;
+                var fileQuestion = {
+                    type: "list",
+                    name: "file",
+                    message: "Which file do you want to bump:",
+                    choices: files
+                };
+                var fileAnswer =
+                    yield dmPrompt(fileQuestion);
+                var filepath = fileAnswer.file;
 
-        } else if (files.length === 0) {
-            console.log("No file for bumping existent!".red);
-        } else if (files.length === 1) {
-            var file = files[0];
-
+            } else if (files.length === 0) {
+                console.log("No file for bumping existent!".red);
+            } else if (files.length === 1) {
+                var filepath = files[0];
+            }
         }
-        if (file) {
+        if (filepath) {
             var question = {
                 type: "list",
                 name: "release_type",
@@ -49,22 +54,26 @@ job.start = co.wrap(function*() {
             var answers =
                 yield dmPrompt(question);
 
-            var packageJson = JSON.parse(fs.readFileSync(file, 'utf8'));
-            var lines = exec('git tag', {
-                silent: true
-            }).output;
-            var newVersion = semver.inc(packageJson.version, answers.release_type);
-            if (lines.indexOf(newVersion) > -1) {
-                var tags = lines.split(/\r?\n/);
-                tags.pop();
-                tags.sort(semver.compare);
-                newVersion = semver.inc(tags[tags.length - 1], answers.release_type);
-            }
-            sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+-?[0-9]*"/, '"version": "' + newVersion + '"', file);
+            try {
+                var packageJson = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+                var lines = exec('git tag', {
+                    silent: true
+                }).output;
+                var newVersion = semver.inc(packageJson.version, answers.release_type);
+                if (lines.indexOf(newVersion) > -1) {
+                    var tags = lines.split(/\r?\n/);
+                    tags.pop();
+                    tags.sort(semver.compare);
+                    newVersion = semver.inc(tags[tags.length - 1], answers.release_type);
+                }
+                sed('-i', /"version": *"[0-9]+.[0-9]+.[0-9]+-?[0-9]*"/, '"version": "' + newVersion + '"', filepath);
 
-            var newVersionString = "new version: " + newVersion;
-            var oldVersionString = "old version: " + packageJson.version
-            console.log(oldVersionString.yellow, newVersionString.green);
+                var newVersionString = "new version: " + newVersion;
+                var oldVersionString = "old version: " + packageJson.version
+                console.log(oldVersionString.yellow, newVersionString.green);
+            } catch (e) {
+                console.log("Filename: ", __filename, "\n", e.stack);
+            }
         }
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);

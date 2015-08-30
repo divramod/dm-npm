@@ -96,7 +96,7 @@ jobs.index = co.wrap(function*() {
         // =========== [ config file add ] ===========
         else if (["config", "configFileAdd", "c", "-c"].indexOf(argv2) > -1) {
             var task = require("./tasks/configFileAdd/index.js");
-            yield task.start(module_path);
+            yield task.start();
         }
         
 

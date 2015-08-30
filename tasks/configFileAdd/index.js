@@ -58,6 +58,8 @@ job.start = co.wrap(function*(filepath, filecontent) {
             var filepath = path.join(pathDirectory, fileName);
         }
 
+        filepath = dmPath.replace(filepath);
+
         // create/overwrite
         if (test("-f", filepath)) {
             var now = moment().format("YYYYMMDD_HHmmssSSSS");

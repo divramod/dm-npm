@@ -3,7 +3,8 @@ dm-npm Tasks
 
 # dmn [bump|b|-b]
 - bump Version
-
+- searches for json files in current directory and for package.js
+- you can choose which file to bump
 
 # link local files globally
 

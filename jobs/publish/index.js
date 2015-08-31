@@ -54,7 +54,7 @@ job.start = co.wrap(function* publishStart(modulePath) {
             console.log("git commit bump version".blue);
             var packageJson = JSON.parse(fs.readFileSync(pathPackageJson, 'utf8'));
             var version = packageJson.version;
-            exec('git add -A && git commit -m "bumped version to ' + version + '"', {
+            exec(cdCommand + 'git add -A && git commit -m "bumped version to ' + version + '"', {
                 silent: false
             });
 

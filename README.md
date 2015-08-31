@@ -1,4 +1,6 @@
-# Shorcuts
+# dm-npm
+
+## Shorcuts
     dmn
     dm-npm
 
@@ -35,7 +37,7 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
 - For running the jobs and tasks, you have to cd into the module you want to work with.
 - I devided the todos i have to solve in a npm project into tasks (mostly one simple command) and jobs (a more complex combination of tasks).
 
-### Jobs
+## Jobs
 
     dmn [help|-help|-h|h]               --> help
     dmn [init|-init|i|-i]               --> init a npm module from a empty git repository
@@ -43,8 +45,37 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
     dmn [reinstall|-reinstall|r|-r]     --> reinstall node modules (remove node_modules dir and npm install)
     dmn [reininit|-reininit]            --> reinitialize the node module (deletes all current files and creates them new from the template files)
 
-### Tasks
+## Tasks
 
+### publishFolder
+* publishes all npm modules in a given folder
+* examples 
+```javascript
+alias publishFolder // 
+```
+
+### prompt
+* prompts for execution of the existent tasks of npm module
+* examples 
+```javascript
+alias prompt // 
+```
+
+### idea
+* add ideas to the npm-module via shell (ideas will be added to ideas.md)
+* examples 
+```javascript
+alias idea // 
+```
+
+### todo
+* opens the todo.md file of the npm module
+* examples 
+```javascript
+alias todo // 
+```
+
+### misc tasks
     dmn [linkLocal|local|-l|l]          --> linking the current module locally for global usage (prevents to reinstall module globally after every change)
     dmn [installGlobal|global|-g|g]     --> installs the module global (ie npm install -g .)
     dmn [bump|-bump|-b|b]               --> bumps the version in package.json
@@ -57,7 +88,7 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
     npm test                            --> runs the tests
 
 ## Testing
-- i am not really done here
+- i am not really done here ;-)
 
     npm test
 
@@ -67,5 +98,4 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
 - [creating and publishing a node-js module]( https://quickleft.com/blog/creating-and-publishing-a-node-js-module/ )
 - [npm run script environment](https://oncletom.io/2014/self-contained-node-scripts/)
 
-# ToDo
-- [portable node](https://gist.github.com/domenic/2790533)
+## Lessons Learned

@@ -92,6 +92,11 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
         var readmeMdResult =
             yield readmeMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
+        // =========== [ todo.md ] ===========
+        var todoMdTask = require("./taskCreateTodoMd.js");
+        var todoMdResult =
+            yield todoMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+
         // =========== [ test directory ] ===========
         var createTestDirTask = require("./taskCreateTestDir.js");
         var createTestDirResult =
@@ -103,9 +108,9 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
             yield createBinDirTask.create(templateDirPath, npmModuleName);
 
         // =========== [ jobs directory ] ===========
-        var createJobsDirTask = require("./taskCreateJobsDir.js");
-        var createJobsDirResult =
-            yield createJobsDirTask.create(templateDirPath, npmModuleName);
+        //var createJobsDirTask = require("./taskCreateJobsDir.js");
+        //var createJobsDirResult =
+            //yield createJobsDirTask.create(templateDirPath, npmModuleName);
 
         // =========== [ tasks directory ] ===========
         var task = require("./taskCreateTasksDir.js");
@@ -113,9 +118,9 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
             yield task.create(templateDirPath, npmModuleName);
 
         // =========== [ docs directory ] ===========
-        var task = require("./taskCreateDocsDir.js");
-        var taskResult =
-            yield task.create(templateDirPath, npmModuleName);
+        //var task = require("./taskCreateDocsDir.js");
+        //var taskResult =
+            //yield task.create(templateDirPath, npmModuleName);
 
         // =========== [ npm install ] ===========
         var npmInstallTask = require("./taskNpmInstall.js");

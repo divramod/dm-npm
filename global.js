@@ -26,6 +26,28 @@ jobs.index = co.wrap(function*() {
             yield task.start(module_path);
         }
 
+        // automatically add tasks here
+
+        // =========== [ publishFolder ] ===========
+        else if (['publishFolder','pubFol'].indexOf(argv2) > -1) {
+            var task = require("./tasks/publishFolder/index.js");
+            yield task.start();
+        }
+        // =========== [ prompt ] ===========
+        else if (["prompt","p"].indexOf(argv2) > -1) {
+            require("dm-npm").prompt(__dirname);
+        }
+        // =========== [ idea ] ===========
+        else if (['idea'].indexOf(argv2) > -1) {
+            var task = require("./tasks/idea/index.js");
+            yield task.start();
+        }
+        // =========== [ todo ] ===========
+        else if (['todo','na'].indexOf(argv2) > -1) {
+            var task = require("./tasks/todo/index.js");
+            yield task.start();
+        }
+
         // =========== [ JOBS ] ===========
         // =================================
 
@@ -37,7 +59,7 @@ jobs.index = co.wrap(function*() {
         // =========== [ publish ] ===========
         else if (["publish", "-publish", "p", "-p"].indexOf(argv2) > -1) {
             var job = require("./jobs/publish/index.js");
-            yield job.start(module_path);
+            yield job.start();
         }
         // =========== [ reinstall ] ===========
         else if (["reinstall", "-reinstall", "r", "-r"].indexOf(argv2) > -1) {
@@ -61,7 +83,7 @@ jobs.index = co.wrap(function*() {
         // =========== [ test ] ===========
         else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
             var task = require("./tasks/test/index.js");
-            task.test();
+            task.start();
         }
         // =========== [ link local ] ===========
         else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
@@ -98,7 +120,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/configFileAdd/index.js");
             yield task.start();
         }
-        
 
         // =========== [ help ] ===========
         else {

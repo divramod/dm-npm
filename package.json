@@ -34,7 +34,6 @@
     "co-prompt": "^1.0.0",
     "colors": "~1.0.3",
     "commander": "^2.6.0",
-    "dm-path": "0.0.1",
     "dm-prompt": "^0.1.9",
     "dm-util": "0.0.2",
     "inquirer": "^0.9.0",

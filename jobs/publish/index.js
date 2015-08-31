@@ -1,24 +1,30 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var fs = require("fs");
+var colors = require("colors");
 var Prompt = require("./../../lib/prompt.js");
+var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function* publishStart(module_path) {
+job.start = co.wrap(function* publishStart(modulePath) {
     try {
-        console.log("Publish Module\n===============");
-        console.log(module_path);
+        var modulePath = modulePath || undefined;
+        var cdCommand = "";
+        if (modulePath) {
+            cdCommand = "cd " + modulePath + " && ";
+        }
+        console.log("Publish Module: " + modulePath.red);
 
         // get path
         var executionPath = process.cwd();
 
         // git status, git commit changes if existent (unique)
         console.log("git commit current changes: ".blue);
-        exec('git status', {
+        exec(cdCommand + 'git status', {
             silent: false
         });
 
@@ -29,19 +35,21 @@ job.start = co.wrap(function* publishStart(module_path) {
                 message: "Please enter your commit message: "
             });
         var commitMessage = promptAnswer.commitMessage;
-        exec('git add -A && git commit -m "' + commitMessage + '"', {
+        exec(cdCommand + 'git add -A && git commit -m "' + commitMessage + '"', {
             silent: false
         });
 
         // bump version
         console.log("bump version".blue);
-        var bumpJob = require(module_path + "/tasks/bumpVersion/index.js");
+
+        var bumpJob = require("../../tasks/bumpVersion/index.js");
+        var pathPackageJson = path.resolve(modulePath, "package.json");
         var bumpSuccessful =
-            yield bumpJob.start();
+            yield bumpJob.start(pathPackageJson);
 
         // git commit "bumped version to ..."
         console.log("git commit bump version".blue);
-        var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+        var packageJson = JSON.parse(fs.readFileSync(pathPackageJson, 'utf8'));
         var version = packageJson.version;
         exec('git add -A && git commit -m "bumped version to ' + version + '"', {
             silent: false
@@ -49,25 +57,25 @@ job.start = co.wrap(function* publishStart(module_path) {
 
         // push commit
         console.log("git push commits".blue);
-        exec('git push -u origin master', {
+        exec(cdCommand + 'git push -u origin master', {
             silent: false
         });
 
         // git tag 
         console.log("git tag".blue);
-        exec('git tag -a ' + version + ' -m "version ' + version + ' tagged"', {
+        exec(cdCommand + 'git tag -a ' + version + ' -m "version ' + version + ' tagged"', {
             silent: false
         });
 
         // git push tags
         console.log("git push tags".blue);
-        exec('git push origin --tags', {
+        exec(cdCommand + 'git push origin --tags', {
             silent: false
         });
 
         // npm publish
         console.log("npm publish".blue);
-        exec('npm publish', {
+        exec(cdCommand + 'npm publish', {
             silent: false
         });
 

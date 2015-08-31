@@ -1,18 +1,8 @@
-var co = require("co");
-var jobs = {};
-var result = {};
+var tasks = {};
 
-// =========== [ jobs.index() ] ===========
-jobs.index = co.wrap(function*() {
-    try {
+// example
+tasks.test = require("./tasks/test/index.js").start;
 
+// automatically add tasks here
 
-    } catch (e) {
-        console.log("Filename: ", __filename, "\n", e.stack);
-    }
-
-    return Promise.resolve(result);
-}); // jobs.index()
-
-// =========== [ MODULE EXPORT ] ===========
-module.exports = jobs;
+module.exports = tasks;

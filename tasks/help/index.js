@@ -8,13 +8,7 @@ var job = {};
 // TODO
 job.start = co.wrap(function*(module_path) {
 
-    // =========== [ JOBS ] ===========
-    var command = "cat " + module_path + "/docs/JOBS.md";
-    var jobsDocs = exec(command, {
-        silent: true
-    }).output;
-
-    // =========== [ TASKS ] ===========
+    // =========== [ docs ] ===========
     var command = "cat " + module_path + "/docs/TASKS.md";
     var tasksDocs = exec(command, {
         silent: true

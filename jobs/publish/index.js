@@ -4,6 +4,7 @@ var fs = require("fs");
 var colors = require("colors");
 var Prompt = require("./../../lib/prompt.js");
 var path = require("path");
+var spawn = require("dm-shell").spawn;
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -54,33 +55,24 @@ job.start = co.wrap(function* publishStart(modulePath) {
             console.log("git commit bump version".blue);
             var packageJson = JSON.parse(fs.readFileSync(pathPackageJson, 'utf8'));
             var version = packageJson.version;
-            exec(cdCommand + 'git add -A && git commit -m "bumped version to ' + version + '"', {
-                silent: false
-            });
+            var command = cdCommand + 'git add -A && git commit -m "bumped version to ' + version + '"';
+            spawn(command);
 
             // push commit
             console.log("git push commits".blue);
-            exec(cdCommand + 'git push -u origin master', {
-                silent: false
-            });
+            spawn(cdCommand + 'git push -u origin master');
 
             // git tag 
             console.log("git tag".blue);
-            exec(cdCommand + 'git tag -a ' + version + ' -m "version ' + version + ' tagged"', {
-                silent: false
-            });
+            spawn(cdCommand + 'git tag -a ' + version + ' -m "version ' + version + ' tagged"');
 
             // git push tags
             console.log("git push tags".blue);
-            exec(cdCommand + 'git push origin --tags', {
-                silent: false
-            });
+            spawn(cdCommand + 'git push origin --tags');
 
             // npm publish
             console.log("npm publish".blue);
-            exec(cdCommand + 'npm publish', {
-                silent: false
-            });
+            spawn(cdCommand + 'npm publish');
         }
 
     } catch (e) {
@@ -90,12 +82,12 @@ job.start = co.wrap(function* publishStart(modulePath) {
     return yield Promise.resolve();
 }); // job.start()
 
-function spawn(command) {
-    var spawn = require('child_process').spawnSync;
-    var myProcess = spawn('sh', ['-c', command], {
-        stdio: 'inherit'
-    });
-}
+//function spawn(command) {
+    //var spawn = require('child_process').spawnSync;
+    //var myProcess = spawn('sh', ['-c', command], {
+        //stdio: 'inherit'
+    //});
+//}
 
 // =========== [ MODULE EXPORT ] ===========
 module.exports = job;

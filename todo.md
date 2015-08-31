@@ -1,7 +1,8 @@
 Current
 ====================
-14. write dm- common help function
-13. open todo document to add todo
+14. write dm- common help function (use markdown and lynx)
+26. task getAlias
+- is needed for adding it in the readme when creating a task
 
 Next Actions
 ====================
@@ -22,6 +23,10 @@ Next Actions
 - npm update??
 8. dmn config
 - link file to directory where all dotfiles are saved
+- add functions to own prompt function
+  - create config from example
+  - mv to different directory
+  - edit
 9. publish
 - create a parameter docs that makes it possible to avoid the commit message
 - ie: dmn publish docs --> should create the commit message: improved docs
@@ -49,14 +54,24 @@ Next Actions
 - usable in all modules
 - gets the current conf file as variable
 - abstract, so that one can use package.json too
+- seperate to own module dm-json? (read file, manipulate json, beautify)
 22. refactor
-- mein vorzeigeprojekt muss clean sein
+- main module must be clean 
 - remove docs
 - move jobs to tasks
-
+23. task new
+- move .dm-???.json to dotfiles and link them
+- get the target from .dm-npm.json config
+24. task prompt
+- add possibility to publish from prompt
+25. todo
+- write with prompt --> faster, i sometimes forgot the idea before i opened the file
+27. module
+- write aliase gdmn directly in npm module so that zsh aliases wont be needed anymore
 
 Change Log
 ====================
+13. open todo document to add todo [2015.08.31]
 10. task [task add] [2015.08.31]
 * add task automatically to global.js
 * add task automatically to index.js

@@ -1,6 +1,8 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var dmPrompt = require("dm-prompt").Inquirer;
+var dmPath = require("dm-path");
+var spawn = require("dm-shell").spawn;
 require('shelljs/global');
 
 // =========== [ MODULE DEFINE ] ===========
@@ -23,6 +25,13 @@ var run = co.wrap(function*(modulePath) {
     var tasks = ls(modulePath + "/tasks");
     tasks.unshift("docs".yellow);
     tasks.unshift("quit".green);
+    // add config
+    var moduleName = modulePath.substring(modulePath.lastIndexOf("/") + 1, modulePath.length);
+    var configPath = dmPath.replace("~/." + moduleName + ".json");
+    if (test("-f", configPath)) {
+        tasks.unshift("config".magenta);
+    }
+    // ask what to do
     var promptTaskAnswer =
         yield dmPrompt({
             type: "list",
@@ -35,6 +44,10 @@ var run = co.wrap(function*(modulePath) {
         process.stdout.write('\033c');
         yield runDocs(modulePath);
         process.stdout.write('\033c');
+        yield run(modulePath);
+    } else if (promptTask === "config".magenta) {
+        process.stdout.write('\033c');
+        spawn("vim " + configPath);
         yield run(modulePath);
     } else if (promptTask !== "quit".green) {
         process.stdout.write('\033c');

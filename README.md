@@ -1,11 +1,14 @@
 # dm-npm
+The tool for npm-module maniacs.
+
+## Description
+* This command line tool helps to fulfill the daily jobs you have to do when working with npm modules.
+* Documention in progress.
 
 ## Shorcuts
     dmn
     dm-npm
 
-## Description
-This command line tool helps to fulfill the daily jobs you have to do when working with npm modules.
 
 ## Environment
 - tested with node 0.11.11 and 0.12.0

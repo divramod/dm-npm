@@ -39,6 +39,20 @@ Next Actions
 - remove README config entry
 18. task: addTask
 - add entry in config (ask)
+19. task todo:
+- problem when opening over dmn propmt
+20. prompt
+- add: edit config to prompt
+- create config if not existent
+- create config.example.json on init
+21. add task getConf
+- usable in all modules
+- gets the current conf file as variable
+- abstract, so that one can use package.json too
+22. refactor
+- mein vorzeigeprojekt muss clean sein
+- remove docs
+- move jobs to tasks
 
 
 Change Log

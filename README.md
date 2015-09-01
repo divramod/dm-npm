@@ -50,13 +50,55 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
 
 ## Tasks
 
+### [init](tasks/init/index.js)
+* initiate a new npm module with the dm-npm flavor
+
+#### global usage
+```javascript
+dmn [init|-init|i|-i]
+```
+#### programmatically usage
+
+#### publishFolder steps
+0. User Input: 
+  * module name: for example fooBar
+  * module Shortcut: for example fb
+1. add .gitignore from [template](tasks/init/template/gitignore)
+2. add package.json from [template](tasks/init/template/package.json)
+3. add index.js from [template](tasks/init/template/index.js)
+  * this file is the entrypoint for programatically usage
+4. add global.js from [template](tasks/init/template/global.js)
+  * this file is the entrypoint for usage from the command line
+5. add README.md from [template](tasks/init/template/README.md)
+6. add todo.md from [template](tasks/init/template/todo.md)
+7. add idea.md from [template](tasks/init/template/idea.md)
+8. add test directory
+9. add bin directory
+  * the binary file for global usage
+10. add tasks directory with test task
+11. run `npm install`
+12. run task [create local link](##config)
+  * 
+
+After running that command you have the following features enabled for your module.
+
+#### features
+* `fb prompt` opens a prompt with all added tasks
+* `fb todo` opens the todo.md file with vim
+* `fb idea` asks for a idea you have for your project and adds it to the ideas.md
+
 ### [publishFolder](tasks/publishFolder/index.js)
 * publishes all npm modules in a given folder
 
-#### command
+#### global usage
 ```javascript
 dmn [publishFolder|pubFol|pf|-pf]
 ```
+
+#### programmatically usage (todo)
+```javascript
+```
+
 #### publishFolder steps
 1. searches for publishFolder.path in ~/dm-npm.json for usage as default value
 2. asks for the directory including the npm-modules destined to publish

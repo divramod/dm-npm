@@ -18,6 +18,7 @@ job.create = co.wrap(function*(templateDirPath, npmModuleName) {
     // =========== [ copy template directory ] ===========
     cp('-R', templateDirPath + 'bin', '.');
     mv("./bin/dm", "./bin/" + npmModuleName);
+    mv("./bin/gdm", "./bin/g" + npmModuleName);
 
     // =========== [ test ] ===========
     if (test('-f', "./bin/" + npmModuleName)) {

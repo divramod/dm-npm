@@ -28,6 +28,11 @@ jobs.index = co.wrap(function*() {
 
         // automatically add tasks here
 
+        // =========== [ init ] ===========
+        else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
+            var task = require("./tasks/init/index.js");
+            task.run();
+        }
         // =========== [ publish ] ===========
         else if (["publish", "-publish", "p", "-p"].indexOf(argv2) > -1) {
             var task = require("./tasks/publish/index.js");
@@ -56,11 +61,6 @@ jobs.index = co.wrap(function*() {
         // =========== [ JOBS ] ===========
         // =================================
 
-        // =========== [ init ] ===========
-        else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
-            var job = require("./jobs/init/index.js");
-            job.run();
-        }
         // =========== [ reinstall ] ===========
         else if (["reinstall", "-reinstall", "r", "-r"].indexOf(argv2) > -1) {
             var job = require("./jobs/reinstall/index.js");

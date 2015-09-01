@@ -11,25 +11,18 @@ var job = {};
  * Create file .npmignore if it does not exists
  */
 job.create = co.wrap(function*() {
-    console.log("task create npmignore started".yellow);
+    console.log("task npm install started".yellow);
 
     var taskResult = {};
 
-    exec('touch .npmignore', {
+    exec('npm install', {
         silent: false
     });
+    taskResult.success = true;
+    taskResult.message = "npm install ran successfully";;
+    console.log(taskResult.message.green);
 
-    if (test('-f', ".npmignore")) {
-        taskResult.success = true;
-        taskResult.message = ".npmignore created";;
-        console.log(taskResult.message.green);
-    } else {
-        taskResult.success = false;
-        taskResult.message = ".npmignore not created";;
-        console.log(taskResult.message.red);
-    }
-
-    console.log("task create npmignore done".yellow);
+    console.log("task npm install done".yellow);
     return yield Promise.resolve(taskResult);
 }); // job.create
 

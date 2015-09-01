@@ -63,8 +63,7 @@ dmn [publishFolder|pubFol|pf|-pf]
   * dirctories starting with _ (underscore) will be ignored
 3. then, a loop will run the task publish for every directory included in the prompted path
 
-### publish
-
+### [publish](tasks/publish/index.js)
 
 #### command
 ```javascript

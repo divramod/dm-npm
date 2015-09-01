@@ -32,7 +32,7 @@ The tool for npm-module maniacs.
 - run (local)
     dmn publish
 
-## Generators [task list](#task-list)
+## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
 ## Task List
@@ -54,7 +54,7 @@ Most of the tasks here use the yield style and assume the code is contained with
 
 ## Tasks
 
-### [init](tasks/init/index.js)
+### [init](tasks/init/index.js) [task list](#task-list)
 * initiate a new npm module with the dm-npm flavor
 
 #### global usage
@@ -103,7 +103,7 @@ After running that command your module is globally installed and you have the fo
 ##### local (run from npm module directory)
 * `gfb && dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
 
-### [publishFolder](tasks/publishFolder/index.js)
+### [publishFolder](tasks/publishFolder/index.js) [task list](#task-list)
 * publishes all npm modules in a given folder
 
 #### global usage
@@ -121,7 +121,7 @@ dmn [publishFolder|pubFol|pf|-pf]
   * dirctories starting with _ (underscore) will be ignored
 3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
 
-### [publish](tasks/publish/index.js) [tasks list](#taskslis)
+### [publish](tasks/publish/index.js) [tasks list](#taskslis) [task list](#task-list)
 
 #### command
 ```javascript
@@ -141,7 +141,7 @@ dmn [publish|-publish]
 9. push tags
 10. npm publish
 
-### [linkConfigFiles](tasks/linkConfigFiles/index.js)
+### [linkConfigFiles](tasks/linkConfigFiles/index.js) [task list](#task-list)
 * links files from given directory into home directory 
 
 #### global usage
@@ -166,21 +166,21 @@ dmn [linkConfigFiles|lc]
 alias idea // 
 ```
 
-### prompt
+### prompt [task list](#task-list)
 * prompts for execution of the existent tasks of npm module
 * examples 
 ```javascript
 alias prompt // 
 ```
 
-### todo
+### todo [task list](#task-list)
 * opens the todo.md file of the npm module
 * examples 
 ```javascript
 alias todo // 
 ```
 
-## Config
+## Config [task list](#task-list)
 * you can place a .dm-npm.json file in your home directory (~/.dm-npm.json)
 * the following things are allowed at the moment
 ```javascript

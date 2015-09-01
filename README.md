@@ -35,10 +35,18 @@ The tool for npm-module maniacs.
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
+## Task List
+
+* [init](#init)
+* [publishFolder](#publishfolder)
+* [publish](#publish)
+
+{% blockquote %}
+Hello World
+{% endblockquote %}
+
+
 ## Tasks
-[init](#init)
-[publishFolder](#publishfolder)
-[publish](#publish)
 
 ### [init](tasks/init/index.js)
 * initiate a new npm module with the dm-npm flavor

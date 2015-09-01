@@ -32,10 +32,10 @@ The tool for npm-module maniacs.
 - run (local)
     dmn publish
 
-## Generators
+## Generators [task list](#tasklist)
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
-## Task List (alphabetically)
+## Task List
 * [bumpVersion](#bumpversion)
 * [configFileAdd](#configfileadd)
 * [idea](#idea)
@@ -121,7 +121,7 @@ dmn [publishFolder|pubFol|pf|-pf]
   * dirctories starting with _ (underscore) will be ignored
 3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
 
-### [publish](tasks/publish/index.js)
+### [publish](tasks/publish/index.js) [tasks list](#taskslis)
 
 #### command
 ```javascript

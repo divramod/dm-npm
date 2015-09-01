@@ -66,7 +66,7 @@ dmn publishFolder
 ```javascript
 dmn publishFolder
 ```
-* steps
+#### publish steps
 1. get/create root path (.git-repository with package.json for npm)
 2. get git status 
 3. switch git status

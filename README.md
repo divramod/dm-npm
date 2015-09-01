@@ -103,25 +103,7 @@ After running that command your module is globally installed and you have the fo
 ##### local (run from npm module directory)
 * `gfb && dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
 
-### [publishFolder](tasks/publishFolder/index.js)
-* publishes all npm modules in a given folder
-
-#### global usage
-```javascript
-dmn [publishFolder|pubFol|pf|-pf]
-```
-
-#### programmatically usage (todo)
-```javascript
-```
-
-#### publishFolder steps
-1. searches for publishFolder.path in ~/dm-npm.json for usage as default value
-2. asks for the directory including the npm-modules destined to publish
-  * dirctories starting with _ (underscore) will be ignored
-3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
-
-### [publish](tasks/publish/index.js) [tasks list](#taskslis)
+### [publish](tasks/publish/index.js)
 
 #### command
 ```javascript
@@ -140,6 +122,25 @@ dmn [publish|-publish]
 8. tag new version
 9. push tags
 10. npm publish
+
+### [publishFolder](tasks/publishFolder/index.js)
+* publishes all npm modules in a given folder
+
+#### global usage
+```javascript
+dmn [publishFolder|pubFol|pf|-pf]
+```
+
+#### programmatically usage (todo)
+```javascript
+```
+
+#### publishFolder steps
+1. searches for publishFolder.path in ~/dm-npm.json for usage as default value
+2. asks for the directory including the npm-modules destined to publish
+  * dirctories starting with _ (underscore) will be ignored
+3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
+
 
 ### [linkConfigFiles](tasks/linkConfigFiles/index.js)
 * links files from given directory into home directory 

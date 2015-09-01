@@ -57,22 +57,22 @@ Most of the tasks here use the yield style and assume the code is contained with
 ### [help](tasks/help/index.js)
 * provides the README.md of the module (if markdown and lynx are installed with terminal browsing ;-))
 
-####help global usage
+#### help global usage
 ```
 dmn [help|-help|h|-h]
 ```
 
-####help programmatically usage
+#### help programmatically usage
 ```javascript
 var help = require("dm-npm").help;
 var helpResult = help.start();
 ```
 
-####help steps
+#### help steps
 
-####help features
+#### help features
 
-####help config
+#### help config
 ```javascript
 {
     "help": {
@@ -83,22 +83,22 @@ var helpResult = help.start();
 ### [getCommonTasks](tasks/getCommonTasks/index.js)
 * provides the dm-npm tasks that can be used by every dm-npm module
 
-####getCommonTasks global usage
+#### getCommonTasks global usage
 ```
 dmn [getCommonTasks|gct]
 ```
 
-####getCommonTasks programmatically usage
+#### getCommonTasks programmatically usage
 ```javascript
 var getCommonTasks = require("dm-npm").getCommonTasks;
 var getCommonTasksResult = getCommonTasks.start();
 ```
 
-####getCommonTasks steps
+#### getCommonTasks steps
 
-####getCommonTasks features
+#### getCommonTasks features
 
-####getCommonTasks config
+#### getCommonTasks config
 ```javascript
 {
     "getCommonTasks": {

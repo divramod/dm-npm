@@ -4,11 +4,13 @@ Current
 Next 
 ====================
 14. write dm- common help function (use markdown and lynx)
-26. task getAlias
-- is needed for adding it in the readme when creating a task
 
 Next Actions
 ====================
+41.[prompt]
+  * devide between common tasks and module specific tasks
+40. new task
+  * make it possible to remove binaries and use new ones
 39. [pubFolder]
   * give commit Message that will be used by all publishs
   * for example: adapted to getCommonTasks
@@ -42,7 +44,6 @@ Next Actions
   - set default path to ~/code/dm if .dm-npm path is not present
 3. use dm-git in publish
   - for status
-5. add task publish all
 6. add task update dm-* dependencies (after publishing)
 7. add task update dm-* dependencies for all
 - npm update??
@@ -55,12 +56,7 @@ Next Actions
 9. publish
 - create a parameter docs that makes it possible to avoid the commit message
 - ie: dmn publish docs --> should create the commit message: improved docs
-11. dmn init
-* remove creation of jobs
-* remove creation of docs
 12. adapt help to dm-tmux
-15. task init
-- ask for description
 16.[portable node](https://gist.github.com/domenic/2790533)
 17. task task remove
 - remove index.js entry
@@ -71,7 +67,7 @@ Next Actions
 - add entry in config (ask)
 19. task todo:
 - problem when opening over dmn propmt
-20. prompt
+20 rompt
 - add: edit config to prompt
 - create config if not existent
 - create config.example.json on init
@@ -80,10 +76,6 @@ Next Actions
 - gets the current conf file as variable
 - abstract, so that one can use package.json too
 - seperate to own module dm-json? (read file, manipulate json, beautify)
-22. refactor
-- main module must be clean 
-- remove docs
-- move jobs to tasks
 23. task new
 - move .dm-???.json to dotfiles and link them
 - get the target from .dm-npm.json config
@@ -100,7 +92,25 @@ Next Actions
 
 Change Log
 ====================
-29. refactor linkConfigFiles [2015.09.01]
+
+2015.09.01
+--------------------
+15. task init
+- ask for description
+11. dmn init
+* remove creation of jobs
+* remove creation of docs
+22. refactor
+- main module must be clean 
+- remove docs
+- move jobs to tasks
+26. task getAlias
+- is needed for adding it in the readme when creating a task
+29. refactor linkConfigFiles
+
+2015.08.31
+--------------------
+5. add task publish all
 13. open todo document to add todo [2015.08.31]
 10. task [task add] [2015.08.31]
 * add task automatically to global.js

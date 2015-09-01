@@ -1,5 +1,6 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
+var spawn = require("dm-shell").spawn;
 
 // =========== [ MODULE DEFINE ] ===========
 var task = {};
@@ -17,7 +18,11 @@ task.start = co.wrap(function*(dirname) {
 
 // =========== [ run ] ===========
 var run = co.wrap(function*(dirname) {
-    console.log(dirname);
+    var command = "cat " + dirname + "/README.md";
+    //spawn(command);
+    var commandMarkdown = "markdown " + dirname + "/README.md | lynx -stdin";
+    spawn(commandMarkdown);
+
 }); // run
 
 // =========== [ MODULE EXPORT ] ===========

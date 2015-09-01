@@ -19,11 +19,12 @@ var run = co.wrap(function*(argv2, dirname) {
     //TODO
     // add bumpVersion
     // add publish
-    // add upate dm-npm
-    // add config file add
+    // add configFileAdd --> look at dm-tmux
     // add installGlobal
     // add linkLocal
     // add reinstall
+    // add reinit
+    // add upate dm-npm
     
     // =========== [ todo ] ===========
     if (["todo"].indexOf(argv2) > -1) {
@@ -41,7 +42,7 @@ var run = co.wrap(function*(argv2, dirname) {
     else if (["prompt", "p"].indexOf(argv2) > -1) {
         require("dm-npm").prompt(dirname);
     }
-    // =========== [ prompt ] ===========
+    // =========== [ help ] ===========
     else {
         require("dm-npm").help(dirname);
     }

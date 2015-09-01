@@ -68,6 +68,8 @@ Next Actions
 - write with prompt --> faster, i sometimes forgot the idea before i opened the file
 27. module
 - write aliase gdmn directly in npm module so that zsh aliases wont be needed anymore
+28. prompt
+- open github repository in browser/lync from prompt
 
 Change Log
 ====================

@@ -77,7 +77,8 @@ dmn [init|-init|i|-i]
   * the binary file for global usage
 10. add tasks directory with test task
 11. run `npm install`
-12. run task [create local link](##config)
+  * install the dependencies
+12. run task [create local link](#config)
   * 
 
 After running that command you have the following features enabled for your module.

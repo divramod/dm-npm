@@ -115,8 +115,8 @@ dmn [publish|-publish|p|-p]
 1. get/create root path (.git-repository with package.json for npm)
 2. get git status 
 3. switch git status
-   * a) if git status (2) says nothing to commit, abort task (path clean)
-   * b) if git status (2) says there is something to commit (go on)
+   - a) if git status (2) says nothing to commit, abort task (path clean)
+   - b) if git status (2) says there is something to commit (go on)
 4. commit current changes
 5. bump version in package.json (see task [bump version](#bumpVersion))
 6. commit the bump Version change

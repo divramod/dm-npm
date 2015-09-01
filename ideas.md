@@ -1,0 +1,1 @@
+add common task update dm-npm \n - it should make it possible to update dm-npm in the current module to a specific version (latest, last backward compatible, etc)

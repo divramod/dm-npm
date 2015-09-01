@@ -54,6 +54,58 @@ Most of the tasks here use the yield style and assume the code is contained with
 
 ## Tasks
 
+### [help](tasks/help/index.js)
+* provides the README.md of the module (if markdown and lynx are installed with terminal browsing ;-))
+
+####help global usage
+```
+dmn [help|-help|h|-h]
+```
+
+####help programmatically usage
+```javascript
+var help = require("dm-npm").help;
+var helpResult = help.start();
+```
+
+####help steps
+
+####help features
+
+####help config
+```javascript
+{
+    "help": {
+    }
+}
+```
+
+### [getCommonTasks](tasks/getCommonTasks/index.js)
+* provides the dm-npm tasks that can be used by every dm-npm module
+
+####getCommonTasks global usage
+```
+dmn [getCommonTasks|gct]
+```
+
+####getCommonTasks programmatically usage
+```javascript
+var getCommonTasks = require("dm-npm").getCommonTasks;
+var getCommonTasksResult = getCommonTasks.start();
+```
+
+####getCommonTasks steps
+
+####getCommonTasks features
+
+####getCommonTasks config
+```javascript
+{
+    "getCommonTasks": {
+    }
+}
+```
+
 ### [init](tasks/init/index.js)
 * initiate a new npm module with the dm-npm flavor
 
@@ -202,5 +254,6 @@ dmn todo //
 - [node global acces problem](http://stackoverflow.com/questions/15636367/nodejs-require-a-global-module-package)
 - [creating and publishing a node-js module]( https://quickleft.com/blog/creating-and-publishing-a-node-js-module/ )
 - [npm run script environment](https://oncletom.io/2014/self-contained-node-scripts/)
+- [tilde vs caret](https://nodesource.com/blog/semver-tilde-and-caret)
 
 ## Lessons Learned

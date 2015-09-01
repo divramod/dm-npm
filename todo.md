@@ -9,6 +9,7 @@ Next
 
 Next Actions
 ====================
+37. add date and time to ideas/todos
 36. autocompletion for tasks
 35. add task
   * manage tests via cli

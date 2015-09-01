@@ -5,10 +5,10 @@ var co = require("co");
 var task = {};
 
 // =========== [ task.start() ] ===========
-task.start = co.wrap(function*(p1) {
+task.start = co.wrap(function*(dirname) {
     try {
-        var p1 = p1 || process.argv[3] || undefined;
-        run();
+        var dirname = dirname || process.argv[3] || undefined;
+        run(dirname);
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
     }
@@ -16,8 +16,8 @@ task.start = co.wrap(function*(p1) {
 }); // task.start()
 
 // =========== [ run ] ===========
-var run = co.wrap(function*() {
-    console.log("start TASKNAME");
+var run = co.wrap(function*(dirname) {
+    console.log(dirname);
 }); // run
 
 // =========== [ MODULE EXPORT ] ===========

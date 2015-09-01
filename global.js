@@ -28,6 +28,21 @@ jobs.index = co.wrap(function*() {
 
         // automatically add tasks here
 
+        // =========== [ help ] ===========
+        else if (['help','-help','h','-h'].indexOf(argv2) > -1) {
+            var task = require("./tasks/help/index.js");
+            yield task.start();
+        }
+        // =========== [ getCommonTasks ] ===========
+        else if (['getCommonTasks','gct'].indexOf(argv2) > -1) {
+            var task = require("./tasks/getCommonTasks/index.js");
+            yield task.start();
+        }
+        // =========== [ t1 ] ===========
+        else if (['t1','t23'].indexOf(argv2) > -1) {
+            var task = require("./tasks/t1/index.js");
+            yield task.start();
+        }
         // =========== [ bump Version ] ===========
         else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
             var task = require("./tasks/bumpVersion/index.js");
@@ -36,7 +51,7 @@ jobs.index = co.wrap(function*() {
         // =========== [ idea ] ===========
         else if (['idea'].indexOf(argv2) > -1) {
             var task = require("./tasks/idea/index.js");
-            yield task.start();
+            yield task.start(__dirname);
         }
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
@@ -75,7 +90,8 @@ jobs.index = co.wrap(function*() {
         }
         // =========== [ prompt ] ===========
         else if (["prompt","p"].indexOf(argv2) > -1) {
-            require("dm-npm").prompt(__dirname);
+            var task = require("./tasks/prompt/index.js");
+            yield task.start(__dirname);
         }
         // =========== [ reininit] ===========
         else if (["reinit", "-reinit"].indexOf(argv2) > -1) {
@@ -88,9 +104,9 @@ jobs.index = co.wrap(function*() {
             yield task.start();
         }
         // =========== [ task add ] ===========
-        else if (["task", "-task", "t", "-t"].indexOf(argv2) > -1 && ["add"].indexOf(argv3) > -1) {
+        else if (["taskAdd", "-taskAdd", "ta", "-ta"].indexOf(argv2) > -1) {
             var task = require("./tasks/taskAdd/index.js");
-            yield task.start();
+            yield task.start(__dirname);
         }
         // =========== [ test ] ===========
         else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {

@@ -13,7 +13,7 @@ task.start = co.wrap(function*(modulePath) {
     try {
         var modulePath = modulePath || process.argv[3] || undefined;
         process.stdout.write('\033c');
-        run(modulePath)
+        run(modulePath);
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
     }
@@ -24,13 +24,13 @@ var run = co.wrap(function*(modulePath) {
     console.log(modulePath.red);
     var tasks = ls(modulePath + "/tasks");
     tasks.unshift("docs".yellow);
-    tasks.unshift("quit".green);
     // add config
     var moduleName = modulePath.substring(modulePath.lastIndexOf("/") + 1, modulePath.length);
     var configPath = dmPath.replace("~/." + moduleName + ".json");
     if (test("-f", configPath)) {
         tasks.unshift("config".magenta);
     }
+    tasks.unshift("quit".green);
     // ask what to do
     var promptTaskAnswer =
         yield dmPrompt({

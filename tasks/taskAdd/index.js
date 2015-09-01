@@ -2,18 +2,34 @@
 var co = require("co");
 var colors = require("colors");
 var dmPrompt = require("dm-prompt").Inquirer;
+var dmPath = require("dm-path");
+var path = require("path");
 var dmUtil = require("dm-util");
 var path = require("path");
+var fs = require("fs");
+var spawn = require("dm-shell").spawn;
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function*() {
+job.start = co.wrap(function*(modulePath) {
     try {
+        var modulePath = modulePath || process.argv[3] || pwd();
+        modulePath = dmPath.replace(modulePath);
+        var configPath = dmPath.replace("~/.dm-npm.json");
+        var config = JSON.parse(fs.readFileSync(modulePath + "/package.json", 'utf8'));
+        var moduleName = config.name;
+        var moduleShortcut = config.shortcut || undefined;
+        if (!moduleShortcut) {
+            throw new Error("no shortcut defined");
+        }
 
-        // ask for task name
+        var message = "Create task for module " + moduleName + " (" + moduleShortcut + ")";
+        console.log(message.cyan);
+
+        // =========== [ 1 aks for task name ] ===========
         var taskNameAnswer =
             yield dmPrompt({
                 type: "input",
@@ -22,38 +38,44 @@ job.start = co.wrap(function*() {
             });
         var taskName = taskNameAnswer.taskName;
 
-        // get possible task pathes (all folders under modules and top level tasks)
+        // =========== [ 2 get all possible task pathes (modules could be exist] ===========
         var possiblePathes = [];
-        if (test("-d", "modules")) {
-            var possiblePathes = ls("modules");
+        var modulesPath = path.resolve(modulePath, "modules");
+        if (test("-d", modulesPath)) {
+            var possiblePathes = ls(modulesPath);
         }
         possiblePathes.push("tasks");
 
-        // ask for task path and adapt it
-        var taskPathAnswer =
-            yield dmPrompt({
-                type: "list",
-                name: "taskPath",
-                message: "Please choose the path for the task:",
-                choices: possiblePathes
-            });
+        // =========== [ ask for task path and adapt it ] ===========
+        if (possiblePathes.length > 1) {
 
-        var taskPath = taskPathAnswer.taskPath;
+            var taskPathAnswer =
+                yield dmPrompt({
+                    type: "list",
+                    name: "taskPath",
+                    message: "Please choose the path for the task:",
+                    choices: possiblePathes
+                });
 
-        if (taskPath !== "tasks") {
-            taskPath = path.join("modules", taskPath, "tasks", taskName);
+            var taskPath = taskPathAnswer.taskPath;
+
+            if (taskPath !== "tasks") {
+                taskPath = path.join("modules", taskPath, "tasks", taskName);
+            } else {
+                taskPath = path.join("tasks", taskName);
+            }
         } else {
             taskPath = path.join("tasks", taskName);
         }
-        taskPath = path.join(process.cwd(), taskPath);
+        taskPath = path.join(modulePath, taskPath);
 
         if (!test("-d", taskPath)) {
-          
+
             // =========== [ add job to index.js ] ===========
             var replacer = '';
             replacer += "// automatically add tasks here\n";
             replacer += 'tasks.' + taskName + ' = require("./tasks/' + taskName + '/index.js").start;\n';
-            sed('-i', /.*automatically add tasks here.*\n/, replacer, "index.js");
+            sed('-i', /.*automatically add tasks here.*\n/, replacer, path.join(modulePath, "index.js"));
 
             // =========== [ add task to global.js ] ===========
 
@@ -83,7 +105,7 @@ job.start = co.wrap(function*() {
                 '            yield task.start();',
                 '        }',
             ].join("\n");
-            sed('-i', /.*automatically add tasks here.*\n/, replacer, "global.js");
+            sed('-i', /.*automatically add tasks here.*\n/, replacer, path.join(modulePath, "global.js"));
 
             // =========== [ add task to README.md ] ===========
             var descriptionAnswer =
@@ -116,7 +138,7 @@ job.start = co.wrap(function*() {
                 "}",
                 "```\n"
             ].join("\n");
-            sed('-i', /.*## Tasks.*\n/, replacer, "README.md");
+            sed('-i', /.*## Tasks.*\n/, replacer, path.join(modulePath, "README.md"));
 
             // =========== [ create task ] ===========
             var configTask = {
@@ -135,6 +157,8 @@ job.start = co.wrap(function*() {
                 }
             };
             yield dmUtil.cpTemplate(configTask);
+            var command = "cd " + modulePath + " && " + env["EDITOR"] + " " + path.join(modulePath, "tasks", taskName, "index.js");
+            spawn(command);
 
         } else {
             var message = "Task path " + taskPath.red + " is already existing. Creation aborted!";

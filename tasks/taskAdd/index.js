@@ -48,8 +48,7 @@ job.start = co.wrap(function*() {
         taskPath = path.join(process.cwd(), taskPath);
 
         if (!test("-d", taskPath)) {
-
-
+          
             // =========== [ add job to index.js ] ===========
             var replacer = '';
             replacer += "// automatically add tasks here\n";
@@ -66,11 +65,13 @@ job.start = co.wrap(function*() {
                 });
             var shortcuts = shortcutsAnswer.shortcuts;
             var shortcutsString = "'" + taskName + "'";
+            var aliasString = taskName;
             var shortcutsArray = shortcuts.split(",");
             for (var i = 0, l = shortcutsArray.length; i < l; i++) {
                 var s = shortcutsArray[i];
                 if (s !== "") {
                     shortcutsString += ",'" + s.trim() + "'";
+                    aliasString += "|" + s.trim();
                 }
             }
 
@@ -93,12 +94,26 @@ job.start = co.wrap(function*() {
                 });
             var description = descriptionAnswer.description;
             var replacer = [
-                "## Tasks\n",
-                "### " + taskName,
+                "## Tasks",
+                "\n### [" + taskName + "](tasks/" + taskName + "/index.js)",
                 "* " + description,
-                "* examples ",
+                "\n####" + taskName + " global usage",
+                "```",
+                moduleShortcut + " [" + aliasString + "]",
+                "```",
+                "\n####" + taskName + " programmatically usage",
                 "```javascript",
-                "alias " + "" + taskName + " // ",
+                "var " + taskName + ' = require("' + moduleName + '").' + taskName + ';',
+                "var " + taskName + 'Result = ' + taskName + '.start();',
+                "```",
+                "\n####" + taskName + " steps",
+                "\n####" + taskName + " features",
+                "\n####" + taskName + " config",
+                "```javascript",
+                "{",
+                '    "' + taskName + '": {',
+                "    }",
+                "}",
                 "```\n"
             ].join("\n");
             sed('-i', /.*## Tasks.*\n/, replacer, "README.md");

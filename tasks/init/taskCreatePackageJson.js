@@ -10,7 +10,7 @@ var job = {};
 /**
  * Create file .npmignore if it does not exists
  */
-job.create = co.wrap(function*(templateDirPath, npmModuleName, npmModuleShortcut) {
+job.create = co.wrap(function*(templateDirPath, npmModuleName, npmModuleShortcut, moduleDescription) {
     console.log("task create package.json started".yellow);
 
     var taskResult = {};
@@ -24,6 +24,7 @@ job.create = co.wrap(function*(templateDirPath, npmModuleName, npmModuleShortcut
         // =========== [ replace npm module name ] ===========
         exec("sed -i 's:NPM_MODULE_NAME:" + npmModuleName + ":g' './" + filename + "'");
         exec("sed -i 's:NPM_MODULE_SHORTCUT:" + npmModuleShortcut + ":g' './" + filename + "'");
+        exec("sed -i 's:NPM_MODULE_DESCRIPTION:" + moduleDescription + ":g' './" + filename + "'");
 
         // =========== [ TEST ] ===========
         if (test('-f', filename)) {

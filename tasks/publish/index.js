@@ -2,7 +2,7 @@
 var co = require("co");
 var fs = require("fs");
 var colors = require("colors");
-var Prompt = require("./../../lib/prompt.js");
+var dmPrompt = require("dm-prompt").Inquirer;
 var path = require("path");
 var spawn = require("dm-shell").spawn;
 require("shelljs/global");
@@ -37,7 +37,7 @@ job.start = co.wrap(function* publishStart(modulePath) {
             console.log("git commit current changes: ".blue);
             spawn(command);
             var promptAnswer =
-                yield Prompt({
+                yield dmPrompt({
                     type: "input",
                     name: "commitMessage",
                     message: "Please enter your commit message: "

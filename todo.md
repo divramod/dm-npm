@@ -1,6 +1,5 @@
 Current
 ====================
-29. refactor linkConfigFiles
 
 Next 
 ====================
@@ -10,6 +9,19 @@ Next
 
 Next Actions
 ====================
+35. add task
+  * manage tests via cli
+  * check/uncheck tests which should be run
+34. [task add]
+  * add test
+33. [init]
+  * add git remote from dmn-config.json in which the github user name is stated
+32. [reinit]
+  * unlink binaries
+31. add task
+  * add module
+  * should link also in global.js
+  * should link also in index.js
 1. change dmn node in that way, that only this dm-npm-modules are linked which exist in package.json dependencies
   - the must exist in the given path to
   - get default path from .dm-npm
@@ -79,6 +91,7 @@ Next Actions
 
 Change Log
 ====================
+29. refactor linkConfigFiles [2015.09.01]
 13. open todo document to add todo [2015.08.31]
 10. task [task add] [2015.08.31]
 * add task automatically to global.js

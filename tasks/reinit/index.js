@@ -1,6 +1,6 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
-var Prompt = require("./../../lib/prompt.js");
+var dmPrompt = require("dm-prompt").Inquirer;
 var dmnInit = require("./../init/index.js");
 require("shelljs/global");
 
@@ -9,19 +9,20 @@ var job = {};
 
 // =========== [ job.start() ] ===========
 job.start = co.wrap(function* publishStart(module_name) {
+    //TODO
+    // =========== [ delete bin links ] ===========
     try {
-        console.log("Reinstall npm modules\n\n".red);
-
-        console.log("delete directory node_modules".blue);
+        console.log("Reinstall npm modules".red);
+        console.log("Be careful. This task deletes all files and directories in this folder and init's a new module".red);
         var deleteAnswer =
-            yield Prompt({
+            yield dmPrompt({
                 type: "input",
                 name: "delete",
                 message: "Do you really whant to delete all files the directory " + process.cwd().red + " is containing? [Y]"
             });
         var deleteIt = deleteAnswer.delete;
         if (deleteIt === "Y") {
-            exec('rm -rf *', {
+            exec("find . -type f -not -name '*md' -not -path '*/.*/*' | xargs rm", {
                 silent: false
             });
             dmnInit.run();

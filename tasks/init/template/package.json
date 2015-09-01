@@ -1,8 +1,9 @@
 {
     "private": false,
     "name": "NPM_MODULE_NAME",
+    "shortcut": "NPM_MODULE_SHORTCUT",
     "version": "0.0.0",
-    "description": "",
+    "description": "NPM_MODULE_DESCRIPTION",
     "main": "index.js",
     "scripts": {
         "test": "mocha --harmony --require co-mocha --watch --reporter landing",

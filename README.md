@@ -37,6 +37,10 @@ Most of the tasks here use the yield style and assume the code is contained with
 
 ## Tasks
 * For running the tasks, you have to cd into the module you want to work with.
+* list
+  * [init](#init)
+  * [publishFolder](#publishfolder)
+  * [publish](#publish)
 
 ### [init](tasks/init/index.js)
 * initiate a new npm module with the dm-npm flavor
@@ -47,7 +51,7 @@ dmn [init|-init|i|-i]
 ```
 #### programmatically usage
 
-#### publishFolder steps
+#### init steps
 0. User Input: 
   * module name: for example fooBar
   * module Shortcut: for example fb
@@ -109,7 +113,7 @@ dmn [publishFolder|pubFol|pf|-pf]
 
 #### command
 ```javascript
-dmn [publish|-publish|p|-p]
+dmn [publish|-publish]
 ```
 #### publish steps
 1. get/create root path (.git-repository with package.json for npm)
@@ -142,8 +146,6 @@ dmn [linkConfigFiles|lc]
 3. links the src to the home directory
   * adds a . to the beginning of the filename and soft links it in the home directory
   * ie: ln -s ~/dotfiles/npm-modules-config/fb.json ~/.fb.json
-
-
 
 ### prompt
 * prompts for execution of the existent tasks of npm module

@@ -1,18 +1,20 @@
 # NPM_MODULE_NAME
+NPM_MODULE_DESCRIPTION
 
 ## Description
-*
+* started project --> look at the [todos](todo.md) to see what will be done
 
 ## Run
 ```
-NPM_MODULE_SHORTCUT [yml]
-NPM_MODULE_NAME [yml]
+NPM_MODULE_SHORTCUT [task]
+NPM_MODULE_NAME [task]
 ```
 
 ## Install
 
 ```
-npm install NPM_MODULE_NAME -g
+npm install NPM_MODULE_NAME -g # for global use
+npm install NPM_MODULE_NAME --save # for programmatically use
 ```
 
 ## Tasks

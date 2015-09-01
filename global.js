@@ -28,13 +28,43 @@ jobs.index = co.wrap(function*() {
 
         // automatically add tasks here
 
+        // =========== [ bump Version ] ===========
+        else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
+            var task = require("./tasks/bumpVersion/index.js");
+            yield task.start();
+        }
+        // =========== [ idea ] ===========
+        else if (['idea'].indexOf(argv2) > -1) {
+            var task = require("./tasks/idea/index.js");
+            yield task.start();
+        }
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
             var task = require("./tasks/init/index.js");
             task.run();
         }
+        // =========== [ install global ] ===========
+        else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
+            var task = require("./tasks/installGlobal/index.js");
+            yield task.run(result);
+        }
+        // =========== [ linkConfigFiles] ===========
+        else if (["linkConfigFiles", "lc"].indexOf(argv2) > -1) {
+            var task = require("./tasks/linkConfigFiles/index.js");
+            yield task.start();
+        }
+        // =========== [ link local ] ===========
+        else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
+            var task = require("./tasks/linkLocal/index.js");
+            yield task.run(result);
+        }
+        // =========== [ link modules to node_modules ] ===========
+        else if (["linkNode", "node", "ln", "-ln"].indexOf(argv2) > -1) {
+            var task = require("./tasks/linkNodeModules/index.js");
+            yield task.start(module_path);
+        }
         // =========== [ publish ] ===========
-        else if (["publish", "-publish", "p", "-p"].indexOf(argv2) > -1) {
+        else if (["publish", "-publish"].indexOf(argv2) > -1) {
             var task = require("./tasks/publish/index.js");
             yield task.start();
         }
@@ -47,10 +77,25 @@ jobs.index = co.wrap(function*() {
         else if (["prompt","p"].indexOf(argv2) > -1) {
             require("dm-npm").prompt(__dirname);
         }
-        // =========== [ idea ] ===========
-        else if (['idea'].indexOf(argv2) > -1) {
-            var task = require("./tasks/idea/index.js");
+        // =========== [ reininit] ===========
+        else if (["reinit", "-reinit"].indexOf(argv2) > -1) {
+            var task = require("./tasks/reinit/index.js");
+            yield task.start(module_path);
+        }
+        // =========== [ reinstall ] ===========
+        else if (["reinstall", "-reinstall"].indexOf(argv2) > -1) {
+            var task = require("./tasks/reinstall/index.js");
             yield task.start();
+        }
+        // =========== [ task add ] ===========
+        else if (["task", "-task", "t", "-t"].indexOf(argv2) > -1 && ["add"].indexOf(argv3) > -1) {
+            var task = require("./tasks/taskAdd/index.js");
+            yield task.start();
+        }
+        // =========== [ test ] ===========
+        else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
+            var task = require("./tasks/test/index.js");
+            task.start();
         }
         // =========== [ todo ] ===========
         else if (['todo','na'].indexOf(argv2) > -1) {
@@ -58,58 +103,6 @@ jobs.index = co.wrap(function*() {
             yield task.start();
         }
 
-        // =========== [ JOBS ] ===========
-        // =================================
-
-        // =========== [ reinstall ] ===========
-        else if (["reinstall", "-reinstall", "r", "-r"].indexOf(argv2) > -1) {
-            var job = require("./jobs/reinstall/index.js");
-            yield job.start(module_path);
-        }
-        // =========== [ reininit] ===========
-        else if (["reinit", "-reinit"].indexOf(argv2) > -1) {
-            var job = require("./jobs/reinit/index.js");
-            yield job.start(module_path);
-        }
-        // =========== [ reininit] ===========
-        else if (["linkConfigFiles", "lc"].indexOf(argv2) > -1) {
-            var task = require("./tasks/linkConfigFiles/index.js");
-            yield task.start();
-        }
-
-        // =========== [ TASKS ] ===========
-        // =================================
-
-        // =========== [ test ] ===========
-        else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
-            var task = require("./tasks/test/index.js");
-            task.start();
-        }
-        // =========== [ link local ] ===========
-        else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
-            var task = require("./tasks/linkLocal/index.js");
-            yield task.run(result);
-        }
-        // =========== [ install global ] ===========
-        else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
-            var task = require("./tasks/installGlobal/index.js");
-            yield task.run(result);
-        }
-        // =========== [ bump Version ] ===========
-        else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
-            var task = require("./tasks/bumpVersion/index.js");
-            yield task.start();
-        }
-        // =========== [ link modules to node_modules ] ===========
-        else if (["linkNode", "node", "ln", "-ln"].indexOf(argv2) > -1) {
-            var task = require("./tasks/linkNodeModules/index.js");
-            yield task.start(module_path);
-        }
-        // =========== [ add task ] ===========
-        else if (["task", "-task", "t", "-t"].indexOf(argv2) > -1 && ["add"].indexOf(argv3) > -1) {
-            var task = require("./tasks/addTask/index.js");
-            yield task.start(module_path);
-        }
         // =========== [ config file add ] ===========
         else if (["config", "configFileAdd", "c", "-c"].indexOf(argv2) > -1) {
             var task = require("./tasks/configFileAdd/index.js");

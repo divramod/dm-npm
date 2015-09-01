@@ -24,15 +24,19 @@ job.run = function() {
         var questions = [{
             type: "input",
             name: "module_name",
-            message: "What's your module name"
+            message: "What's your module name?"
         }, {
             type: "input",
             name: "module_shortcut",
-            message: "What's your module shortcut"
+            message: "What's your module shortcut?"
+        }, {
+            type: "input",
+            name: "module_description",
+            message: "What's your module description?"
         }];
 
         inquirer.prompt(questions, function(answers) {
-            runTasks(answers.module_name, answers.module_shortcut);
+            runTasks(answers.module_name, answers.module_shortcut, answers.module_description);
         });
     }
     //return yield Promise.resolve();
@@ -40,7 +44,7 @@ job.run = function() {
 }; // job.run
 
 // =========== [ runTasks ] ===========
-var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
+var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescription) {
     try {
 
         var templateDirPath = __dirname + "/template/";
@@ -61,7 +65,7 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
         // =========== [ 2 create package.json ] ===========
         var packageJsonTask = require("./taskCreatePackageJson.js");
         var packageJsonResult =
-            yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+            yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut, moduleDescription);
 
         // =========== [ 3 index.js ] ===========
         var indexJsTask = require("./taskCreateIndexJs.js");
@@ -76,7 +80,7 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
         // =========== [ 5 README.md ] ===========
         var readmeMdTask = require("./taskCreateReadmeMd.js");
         var readmeMdResult =
-            yield readmeMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
+            yield readmeMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut, moduleDescription);
 
         // =========== [ 6 todo.md ] ===========
         var todoMdTask = require("./taskCreateTodoMd.js");

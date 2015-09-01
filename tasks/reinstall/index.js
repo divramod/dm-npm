@@ -1,7 +1,7 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var fs = require("fs");
-var Prompt = require("./../../lib/prompt.js");
+var spawn = require("dm-shell").spawn;
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -10,17 +10,11 @@ var job = {};
 // =========== [ job.start() ] ===========
 job.start = co.wrap(function* publishStart(module_path) {
     try {
-        console.log("Reinstall npm modules\n\n".red);
-
+        console.log("Reinstall npm modules".red);
         console.log("delete directory node_modules".blue);
-        exec('rm -rf node_modules', {
-          silent: false
-        });
+        spawn('rm -rf node_modules');
         console.log("npm install".blue);
-        exec('npm install', {
-          silent: false
-        });
-
+        spawn('npm install');
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
         /* handle error */

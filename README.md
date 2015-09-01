@@ -159,18 +159,18 @@ dmn [linkConfigFiles|lc]
   * adds a . to the beginning of the filename and soft links it in the home directory
   * ie: ln -s ~/dotfiles/npm-modules-config/fb.json ~/.fb.json
 
-### prompt
-* prompts for execution of the existent tasks of npm module
-* examples 
-```javascript
-alias prompt // 
-```
-
 ### idea
 * add ideas to the npm-module via shell (ideas will be added to ideas.md)
 * examples 
 ```javascript
 alias idea // 
+```
+
+### prompt
+* prompts for execution of the existent tasks of npm module
+* examples 
+```javascript
+alias prompt // 
 ```
 
 ### todo
@@ -179,19 +179,6 @@ alias idea //
 ```javascript
 alias todo // 
 ```
-
-### misc tasks
-    dmn [linkLocal|local|-l|l]          --> linking the current module locally for global usage (prevents to reinstall module globally after every change)
-    dmn [installGlobal|global|-g|g]     --> installs the module global (ie npm install -g .)
-    dmn [bump|-bump|-b|b]               --> bumps the version in package.json
-    dmn [linkNode|node|ln|-ln]          --> links local existing direcotries in the node_modules folder (for being able to use the current stage of development from modules the module is dependent on)
-    dmn [task|-task|t|-t] [add]         --> creates a bootstrapped task in diretory tasks (if the folder modules is existent you can choose one of them as target)
-    dmn [job|-job|j|-j] [add]           --> creates a bootstrapped job in directory jobs (if the folder modules is existent you can choose one of them as target)
-
-### npm
-
-    npm test                            --> runs the tests
-
 
 ## Config
 * you can place a .dm-npm.json file in your home directory (~/.dm-npm.json)

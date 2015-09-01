@@ -35,21 +35,21 @@ The tool for npm-module maniacs.
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
-## Task List
-* [bumpVersion](#bumpversion)
-* [configFileAdd](#configfileadd)
+## Task List Documentation
+* todo [bumpVersion](#bumpversion)
+* todo [configFileAdd](#configfileadd)
 * [idea](#idea)
 * [init](#init)
-* [installGlobal](#installglobal)
+* todo [installGlobal](#installglobal)
 * [linkConfigFiles](#linkconfigfiles)
-* [linkLocal](#linklocal)
-* [linkNodeModules](#linknodemodules)
+* todo [linkLocal](#linklocal)
+* todo [linkNodeModules](#linknodemodules)
 * [prompt](#prompt)
 * [publish](#publish)
 * [publishFolder](#publishfolder)
-* [reinit](#reinit)
-* [reinstall](#reinstall)
-* [taskAdd](#taskadd)
+* todo [reinit](#reinit)
+* todo [reinstall](#reinstall)
+* todo [taskAdd](#taskadd)
 * [todo](#todo)
 
 ## Tasks
@@ -64,29 +64,29 @@ dmn [init|-init|i|-i]
 #### programmatically usage
 
 #### init steps
-0. User Input: 
+1. User Input: 
   * module name: for example fooBar
   * module Shortcut: for example fb
-1. add .gitignore from [template](tasks/init/template/gitignore)
-2. add package.json from [template](tasks/init/template/package.json)
-3. add index.js from [template](tasks/init/template/index.js)
+2. add .gitignore from [template](tasks/init/template/gitignore)
+3. add package.json from [template](tasks/init/template/package.json)
+4. add index.js from [template](tasks/init/template/index.js)
   * this file is the entrypoint for programatically usage
-4. add global.js from [template](tasks/init/template/global.js)
+5. add global.js from [template](tasks/init/template/global.js)
   * this file is the entrypoint for usage from the command line
-5. add README.md from [template](tasks/init/template/README.md)
-6. add todo.md from [template](tasks/init/template/todo.md)
-7. add test directory
-8. add bin directory
+6. add README.md from [template](tasks/init/template/README.md)
+7. add todo.md from [template](tasks/init/template/todo.md)
+8. add test directory
+9. add bin directory
   * the binary file for global usage
   * this one is important. adds the following aliase, you can use from command line
     * `fooBar # runs your module`
     * `fb # alias for fooBar`
     * `gfb # cd into your module`
     * `fbg # cd into your module`
-9. add tasks directory with test task
-10. run `npm install`
+10. add tasks directory with test task
+11. run `npm install`
   * install the dependencies
-11. run task [create local link](#config)
+12. run task [create local link](#config)
   * 
 
 After running that command your module is globally installed and you have the following features enabled for your module.

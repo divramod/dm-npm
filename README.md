@@ -35,14 +35,22 @@ The tool for npm-module maniacs.
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
-## Task List
-
+## Task List (alphabetically)
+* [bumpVersion](#bumpversion)
+* [configFileAdd](#configfileadd)
+* [idea](#idea)
 * [init](#init)
-* [publishFolder](#publishfolder)
+* [installGlobal](#installglobal)
+* [linkConfigFiles](#linkconfigfiles)
+* [linkLocal](#linklocal)
+* [linkNodeModules](#linknodemodules)
+* [prompt](#prompt)
 * [publish](#publish)
-
-{% youtube 51pMod2Aaso %}
-
+* [publishFolder](#publishfolder)
+* [reinit](#reinit)
+* [reinstall](#reinstall)
+* [taskAdd](#taskadd)
+* [todo](#todo)
 
 ## Tasks
 

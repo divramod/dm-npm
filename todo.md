@@ -9,6 +9,7 @@ Next
 
 Next Actions
 ====================
+36. autocompletion for tasks
 35. add task
   * manage tests via cli
   * check/uncheck tests which should be run

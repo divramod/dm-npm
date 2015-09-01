@@ -36,20 +36,20 @@ The tool for npm-module maniacs.
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
 ## Task List Documentation
-* todo [bumpVersion](#bumpversion)
-* todo [configFileAdd](#configfileadd)
+* [bumpVersion](#bumpversion) todo
+* [configFileAdd](#configfileadd) todo
 * [idea](#idea)
 * [init](#init)
-* todo [installGlobal](#installglobal)
+* [installGlobal](#installglobal) todo
 * [linkConfigFiles](#linkconfigfiles)
-* todo [linkLocal](#linklocal)
-* todo [linkNodeModules](#linknodemodules)
+* [linkLocal](#linklocal) todo
+* [linkNodeModules](#linknodemodules) todo
 * [prompt](#prompt)
 * [publish](#publish)
 * [publishFolder](#publishfolder)
-* todo [reinit](#reinit)
-* todo [reinstall](#reinstall)
-* todo [taskAdd](#taskadd)
+* [reinit](#reinit) todo
+* [reinstall](#reinstall) todo
+* [taskAdd](#taskadd) todo
 * [todo](#todo)
 
 ## Tasks
@@ -78,7 +78,7 @@ dmn [init|-init|i|-i]
 8. add test directory
 9. add bin directory
   * the binary file for global usage
-  * this one is important. adds the following aliase, you can use from command line
+  * this one is important. adds the following alias, you can use from command line
     * `fooBar # runs your module`
     * `fb # alias for fooBar`
     * `gfb # cd into your module`
@@ -164,21 +164,21 @@ dmn [linkConfigFiles|lc]
 * add ideas to the npm-module via shell (ideas will be added to ideas.md)
 * examples 
 ```javascript
-alias idea // 
+dmn idea // 
 ```
 
 ### prompt
 * prompts for execution of the existent tasks of npm module
 * examples 
 ```javascript
-alias prompt // 
+dmn prompt // 
 ```
 
 ### todo
 * opens the todo.md file of the npm module
 * examples 
 ```javascript
-alias todo // 
+dmn todo // 
 ```
 
 ## Config

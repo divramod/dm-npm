@@ -50,21 +50,25 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
 
 ## Tasks
 
-### publishFolder
-* command
-```javascript
-dmn publishFolder
-```
+### [publishFolder](tasks/publishFolder/index.js)
 * publishes all npm modules in a given folder
-* publishing includes:
-  * ask for the directory including the to-publish npm-modules (gets publishFolder.path from ~/dm-npm.json as default)
-    * dirctories starting with _ (underscore) are ignored
-  * then for every directory in the path the task publish will be run with the given directory sub path as the root for the publish task
+
+#### command
+```javascript
+dmn [publishFolder|pubFol|pf|-pf]
+```
+#### publishFolder steps
+1. searches for publishFolder.path in ~/dm-npm.json for usage as default value
+2. asks for the directory including the npm-modules destined to publish
+  * dirctories starting with _ (underscore) will be ignored
+3. then, a loop will run the task publish for every directory included in the prompted path
 
 ### publish
-* command
+
+
+#### command
 ```javascript
-dmn publishFolder
+dmn [publish|-publish|p|-p]
 ```
 #### publish steps
 1. get/create root path (.git-repository with package.json for npm)

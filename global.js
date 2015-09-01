@@ -34,7 +34,7 @@ jobs.index = co.wrap(function*() {
             yield task.start();
         }
         // =========== [ publishFolder ] ===========
-        else if (['publishFolder','pubFol'].indexOf(argv2) > -1) {
+        else if (['publishFolder','pubFol', 'pf', '-pf'].indexOf(argv2) > -1) {
             var task = require("./tasks/publishFolder/index.js");
             yield task.start();
         }

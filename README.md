@@ -32,7 +32,7 @@ The tool for npm-module maniacs.
 - run (local)
     dmn publish
 
-## Generators [task list](#tasklist)
+## Generators [task list](#task-list)
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
 ## Task List

@@ -125,6 +125,26 @@ dmn [publish|-publish|p|-p]
 9. push tags
 10. npm publish
 
+### [linkConfigFiles](tasks/linkConfigFiles/index.js)
+* links files from given directory into home directory 
+
+#### global usage
+```
+dmn [linkConfigFiles|lc]
+```
+
+#### programmatically usage
+
+#### linkConfigFile steps
+1. search for ~/.dm-npm.json and get linkConfigFiles.path as default value
+  * for example ~/dotfiles/npm-modules-config
+2. prompt user for directory where the npm module files are placed
+3. links the src to the home directory
+  * adds a . to the beginning of the filename and soft links it in the home directory
+  * ie: ln -s ~/dotfiles/npm-modules-config/fb.json ~/.fb.json
+
+
+
 ### prompt
 * prompts for execution of the existent tasks of npm module
 * examples 

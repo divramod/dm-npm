@@ -16,7 +16,7 @@ task.start = co.wrap(function*(p1) {
     try {
         console.log("start publishFolder");
 
-
+        // =========== [ 1 get path ] ===========
         var configPath = dmPath.replace("~/.dm-npm.json");
         var defaultMessage = "";
         var folder = undefined;
@@ -27,7 +27,6 @@ task.start = co.wrap(function*(p1) {
                 folder = dmPath.replace(config.publishFolder.path);
             }
         }
-
         var folderAnswer =
             yield dmPrompt({
                 type: "input",
@@ -48,7 +47,7 @@ task.start = co.wrap(function*(p1) {
                 var m = modules[i];
                 if (m.indexOf("_") !== 0) {
                     var modulePath = path.resolve(folder, m);
-                    var publish = require("../../jobs/publish/index.js").start;
+                    var publish = require("../publish/index.js").start;
                     yield publish(modulePath);
                 }
             }

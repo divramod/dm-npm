@@ -51,11 +51,34 @@ Most of the jobs and tasks here use the yield style and assume the code is conta
 ## Tasks
 
 ### publishFolder
-* publishes all npm modules in a given folder
-* examples 
+* command
 ```javascript
-alias publishFolder // 
+dmn publishFolder
 ```
+* publishes all npm modules in a given folder
+* publishing includes:
+  * ask for the directory including the to-publish npm-modules (gets publishFolder.path from ~/dm-npm.json as default)
+    * dirctories starting with _ (underscore) are ignored
+  * then for every directory in the path the task publish will be run with the given directory sub path as the root for the publish task
+
+### publish
+* command
+```javascript
+dmn publishFolder
+```
+#### steps
+1. get/create root path (.git-repository with package.json for npm)
+2. get git status 
+3. switch git status
+   * a) if git status (2) says nothing to commit, abort task (path clean)
+   * b) if git status (2) says there is something to commit (go on)
+4. commit current changes
+5. bump version in package.json (see task bump version)
+6. commit the bump Version change
+7. push commits
+8. tag new version
+9. push tags
+10. npm publish
 
 ### prompt
 * prompts for execution of the existent tasks of npm module
@@ -89,6 +112,18 @@ alias todo //
 ### npm
 
     npm test                            --> runs the tests
+
+
+## Config
+* you can place a .dm-npm.json file in your home directory (~/.dm-npm.json)
+* the following things are allowed at the moment
+```javascript
+{
+  "publishFolder": {
+    "path": "~/code/dm"
+  }
+}
+```
 
 ## Testing
 - i am not really done here ;-)

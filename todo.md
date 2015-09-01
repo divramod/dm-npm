@@ -9,6 +9,13 @@ Next
 
 Next Actions
 ====================
+39. [pubFolder]
+  * give commit Message that will be used by all publishs
+  * for example: adapted to getCommonTasks
+38. [init]
+  * add init task to config
+  * add dependencies array to init
+  * i always use shelljs in my project, but on standard only co and dm-npm should be dependencies (+ test libs)
 37. add date and time to ideas/todos
 36. autocompletion for tasks
 35. add task

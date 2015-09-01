@@ -17,7 +17,7 @@ jobs.index = co.wrap(function*() {
         // automatically add tasks here
 
 
-        // =========== [ help ] ===========
+        // =========== [ getCommonTasks (dm-npm) ] ===========
         else {
             require("dm-npm").getCommonTasks(argv2, __dirname);
         }

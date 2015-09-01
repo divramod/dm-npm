@@ -18,7 +18,6 @@ jobs.index = co.wrap(function*() {
 
         // =========== [ get params from user input ] ===========
         var argv2 = process.argv[2] || "help";
-        var argv3 = process.argv[3] || "help";
 
         // =========== [ help ] ===========
         if (["help", "-help", "h", "-h"].indexOf(argv2) > -1) {
@@ -28,30 +27,15 @@ jobs.index = co.wrap(function*() {
 
         // automatically add tasks here
 
-        // =========== [ help ] ===========
-        else if (['help','-help','h','-h'].indexOf(argv2) > -1) {
-            var task = require("./tasks/help/index.js");
-            yield task.start();
-        }
         // =========== [ getCommonTasks ] ===========
         else if (['getCommonTasks','gct'].indexOf(argv2) > -1) {
             var task = require("./tasks/getCommonTasks/index.js");
-            yield task.start();
-        }
-        // =========== [ t1 ] ===========
-        else if (['t1','t23'].indexOf(argv2) > -1) {
-            var task = require("./tasks/t1/index.js");
             yield task.start();
         }
         // =========== [ bump Version ] ===========
         else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
             var task = require("./tasks/bumpVersion/index.js");
             yield task.start();
-        }
-        // =========== [ idea ] ===========
-        else if (['idea'].indexOf(argv2) > -1) {
-            var task = require("./tasks/idea/index.js");
-            yield task.start(__dirname);
         }
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
@@ -88,11 +72,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/publishFolder/index.js");
             yield task.start();
         }
-        // =========== [ prompt ] ===========
-        else if (["prompt","p"].indexOf(argv2) > -1) {
-            var task = require("./tasks/prompt/index.js");
-            yield task.start(__dirname);
-        }
         // =========== [ reininit] ===========
         else if (["reinit", "-reinit"].indexOf(argv2) > -1) {
             var task = require("./tasks/reinit/index.js");
@@ -103,32 +82,21 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/reinstall/index.js");
             yield task.start();
         }
-        // =========== [ task add ] ===========
-        else if (["taskAdd", "-taskAdd", "ta", "-ta"].indexOf(argv2) > -1) {
-            var task = require("./tasks/taskAdd/index.js");
-            yield task.start(__dirname);
-        }
         // =========== [ test ] ===========
         else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
             var task = require("./tasks/test/index.js");
             task.start();
         }
-        // =========== [ todo ] ===========
-        else if (['todo','na'].indexOf(argv2) > -1) {
-            var task = require("./tasks/todo/index.js");
-            yield task.start();
-        }
 
-        // =========== [ config file add ] ===========
+        // =========== [ configFileAdd ] ===========
         else if (["config", "configFileAdd", "c", "-c"].indexOf(argv2) > -1) {
             var task = require("./tasks/configFileAdd/index.js");
             yield task.start();
         }
 
-        // =========== [ help ] ===========
+        // =========== [ getCommonTasks ] ===========
         else {
-            var task = require("./tasks/help/index.js");
-            yield task.start(module_path);
+            require("dm-npm").getCommonTasks(argv2, __dirname);
         }
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);

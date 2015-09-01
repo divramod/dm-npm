@@ -54,7 +54,7 @@ Most of the tasks here use the yield style and assume the code is contained with
 
 ## Tasks
 
-### [init](tasks/init/index.js) [task list](#task-list)
+### [init](tasks/init/index.js)
 * initiate a new npm module with the dm-npm flavor
 
 #### global usage
@@ -103,7 +103,7 @@ After running that command your module is globally installed and you have the fo
 ##### local (run from npm module directory)
 * `gfb && dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
 
-### [publishFolder](tasks/publishFolder/index.js) [task list](#task-list)
+### [publishFolder](tasks/publishFolder/index.js)
 * publishes all npm modules in a given folder
 
 #### global usage
@@ -121,7 +121,7 @@ dmn [publishFolder|pubFol|pf|-pf]
   * dirctories starting with _ (underscore) will be ignored
 3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
 
-### [publish](tasks/publish/index.js) [tasks list](#taskslis) [task list](#task-list)
+### [publish](tasks/publish/index.js) [tasks list](#taskslis)
 
 #### command
 ```javascript
@@ -141,7 +141,7 @@ dmn [publish|-publish]
 9. push tags
 10. npm publish
 
-### [linkConfigFiles](tasks/linkConfigFiles/index.js) [task list](#task-list)
+### [linkConfigFiles](tasks/linkConfigFiles/index.js)
 * links files from given directory into home directory 
 
 #### global usage
@@ -166,21 +166,21 @@ dmn [linkConfigFiles|lc]
 alias idea // 
 ```
 
-### prompt [task list](#task-list)
+### prompt
 * prompts for execution of the existent tasks of npm module
 * examples 
 ```javascript
 alias prompt // 
 ```
 
-### todo [task list](#task-list)
+### todo
 * opens the todo.md file of the npm module
 * examples 
 ```javascript
 alias todo // 
 ```
 
-## Config [task list](#task-list)
+## Config
 * you can place a .dm-npm.json file in your home directory (~/.dm-npm.json)
 * the following things are allowed at the moment
 ```javascript

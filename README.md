@@ -81,12 +81,19 @@ dmn [init|-init|i|-i]
 12. run task [create local link](#config)
   * 
 
-After running that command you have the following features enabled for your module.
+After running that command your module is globally installed and you have the following features enabled for your module.
 
 #### features
-* `fb prompt` opens a prompt with all added tasks
-* `fb todo` opens the todo.md file with vim
-* `fb idea` asks for a idea you have for your project and adds it to the ideas.md
+
+##### global (run from everywhere)
+* `fb # opens cat's the readme.md`
+* `fb prompt # opens a prompt with all added tasks`
+* `fb todo # opens the todo.md file with vim`
+* `fb idea # asks for a idea you have for your project and adds it to the ideas.md`
+* `[gfb|fbg] # cd into the module directory (no need to create aliases)`
+
+##### local (run from npm module directory)
+* `dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
 
 ### [publishFolder](tasks/publishFolder/index.js)
 * publishes all npm modules in a given folder
@@ -104,7 +111,7 @@ dmn [publishFolder|pubFol|pf|-pf]
 1. searches for publishFolder.path in ~/dm-npm.json for usage as default value
 2. asks for the directory including the npm-modules destined to publish
   * dirctories starting with _ (underscore) will be ignored
-3. then, a loop will run the task publish for every directory included in the prompted path
+3. then, a loop will run the task [publish](#publish) for every directory included in the prompted path
 
 ### [publish](tasks/publish/index.js)
 
@@ -119,7 +126,7 @@ dmn [publish|-publish|p|-p]
    * a) if git status (2) says nothing to commit, abort task (path clean)
    * b) if git status (2) says there is something to commit (go on)
 4. commit current changes
-5. bump version in package.json (see task bump version)
+5. bump version in package.json (see task [bump version](#bumpVersion))
 6. commit the bump Version change
 7. push commits
 8. tag new version

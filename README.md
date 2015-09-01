@@ -41,7 +41,7 @@ Most of the tasks here use the yield style and assume the code is contained with
 * [publishFolder](#publishfolder)
 * [publish](#publish)
 
-{% youtube https://www.youtube.com/watch?v=51pMod2Aaso %}
+{% youtube 51pMod2Aaso %}
 
 
 ## Tasks

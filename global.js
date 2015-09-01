@@ -110,11 +110,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/addTask/index.js");
             yield task.start(module_path);
         }
-        // =========== [ add job ] ===========
-        else if (["job", "-job", "j", "-j"].indexOf(argv2) > -1 && ["add"].indexOf(argv3) > -1) {
-            var task = require("./tasks/addJob/index.js");
-            yield task.start(module_path);
-        }
         // =========== [ config file add ] ===========
         else if (["config", "configFileAdd", "c", "-c"].indexOf(argv2) > -1) {
             var task = require("./tasks/configFileAdd/index.js");

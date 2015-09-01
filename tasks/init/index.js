@@ -83,32 +83,27 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut) {
         var todoMdResult =
             yield todoMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
 
-        // =========== [ 7 idea.md ] ===========
-        var ideaMdTask = require("./taskCreateIdeaMd.js");
-        var ideaMdResult =
-            yield ideaMdTask.create(templateDirPath, npmModuleName, npmModuleShortcut);
-
-        // =========== [ 8 test directory ] ===========
+        // =========== [ 7 test directory ] ===========
         var createTestDirTask = require("./taskCreateTestDir.js");
         var createTestDirResult =
             yield createTestDirTask.create(templateDirPath, npmModuleName);
 
-        // =========== [ 9 bin directory ] ===========
+        // =========== [ 8 bin directory ] ===========
         var createBinDirTask = require("./taskCreateBinDir.js");
         var createBinDirResult =
             yield createBinDirTask.create(templateDirPath, npmModuleName);
 
-        // =========== [ 10 tasks directory ] ===========
+        // =========== [ 9 tasks directory ] ===========
         var task = require("./taskCreateTasksDir.js");
         var taskResult =
             yield task.create(templateDirPath, npmModuleName);
 
-        // =========== [ 11 npm install ] ===========
+        // =========== [ 10 npm install ] ===========
         var npmInstallTask = require("./taskNpmInstall.js");
         var npmInstallResult =
             yield npmInstallTask.create();
 
-        // =========== [ 12 create local link ] ===========
+        // =========== [ 11 create local link ] ===========
         var createLocalLinkTask = require("./../../tasks/linkLocal/index.js");
         var createLocalLinkResult =
             yield createLocalLinkTask.run();

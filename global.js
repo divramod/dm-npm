@@ -73,8 +73,8 @@ jobs.index = co.wrap(function*() {
         }
         // =========== [ reininit] ===========
         else if (["linkConfig", "lc"].indexOf(argv2) > -1) {
-            var job = require("./jobs/linkConfigFiles/index.js");
-            yield job.start(module_path);
+            var task = require("./tasks/linkConfigFiles/index.js");
+            yield task.start();
         }
 
         // =========== [ TASKS ] ===========

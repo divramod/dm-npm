@@ -9,9 +9,8 @@ The tool for npm-module maniacs.
     dmn
     dm-npm
 
-
 ## Environment
-- tested with node 0.11.11 and 0.12.0
+- tested on ubuntu 14.04 with node 0.11.11 and 0.12.0
 
 ## Installation
 
@@ -22,7 +21,7 @@ The tool for npm-module maniacs.
   - [npmjs.com]( http://npmjs.com )
   - [github.com](http://github.com)
 
-## Init a npm module
+## Init a new npm module
 - create github repository (online)
 - clone the repository (local)
 - cd into the repository (local)
@@ -34,21 +33,10 @@ The tool for npm-module maniacs.
     dmn publish
 
 ## Generators
-Most of the jobs and tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
-
-## Jobs and Tasks
-- For running the jobs and tasks, you have to cd into the module you want to work with.
-- I devided the todos i have to solve in a npm project into tasks (mostly one simple command) and jobs (a more complex combination of tasks).
-
-## Jobs
-
-    dmn [help|-help|-h|h]               --> help
-    dmn [init|-init|i|-i]               --> init a npm module from a empty git repository
-    dmn [publish|-publish|p|-p]         --> publish the current module (commit, bump version, tag, ...)
-    dmn [reinstall|-reinstall|r|-r]     --> reinstall node modules (remove node_modules dir and npm install)
-    dmn [reininit|-reininit]            --> reinitialize the node module (deletes all current files and creates them new from the template files)
+Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.
 
 ## Tasks
+* For running the tasks, you have to cd into the module you want to work with.
 
 ### [init](tasks/init/index.js)
 * initiate a new npm module with the dm-npm flavor
@@ -71,14 +59,18 @@ dmn [init|-init|i|-i]
   * this file is the entrypoint for usage from the command line
 5. add README.md from [template](tasks/init/template/README.md)
 6. add todo.md from [template](tasks/init/template/todo.md)
-7. add idea.md from [template](tasks/init/template/idea.md)
-8. add test directory
-9. add bin directory
+7. add test directory
+8. add bin directory
   * the binary file for global usage
-10. add tasks directory with test task
-11. run `npm install`
+  * this one is important. adds the following aliase, you can use from command line
+    * `fooBar # runs your module`
+    * `fb # alias for fooBar`
+    * `gfb # cd into your module`
+    * `fbg # cd into your module`
+9. add tasks directory with test task
+10. run `npm install`
   * install the dependencies
-12. run task [create local link](#config)
+11. run task [create local link](#config)
   * 
 
 After running that command your module is globally installed and you have the following features enabled for your module.
@@ -89,11 +81,11 @@ After running that command your module is globally installed and you have the fo
 * `fb # opens cat's the readme.md`
 * `fb prompt # opens a prompt with all added tasks`
 * `fb todo # opens the todo.md file with vim`
-* `fb idea # asks for a idea you have for your project and adds it to the ideas.md`
+* `fb idea # asks for a idea you have for your project and adds it to the end of ideas.md. creates ideas.md if not existent`
 * `[gfb|fbg] # cd into the module directory (no need to create aliases)`
 
 ##### local (run from npm module directory)
-* `dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
+* `gfb && dmn task add // adds a tasks in dir tasks and makes it programmatically and globally available`
 
 ### [publishFolder](tasks/publishFolder/index.js)
 * publishes all npm modules in a given folder

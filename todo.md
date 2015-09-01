@@ -1,5 +1,9 @@
 Current
 ====================
+29. refactor linkConfigFiles
+
+Next 
+====================
 14. write dm- common help function (use markdown and lynx)
 26. task getAlias
 - is needed for adding it in the readme when creating a task
@@ -70,6 +74,8 @@ Next Actions
 - write aliase gdmn directly in npm module so that zsh aliases wont be needed anymore
 28. prompt
 - open github repository in browser/lync from prompt
+30. add task
+- move config files to directory and link them
 
 Change Log
 ====================

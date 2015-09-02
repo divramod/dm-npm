@@ -7,6 +7,8 @@ Next
 
 Next Actions
 ====================
+44. new task
+  * create and inject getCommondTasks for your own module
 43. [publish]
   * bump versions in init/template/package.json too
 42. add minification

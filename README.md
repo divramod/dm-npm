@@ -37,17 +37,34 @@ A short use case.
 * online
   * create github repository
 * local
-  * clone the repository `git clone git@github.com:your_user_name/fooBar.git`
-  * cd into the repository `cd fooBar`
-  * run `dmn init # to initialize the module`
-  * run `dmn publish # if you want to publish the module directly`
+```
+# clone the repository
+git clone git@github.com:your_user_name/fooBar.git     
+
+# cd into the repository
+cd fooBar
+
+# initialize the module
+dmn init
+
+# publish the module directly
+dmn publish
+```
 
 Now you have a new running module with a task example, which you can run programmatically via:
 ```javascript
 var fooBarExample = require("fooBar").example;
 fooBarExample();
 ```
-or globally in the command line via `fooBar example`. For testing the task you can run `fooBar test example` (there are synchronous and asynchronous tests. explanation later)
+or globally in the command line via 
+```
+fooBar example
+```
+For testing the task you can run
+```
+fooBar test example
+```
+There are synchronous and asynchronous tests. explanation later
 
 The created module will have the following structure:
 

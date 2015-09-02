@@ -35,7 +35,7 @@ A short use case.
 * local
   * clone the repository `git clone git@github.com:your_user_name/fooBar.git`
   * cd into the repository `cd fooBar`
-  * run `dmn initi # to initialize the module`
+  * run `dmn init # to initialize the module`
   * run `dmn publish # if you want to publish the module directly`
 
 Now you have a new running module with a task test.

@@ -21,16 +21,56 @@ The tool for npm-module maniacs.
   - [npmjs.com]( http://npmjs.com )
   - [github.com](http://github.com)
 
-## Init a new npm module
-- create github repository (online)
-- clone the repository (local)
-- cd into the repository (local)
-- run (local)
-    dmn init
-- run (local)
-    npm install
-- run (local)
-    dmn publish
+## How to start
+A short use case.
+
+### Init a new npm module (with dm-npm style)
+* online
+  * create github repository
+* local
+  * clone the repository `git clone git@github.com:your_user_name/fooBar.git`
+  * cd into the repository `cd fooBar`
+  * run `dmn initi # to initialize the module`
+  * run `dmn publish # if you want to publish the module directly`
+
+Now you have a new running module with a task test.
+The created module will have the following structure:
+
+### module directory structure
+
+.
+|--bin/
+   |--dm-fooBar
+   |--gdm-fooBar
+|--node_modules/
+   |--co/
+   |--dm-npm/
+|--tasks/
+   |--test/
+      |--index.js
+|--global.js
+|--ideas.md
+|--index.js
+|--package.json
+|--README.md
+|--todo.md
+
+### create your first task
+* run `fooBar taskAdd`
+  * this will command will prompt you for
+    * the task name
+    * the task aliases
+    * the task description
+  * then the command will
+    * create a task in the directory tasks with your given task name
+    * create a entry in the README.md under the point tasks
+    * create a hook for the task in the global.js
+    * create a hook for the task in the index.js
+* presuming you named your task baz and gave it the alias bz you are now able to run
+  * `fooBar bz` or `fooBar baz` and should see the outcoming
+  * the output should look like
+
+
 
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.

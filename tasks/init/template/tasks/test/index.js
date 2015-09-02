@@ -1,31 +1,24 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
-var inquirer = require("inquirer");
 
 // =========== [ MODULE DEFINE ] ===========
-var job = {};
+var task = {};
 
-// =========== [ job.start() ] ===========
-// TODO
-job.start = co.wrap(function*() {
+// =========== [ task.start() ] ===========
+task.start = co.wrap(function*(p1) {
+    try {
+        var p1 = p1 || process.argv[3] || undefined;
+        run();
+    } catch (e) {
+        console.log("Filename: ", __filename, "\n", e.stack);
+    }
+    return yield Promise.resolve();
+}); // task.start()
 
-    var questions = [{
-        type: "input",
-        name: "q1",
-        message: "q1"
-    }, {
-        type: "input",
-        name: "q2",
-        message: "q2",
-        default: function() {
-            return "Doe";
-        }
-    }];
-
-    inquirer.prompt(questions, function(answers) {
-        console.log(JSON.stringify(answers, null, "  "));
-    });
-}); // job.start()
+// =========== [ run ] ===========
+var run = co.wrap(function*() {
+    console.log("start TASKNAME");
+}); // run
 
 // =========== [ MODULE EXPORT ] ===========
-module.exports = job;
+module.exports = task;

@@ -124,7 +124,8 @@ fooBarBaz();
 * index.js: if you look into the index.js you see a added switch for your task bar, which makes it programmatically accessable
 
 ### use the some basic tasks from dm-npm for your module
-* after inititalizing the project you get some basic tasks a npm developer needs  for a project out of the box. these tasks are:
+After inititalizing the project you get some basic tasks a npm developer needs  for a project out of the box. these tasks are:
+
 ```bash
 # opens help. if you have installed markdown and lynx you can browse it with terminal ;-)
 fooBar

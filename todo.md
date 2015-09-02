@@ -7,6 +7,8 @@ Next
 
 Next Actions
 ====================
+43. [publish]
+  * bump versions in init/template/package.json too
 42. add minification
 41.[prompt]
   * devide between common tasks and module specific tasks

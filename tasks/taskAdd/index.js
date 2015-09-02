@@ -102,7 +102,7 @@ job.start = co.wrap(function*(modulePath) {
                 "        // =========== [ " + taskName + " ] ===========",
                 '        else if ([' + shortcutsString + '].indexOf(argv2) > -1) {',
                 '            var task = require("./tasks/' + taskName + '/index.js");',
-                '            yield task.start();',
+                '            task.start();',
                 '        }',
             ].join("\n");
             sed('-i', /.*automatically add tasks here.*\n/, replacer, path.join(modulePath, "global.js"));
@@ -140,23 +140,6 @@ job.start = co.wrap(function*(modulePath) {
             ].join("\n");
             sed('-i', /.*## Tasks.*\n/, replacer, path.join(modulePath, "README.md"));
 
-            // =========== [ create task ] ===========
-            //var configTask = {
-            //templatePath: __dirname + '/templates',
-            //targetPath: taskPath,
-            //deleteBefore: true,
-            //overwrite: true, // [true, false, "ask"]
-            //rename: ["files", "dirs"], // renames
-            //replace: [{
-            //search: "TASKNAME",
-            //replace: taskName
-            //}],
-            //messages: {
-            //success: "Task " + taskName + " created!",
-            //error: "Task " + taskName + " not created!"
-            //}
-            //};
-            //yield dmUtil.cpTemplate(configTask);
             cp("-Rf", __dirname + "/templates/*", taskPath);
             var files = find(taskPath).filter(function(file) {
                 if (test("-f", file)) {

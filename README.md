@@ -42,7 +42,13 @@ A short use case.
   * run `dmn init # to initialize the module`
   * run `dmn publish # if you want to publish the module directly`
 
-Now you have a new running module with a task test.
+Now you have a new running module with a task example, which you can run programmatically via:
+```javascript
+var fooBarBaz = require("fooBar").baz;
+fooBarBaz();
+```
+or globally in the command line via `fooBar example`. For testing the task you can run `fooBar test baz`
+
 The created module will have the following structure:
 
 ### module directory structure
@@ -56,7 +62,9 @@ The created module will have the following structure:
    |--co/
    |--dm-npm/
 |--tasks/
-   |--test/
+   |--example/
+      |--test/
+         |--test.js
       |--index.js
 |--global.js
 |--ideas.md
@@ -66,6 +74,10 @@ The created module will have the following structure:
 |--todo.md
 ```
 
+### global.js vs index.js
+* in global.js the task-hooks for the command line usage are collected
+* in index.js the task-hooks for programmatically usage are collected
+
 ### create your first task
 * run `fooBar taskAdd`
   * this will command will prompt you for
@@ -73,10 +85,13 @@ The created module will have the following structure:
     * the task aliases (give it the alias bz for test purpose)
     * the task description
   * then the command will
-    * create a task in the directory tasks with your given task name
+    * create a task in the directory tasks with your given task name (tasks/baz/index.js). here you can find
+        * the yieldable function startAsync which has to be called with yield
+        * the normal function start which is used to wire up the task in the global.js 
     * create a entry in the README.md under the point tasks
     * create a hook for the task in the global.js
     * create a hook for the task in the index.js
+    * create a test suite (tasks/baz/test/test.js) which you can run via `fooBar test baz`
     * open the task with your $EDITOR home environment variable (i am coding with vim and it will work for me)
 * globally usage: presuming you named your task baz and gave it the alias bz you are now able to run
   * `fooBar bz` or `fooBar baz` and should see the outcoming

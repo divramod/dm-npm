@@ -38,6 +38,9 @@ A short use case.
   * create github repository
 * local
 ```bash
+# install dm-npm
+npm install dm-npm -g
+
 # clone the repository
 git clone git@github.com:your_user_name/fooBar.git     
 

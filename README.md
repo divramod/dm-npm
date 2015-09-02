@@ -3,12 +3,16 @@ The tool for npm-module maniacs.
 
 ## Description
 * This command line tool helps to fulfill the daily jobs you have to do when working with npm modules.
+* This module with give you a structure for your npm modules that is the same in every of your nmp modules. that enables reusability and eases collaborative work on a npm module
 * Documention in progress.
 
 ## Participate
 * i like to have feedback.
 * i am always open to improve my workflow.
 * so open issues for errors or new features here [dm-npm issues](https://github.com/divramod/dm-npm/issues)
+* note: i am relativly to npm module development, so forgive me flaws and comment or open issues for improvements
+* i will definetly use this tool for while, because i want to write a lot of npm modules, so stay tuned and watch out for updates
+* look at the [todos](todo.md) to see what will be done
 
 ## Shorcuts
     dmn

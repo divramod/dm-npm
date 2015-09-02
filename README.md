@@ -43,6 +43,7 @@ The created module will have the following structure:
 
 ### module directory structure
 
+```
 .
 |--bin/
    |--dm-fooBar
@@ -59,6 +60,7 @@ The created module will have the following structure:
 |--package.json
 |--README.md
 |--todo.md
+```
 
 ### create your first task
 * run `fooBar taskAdd`

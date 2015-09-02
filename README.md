@@ -82,6 +82,7 @@ fooBarBaz();
 
 ### use the some basic tasks from dm-npm for your module
 * after inititalizing the project you get some basic tasks a npm developer needs  for a project out of the box. these tasks are:
+  * `fooBar # opens help. if you have installed markdown and lynx you can browse it with terminal ;-)`
   * `fooBar taskAdd # add a task to your module`
   * `fooBar prompt # open a prompt for your module where a lot of things are doable ;-)`
   * `fooBar todo # opens the todo.md of fooBar and lets you write something in there`

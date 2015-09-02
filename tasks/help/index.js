@@ -19,7 +19,7 @@ task.start = co.wrap(function*(dirname) {
 
 // =========== [ run ] ===========
 var run = co.wrap(function*(dirname) {
-    var markdownVersion = exec('markdown1 --version', {
+    var markdownVersion = exec('markdown --version', {
         silent: true
     }).output;
     var lynxVersion = exec('lynx --version', {

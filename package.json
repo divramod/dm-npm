@@ -2,7 +2,7 @@
   "private": false,
   "name": "dm-npm",
   "shortcut": "dmn",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "npm helper",
   "main": "index.js",
   "scripts": {

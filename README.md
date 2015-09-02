@@ -97,7 +97,7 @@ The created module will have the following structure:
 
 ### create your first task
 * run `fooBar taskAdd`
-  * this will command will prompt you for
+  * this command will prompt you for
     * the task name (give it the name baz for test purpose)
     * the task aliases (give it the alias bz for test purpose)
     * the task description
@@ -125,18 +125,41 @@ fooBarBaz();
 
 ### use the some basic tasks from dm-npm for your module
 * after inititalizing the project you get some basic tasks a npm developer needs  for a project out of the box. these tasks are:
-  * `fooBar # opens help. if you have installed markdown and lynx you can browse it with terminal ;-)`
-  * `fooBar taskAdd # add a task to your module`
-  * `fooBar prompt # open a prompt for your module where you can start the tasks existent in your module, open the markdown files of your project or edit the config file of your project`
-  * `fooBar todo # opens the todo.md of fooBar and lets you write something in there`
-  * `fooBar idea # add a idea to the ideas.md via command line (creates the ideas.md if not exitent)`
-  * todo: `fooBar bumpVersion # bumps the version of the project (including git commit)`
-  * todo: `fooBar publish # publishes fooBar (includes bumpVersion etc)`
-  * todo: `fooBar configFileAdd # add a config file for fooBar`
-  * todo: `fooBar installGlobal # install fooBar globally`
-  * todo: `fooBar linkLocal # links your global fooBar installation locally to your development directory: this is very nifty, because you dont have to reinstall the tool globally on every change`
-  * todo: `fooBar reinit # reinitializes the project. keeps .git, README.md, todo.md, ideas.md`
-* the tasks marked with todo are currently available when you cd into your module and run `dmn bumpVersion` or `dmn publish` etc. they will all get some improvements and some new features
+```bash
+# opens help. if you have installed markdown and lynx you can browse it with terminal ;-)
+fooBar
+
+# add a task to your module
+fooBar taskAdd
+
+# open a prompt for your module where you can start the tasks existent in your module, open the markdown files of your project or edit the config file of your project
+fooBar prompt
+
+# opens the todo.md of fooBar and lets you write something in there
+fooBar todo
+
+# add a idea to the ideas.md via command line (creates the ideas.md if not exitent)
+fooBar idea
+
+# todo: bumps the version of the project (including git commit)
+fooBar bumpVersion
+
+# todo: publishes fooBar (includes bumpVersion etc)
+fooBar publish
+
+# todo: add a config file for fooBar
+fooBar configFileAdd
+
+# todo: install fooBar globally
+fooBar installGlobal
+ 
+# todo: links your global fooBar installation locally to your development directory: this is very nifty, because you dont have to reinstall the tool globally on every change
+fooBar linkLocal
+
+# todo: reinitializes the project. keeps .git, README.md, todo.md, ideas.md
+fooBar reinit
+```
+The tasks marked with todo are currently available when you cd into your module and run `dmn bumpVersion` or `dmn publish` etc. they will all get some improvements and some new features.
 
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.

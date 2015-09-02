@@ -10,7 +10,7 @@ The tool for npm-module maniacs.
 * i really apreciate if you give me feedback.
 * i am always open to improve my workflow.
 * so open issues for errors or new features/tasks here [dm-npm issues](https://github.com/divramod/dm-npm/issues)
-* note: i am relativly to npm module development, so forgive me flaws and comment or open issues for improvements
+* note: i am relativly new to npm module development, so forgive me flaws and comment or open issues for improvements
 * i will definetly use this tool for while, because i want to write a lot of npm modules, so stay tuned and watch out for updates
 * look at the [todos](todo.md) to see what will be done
 
@@ -37,7 +37,7 @@ A short use case.
 * online
   * create github repository
 * local
-```
+```bash
 # clone the repository
 git clone git@github.com:your_user_name/fooBar.git     
 

@@ -44,10 +44,10 @@ A short use case.
 
 Now you have a new running module with a task example, which you can run programmatically via:
 ```javascript
-var fooBarBaz = require("fooBar").baz;
-fooBarBaz();
+var fooBarExample = require("fooBar").example;
+fooBarExample();
 ```
-or globally in the command line via `fooBar example`. For testing the task you can run `fooBar test baz`
+or globally in the command line via `fooBar example`. For testing the task you can run `fooBar test example` (there are synchronous and asynchronous tests. explanation later)
 
 The created module will have the following structure:
 

@@ -5,6 +5,11 @@ The tool for npm-module maniacs.
 * This command line tool helps to fulfill the daily jobs you have to do when working with npm modules.
 * Documention in progress.
 
+## Participate
+* i like to have feedback.
+* i am always open to improve my workflow.
+* so open issues for errors or new features here [dm-npm issues](https://github.com/divramod/dm-npm/issues)
+
 ## Shorcuts
     dmn
     dm-npm
@@ -84,15 +89,16 @@ fooBarBaz();
 * after inititalizing the project you get some basic tasks a npm developer needs  for a project out of the box. these tasks are:
   * `fooBar # opens help. if you have installed markdown and lynx you can browse it with terminal ;-)`
   * `fooBar taskAdd # add a task to your module`
-  * `fooBar prompt # open a prompt for your module where a lot of things are doable ;-)`
+  * `fooBar prompt # open a prompt for your module where you can start the tasks existent in your module, open the markdown files of your project or edit the config file of your project`
   * `fooBar todo # opens the todo.md of fooBar and lets you write something in there`
-  * `fooBar idea # add a idea to the ideas.md via command line`
+  * `fooBar idea # add a idea to the ideas.md via command line (creates the ideas.md if not exitent)`
   * todo: `fooBar bumpVersion # bumps the version of the project (including git commit)`
   * todo: `fooBar publish # publishes fooBar (includes bumpVersion etc)`
   * todo: `fooBar configFileAdd # add a config file for fooBar`
   * todo: `fooBar installGlobal # install fooBar globally`
   * todo: `fooBar linkLocal # links your global fooBar installation locally to your development directory: this is very nifty, because you dont have to reinstall the tool globally on every change`
-* the tasks marked with todo are currently available when you cd into your module and run `dmn bumpVersion` or `dmn publish` etc
+  * todo: `fooBar reinit # reinitializes the project. keeps .git, README.md, todo.md, ideas.md`
+* the tasks marked with todo are currently available when you cd into your module and run `dmn bumpVersion` or `dmn publish` etc. they will all get some improvements and some new features
 
 ## Generators
 Most of the tasks here use the yield style and assume the code is contained within a generator function. For example you can use co for that. This style requires ES6 generators and has to be enabled in node 0.11.x or greater via the --harmony flag.

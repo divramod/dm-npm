@@ -1,5 +1,9 @@
 Current
 ====================
+45 [init]
+- github: state for username if not existent in .dm-npm.json
+- change standard task name from test to example
+- add test to example
 
 Next 
 ====================
@@ -7,6 +11,7 @@ Next
 
 Next Actions
 ====================
+46. remove colors from test or add colors to package.json
 44. new task
   * create and inject getCommondTasks for your own module
 43. [publish]

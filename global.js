@@ -19,16 +19,10 @@ jobs.index = co.wrap(function*() {
         // =========== [ get params from user input ] ===========
         var argv2 = process.argv[2] || "help";
 
-        // =========== [ help ] ===========
-        if (["help", "-help", "h", "-h"].indexOf(argv2) > -1) {
-            var task = require("./tasks/help/index.js");
-            yield task.start(module_path);
-        }
-
         // automatically add tasks here
 
         // =========== [ getCommonTasks ] ===========
-        else if (['getCommonTasks','gct'].indexOf(argv2) > -1) {
+        if (['getCommonTasks','gct'].indexOf(argv2) > -1) {
             var task = require("./tasks/getCommonTasks/index.js");
             yield task.start();
         }
@@ -81,11 +75,6 @@ jobs.index = co.wrap(function*() {
         else if (["reinstall", "-reinstall"].indexOf(argv2) > -1) {
             var task = require("./tasks/reinstall/index.js");
             yield task.start();
-        }
-        // =========== [ test ] ===========
-        else if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
-            var task = require("./tasks/test/index.js");
-            task.start();
         }
 
         // =========== [ configFileAdd ] ===========

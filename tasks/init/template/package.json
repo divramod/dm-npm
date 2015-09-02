@@ -11,18 +11,18 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/divramod/NPM_MODULE_NAME.git"
+        "url": "https://github.com/GITHUB_USERNAME/NPM_MODULE_NAME.git"
     },
     "keywords": [
         "npm",
         "template"
     ],
-    "author": "Arvid Petermann <arvidpetermann@gmail.com> (http://arvidpetermann.com/)",
+    "author": "AUTHOR",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/divramod/NPM_MODULE_NAME/issues"
+        "url": "https://github.com/GITHUB_USERNAME/NPM_MODULE_NAME/issues"
     },
-    "homepage": "https://github.com/divramod/NPM_MODULE_NAME",
+    "homepage": "https://github.com/GITHUB_USERNAME/NPM_MODULE_NAME",
     "devDependencies": {
         "chai": "^2.1.0",
         "co-mocha": "^1.1.0",
@@ -30,6 +30,7 @@
     },
     "dependencies": {
         "co": "^4.4.0",
+        "colors": "^1.1.2",
         "dm-npm": "^0.1.14",
         "shelljs": "^0.5.3"
     },

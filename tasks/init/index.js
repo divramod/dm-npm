@@ -12,15 +12,26 @@ var co = require("co");
 var colors = require("colors");
 var promptly = require("promptly");
 var inquirer = require("inquirer");
+var dmFile = require("dm-file");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.run ] ===========
-job.run = function() {
-    var args = process.argv;
-    if (!args[3]) {
+job.run = co.wrap(function*() {
+    var result = "";
+    try {
+        var args = process.argv;
+        // =========== [ 1 add .gitignore ] ===========
+        var config = dmFile.getJsonFromFile("~/.dm-npm.json");
+
+        var defaultUser = "";
+        if (config.init.github.username) {
+            var githubUsername = config.init.github.username;
+            defaultUser = " [Default: " + config.init.github.username + "]";
+        }
+
         var questions = [{
             type: "input",
             name: "module_name",
@@ -33,18 +44,36 @@ job.run = function() {
             type: "input",
             name: "module_description",
             message: "What's your module description?"
+        }, {
+            type: "input",
+            name: "github_username",
+            message: "What's your github username?" + defaultUser
         }];
 
         inquirer.prompt(questions, function(answers) {
-            runTasks(answers.module_name, answers.module_shortcut, answers.module_description);
+            if (answers.github_username === "") {
+                if (githubUsername) {
+                    answers.github_username = githubUsername;
+                } else {
+                    answers.github_username = undefined;
+                    console.log("Error: you cannot leave the username blank!".red);
+                }
+            }
+            if (answers.github_username) {
+                runTasks(answers.module_name, answers.module_shortcut, answers.module_description, answers.github_username, config);
+            }
         });
+    } catch (e) {
+        console.log("Filename: ", __filename, "\n", e.stack);
+        result = e;
     }
-    //return yield Promise.resolve();
+    return yield Promise.resolve(result);
+}); // job.run
 
-}; // job.run
+
 
 // =========== [ runTasks ] ===========
-var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescription) {
+var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescription, githubUsername, config) {
     try {
 
         var templateDirPath = __dirname + "/template/";
@@ -63,9 +92,10 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescrip
             yield gitignoreTask.create(templateDirPath);
 
         // =========== [ 2 create package.json ] ===========
+        var author = config.init.github.author || "";
         var packageJsonTask = require("./taskCreatePackageJson.js");
         var packageJsonResult =
-            yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut, moduleDescription);
+            yield packageJsonTask.create(templateDirPath, npmModuleName, npmModuleShortcut, moduleDescription, githubUsername, author);
 
         // =========== [ 3 index.js ] ===========
         var indexJsTask = require("./taskCreateIndexJs.js");

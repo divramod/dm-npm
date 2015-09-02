@@ -34,6 +34,7 @@
     "co-prompt": "^1.0.0",
     "colors": "~1.0.3",
     "commander": "^2.6.0",
+    "dm-file": "^0.1.0",
     "dm-path": "^0.1.0",
     "dm-prompt": "^0.1.9",
     "dm-shell": "^0.1.0",

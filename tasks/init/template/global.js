@@ -9,8 +9,8 @@ jobs.index = co.wrap(function*() {
         var argv2 = process.env.dmnJob || process.argv[2] || "help";
 
         // =========== [ test ] ===========
-        if (["test", "-test", "t", "-t"].indexOf(argv2) > -1) {
-            var task = require("./tasks/test/index.js");
+        if (["example", "-example"].indexOf(argv2) > -1) {
+            var task = require("./tasks/example/index.js");
             yield task.start();
         }
 

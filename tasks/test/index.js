@@ -1,17 +1,20 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
+var path = require("path");
+var spawn = require("dm-shell").spawn;
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function*() {
+job.start = co.wrap(function*(dirname, taskName) {
     try {
-        var command = "cd " + __dirname + " && ls && zsh";
-        var spawn = require('child_process').spawnSync;
-        var myProcess = spawn('sh', ['-c', command], {
-            stdio: 'inherit'
-        });
+        console.log(dirname);
+        var specPath = path.join("tasks", taskName, "test", "test.js");
+        var command = "cd " + dirname + "&& node_modules/mocha/bin/mocha --harmony " + specPath + " --require co-mocha --watch";
+        spawn(command);
+
+
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
     }

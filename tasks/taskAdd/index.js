@@ -141,22 +141,30 @@ job.start = co.wrap(function*(modulePath) {
             sed('-i', /.*## Tasks.*\n/, replacer, path.join(modulePath, "README.md"));
 
             // =========== [ create task ] ===========
-            var configTask = {
-                templatePath: __dirname + '/templates',
-                targetPath: taskPath,
-                deleteBefore: true,
-                overwrite: true, // [true, false, "ask"]
-                rename: ["files", "dirs"], // renames
-                replace: [{
-                    search: "TASKNAME",
-                    replace: taskName
-                }],
-                messages: {
-                    success: "Task " + taskName + " created!",
-                    error: "Task " + taskName + " not created!"
+            //var configTask = {
+            //templatePath: __dirname + '/templates',
+            //targetPath: taskPath,
+            //deleteBefore: true,
+            //overwrite: true, // [true, false, "ask"]
+            //rename: ["files", "dirs"], // renames
+            //replace: [{
+            //search: "TASKNAME",
+            //replace: taskName
+            //}],
+            //messages: {
+            //success: "Task " + taskName + " created!",
+            //error: "Task " + taskName + " not created!"
+            //}
+            //};
+            //yield dmUtil.cpTemplate(configTask);
+            cp("-Rf", __dirname + "/templates/*", taskPath);
+            var files = find(taskPath).filter(function(file) {
+                if (test("-f", file)) {
+                    exec("sed -i 's:TASKNAME:" + taskName + ":g' '" + file + "'");
                 }
-            };
-            yield dmUtil.cpTemplate(configTask);
+            });
+
+
             var command = "cd " + modulePath + " && " + env["EDITOR"] + " " + path.join(modulePath, "tasks", taskName, "index.js");
             spawn(command);
 

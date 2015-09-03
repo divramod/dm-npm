@@ -80,7 +80,9 @@ The created module will have the following structure:
    |--gdm-fooBar
 |--node_modules/
    |--co/
+   |--colors/
    |--dm-npm/
+   |--shelljs/
 |--tasks/
    |--example/
       |--test/
@@ -148,7 +150,7 @@ fooBar idea
 # todo: bumps the version of the project (including git commit)
 fooBar bumpVersion
 
-# todo: publishes fooBar (includes bumpVersion etc)
+# publishes fooBar (includes bumpVersion etc)
 fooBar publish
 
 # todo: add a config file for fooBar

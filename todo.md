@@ -11,6 +11,9 @@ Next
 
 Next Actions
 ====================
+47. new task
+  * add task that makes it possible to incorporate different modules, other than
+    dm-npm (getCommonTasks)
 46. remove colors from test or add colors to package.json
 44. new task
   * create and inject getCommondTasks for your own module

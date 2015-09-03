@@ -56,11 +56,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/linkNodeModules/index.js");
             yield task.start(module_path);
         }
-        // =========== [ publish ] ===========
-        else if (["publish", "-publish"].indexOf(argv2) > -1) {
-            var task = require("./tasks/publish/index.js");
-            yield task.start();
-        }
         // =========== [ publishFolder ] ===========
         else if (['publishFolder','pubFol', 'pf', '-pf'].indexOf(argv2) > -1) {
             var task = require("./tasks/publishFolder/index.js");

@@ -49,6 +49,11 @@ var run = co.wrap(function*(argv2, dirname) {
         else if (["prompt", "p"].indexOf(argv2) > -1) {
             require("dm-npm").prompt(dirname);
         }
+        // =========== [ prompt ] ===========
+        else if (["publish"].indexOf(argv2) > -1) {
+            console.log("in publish");
+            require("./../publish/index.js").start(dirname);
+        }
         // =========== [ help ] ===========
         else {
             require("dm-npm").help(dirname);

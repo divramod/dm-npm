@@ -58,7 +58,7 @@ var run = co.wrap(function*(argv2, dirname) {
         }
         // =========== [ prompt ] ===========
         else if (["linkLocal", "local"].indexOf(argv2) > -1) {
-            require("dm-npm").linkLocal(dirname);
+            require("./../linkLocal/index.js").start(dirname);
         }
         // =========== [ help ] ===========
         else {

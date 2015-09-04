@@ -27,6 +27,7 @@ job.start = co.wrap(function*(dirname, filepath, release_type, old_version) {
         if (!filepath) {
             // get json files
             var jsonPattern = path.join(dirname, "*.json");
+            console.log(jsonPattern);
             var files = ls(jsonPattern);
 
             // get package.js

@@ -2,6 +2,7 @@
 The tool for npm-module maniacs.
 
 ## Description
+* the module is under development
 * This command line tool helps to fulfill the daily jobs you have to do when working with npm modules.
 * This module with give you a structure for your npm modules that is the same in every of your nmp modules. that enables reusability and eases collaborative work on a npm module
 * Documention in progress.

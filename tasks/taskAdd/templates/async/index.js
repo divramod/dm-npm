@@ -1,41 +1,16 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 
-// =========== [ MODULE DEFINE ] ===========
+// =========== [ VAR ] ===========
 var task = {};
 
-// =========== [ SYNC task.start() ] ===========
-task.start = function(p1) {
-    try {
-        process.env.debug = false; // for debugging purposes
-        var p1 = p1 || process.argv[3] || undefined;
-        return run();
-    } catch (e) {
-        if (process.env.debug === "true") {
-            console.log("Filename: ", __filename, "\n", e.stack);
-        }
-        return e;
-    }
-}; // task.start()
-
-// =========== [ SYNC run ] ===========
-var run = function() {
-    try {
-        console.log("start TASKNAME");
-        return "TASKNAME";
-    } catch (e) {
-        console.log("Filename: ", __filename, "\n", e.stack);
-        return e;
-    }
-}; // run
-
 // =========== [ ASYNC task.start() ] ===========
-task.startAsync = co.wrap(function*(p1) {
+task.start = co.wrap(function*(p1) {
     try {
         process.env.debug = false; // for debugging purposes
         var p1 = p1 || process.argv[3] || undefined;
         var result =
-            yield runAsync();
+            yield runAsync(p1);
         return yield Promise.resolve(result);
     } catch (e) {
         result.success = false;
@@ -49,10 +24,10 @@ task.startAsync = co.wrap(function*(p1) {
 
 
 // =========== [ ASYNC runAsync ] ===========
-var runAsync = co.wrap(function*() {
+var runAsync = co.wrap(function*(p1) {
     try {
         console.log("start TASKNAME");
-        return yield Promise.resolve("TASKNAME");
+        return yield Promise.resolve(p1);
     } catch (e) {
         console.log("Filename: ", __filename, "\n", e.stack);
         return yield Promise.resolve(e);

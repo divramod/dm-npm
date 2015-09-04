@@ -3,6 +3,7 @@ var co = require("co");
 var semver = require("semver");
 var colors = require("colors");
 var fs = require('fs');
+var path = require("path");
 var dmPrompt = require("dm-prompt").Inquirer;
 require("shelljs/global");
 
@@ -10,23 +11,36 @@ require("shelljs/global");
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function*(filepath, release_type, old_version) {
+job.start = co.wrap(function*(dirname, filepath, release_type, old_version) {
     try {
+        var dirname = dirname || undefined;
         var filepath = filepath || undefined;
         var release_type = release_type || undefined;
         var old_version = old_version || undefined;
-        var hide_output = hide_output || undefined;
         var versions = {};
-        if (!filepath) {
-            var files = ls("*.json");
-            if (test('-f', 'package.js')) {
-                files.push("package.js");
-            }
-            if (test('-f', 'mobile-config.js')) {
-                files.push("mobile-config.js");
-            }
-            if (files.length > 1) {
 
+
+        console.log(pwd());
+        if (!dirname) {
+            dirname = pwd();
+        }
+        if (!filepath) {
+            // get json files
+            var jsonPattern = path.join(dirname, "*.json");
+            var files = ls(jsonPattern);
+
+            // get package.js
+            var pathPackageJs = path.join(dirname, "package.js");
+            if (test('-f', pathPackageJs)) {
+                files.push(pathPackageJs);
+            }
+            var pathMobileConfigJs = path.join(dirname, "mobile-config.js");
+            if (test('-f', pathMobileConfigJs)) {
+                files.push(pathMobileConfigJs);
+            }
+
+            // =========== [ 2. choose file to bump ] ===========
+            if (files.length > 1) {
                 var fileQuestion = {
                     type: "list",
                     name: "file",
@@ -36,7 +50,6 @@ job.start = co.wrap(function*(filepath, release_type, old_version) {
                 var fileAnswer =
                     yield dmPrompt(fileQuestion);
                 var filepath = fileAnswer.file;
-
             } else if (files.length === 0) {
                 console.log("No file for bumping existent!".red);
             } else if (files.length === 1) {
@@ -64,6 +77,8 @@ job.start = co.wrap(function*(filepath, release_type, old_version) {
                 release_type = answers.release_type;
             }
 
+            //TODO
+            // =========== [ verallgemeinern, dass auch nicht json files genutzt werden können ] ===========
             if (!old_version) {
                 var packageJson = JSON.parse(fs.readFileSync(filepath, 'utf8'));
                 old_version = packageJson.version;

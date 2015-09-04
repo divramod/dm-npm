@@ -20,7 +20,6 @@ var run = co.wrap(function*(argv2, dirname) {
 
         //TODO
         // add bumpVersion
-        // add publish
         // add configFileAdd --> look at dm-tmux
         // add installGlobal
         // add linkLocal
@@ -28,8 +27,12 @@ var run = co.wrap(function*(argv2, dirname) {
         // add reinit
         // add upate dm-npm
 
+        // =========== [ bumpVersion ] ===========
+        if (["bumpVersion", "bump"].indexOf(argv2) > -1) {
+            require("dm-npm").bumpVersion(dirname);
+        }
         // =========== [ todo ] ===========
-        if (["todo"].indexOf(argv2) > -1) {
+        else if (["todo"].indexOf(argv2) > -1) {
             require("dm-npm").todo(dirname);
         }
         // =========== [ test ] ===========
@@ -39,7 +42,8 @@ var run = co.wrap(function*(argv2, dirname) {
         }
         // =========== [ taskAdd ] ===========
         else if (["taskAdd", "ta"].indexOf(argv2) > -1) {
-            require("dm-npm").taskAdd(dirname);
+            var taskType = process.argv[3] || undefined;
+            require("dm-npm").taskAdd(dirname, taskType);
         }
         // =========== [ idea ] ===========
         else if (["idea"].indexOf(argv2) > -1) {
@@ -51,8 +55,7 @@ var run = co.wrap(function*(argv2, dirname) {
         }
         // =========== [ prompt ] ===========
         else if (["publish"].indexOf(argv2) > -1) {
-            console.log("in publish");
-            require("./../publish/index.js").start(dirname);
+            require("dm-npm").publish(dirname);
         }
         // =========== [ help ] ===========
         else {

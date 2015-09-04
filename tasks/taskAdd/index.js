@@ -14,9 +14,12 @@ require("shelljs/global");
 var job = {};
 
 // =========== [ job.start() ] ===========
-job.start = co.wrap(function*(modulePath) {
+job.start = co.wrap(function*(modulePath, taskType, taskName) {
     try {
         var modulePath = modulePath || process.argv[3] || pwd();
+        // get taskType --> has to be in range [sync|async]
+        var taskType = taskType || "sync";
+        var taskName = taskName || undefined;
         modulePath = dmPath.replace(modulePath);
         var configPath = dmPath.replace("~/.dm-npm.json");
         var config = JSON.parse(fs.readFileSync(modulePath + "/package.json", 'utf8'));
@@ -30,13 +33,15 @@ job.start = co.wrap(function*(modulePath) {
         console.log(message.cyan);
 
         // =========== [ 1 aks for task name ] ===========
-        var taskNameAnswer =
-            yield dmPrompt({
-                type: "input",
-                name: "taskName",
-                message: "Please enter the Task Name:"
-            });
-        var taskName = taskNameAnswer.taskName;
+        if (!taskName) {
+            var taskNameAnswer =
+                yield dmPrompt({
+                    type: "input",
+                    name: "taskName",
+                    message: "Please enter the Task Name:"
+                });
+            var taskName = taskNameAnswer.taskName;
+        }
 
         // =========== [ 2 get all possible task pathes (modules could be exist] ===========
         var possiblePathes = [];
@@ -140,7 +145,7 @@ job.start = co.wrap(function*(modulePath) {
             ].join("\n");
             sed('-i', /.*## Tasks.*\n/, replacer, path.join(modulePath, "README.md"));
 
-            cp("-Rf", __dirname + "/templates/*", taskPath);
+            cp("-Rf", __dirname + "/templates/" + taskType + "/*", taskPath);
             var files = find(taskPath).filter(function(file) {
                 if (test("-f", file)) {
                     exec("sed -i 's:TASKNAME:" + taskName + ":g' '" + file + "'");
@@ -149,6 +154,8 @@ job.start = co.wrap(function*(modulePath) {
 
 
             var command = "cd " + modulePath + " && " + env["EDITOR"] + " " + path.join(modulePath, "tasks", taskName, "index.js");
+            spawn(command);
+            var command = moduleName + " test  " + taskName;
             spawn(command);
 
         } else {

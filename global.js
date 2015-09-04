@@ -26,11 +26,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/getCommonTasks/index.js");
             yield task.start();
         }
-        // =========== [ bump Version ] ===========
-        else if (["bump", "-bump", "-b", "b"].indexOf(argv2) > -1) {
-            var task = require("./tasks/bumpVersion/index.js");
-            yield task.start();
-        }
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
             var task = require("./tasks/init/index.js");

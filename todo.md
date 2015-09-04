@@ -1,9 +1,9 @@
 Current
 ====================
-45 [init]
-- github: state for username if not existent in .dm-npm.json
-- change standard task name from test to example
-- add test to example
+48
+  * refactor bumpVersion to getCommonTasks
+  * refactor dependent --> dm-meteor buildApp
+  * refactor dependent --> dm-npm publish
 
 Next 
 ====================
@@ -105,6 +105,13 @@ Next Actions
 
 Change Log
 ====================
+
+2015.09.02
+--------------------
+45 [init]
+- github: state for username if not existent in .dm-npm.json
+- change standard task name from test to example
+- add test to example
 
 2015.09.01
 --------------------

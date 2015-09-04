@@ -1,0 +1,6 @@
+{
+    "linkLocal": {
+        "pathNodeModules": "/usr/local/lib/node_modules",
+        "pathBin": "/usr/local/bin"
+    }
+}

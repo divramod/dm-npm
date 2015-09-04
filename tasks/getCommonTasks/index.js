@@ -21,7 +21,6 @@ var run = co.wrap(function*(argv2, dirname) {
         //TODO
         // add configFileAdd --> look at dm-tmux
         // add installGlobal
-        // add linkLocal
         // add reinstall
         // add reinit
         // add upate dm-npm
@@ -59,6 +58,10 @@ var run = co.wrap(function*(argv2, dirname) {
         // =========== [ prompt ] ===========
         else if (["linkLocal", "local"].indexOf(argv2) > -1) {
             require("./../linkLocal/index.js").start(dirname);
+        }
+        // =========== [ prompt ] ===========
+        else if (["linkGlobal", "global"].indexOf(argv2) > -1) {
+            require("./../linkGlobal/index.js").start(dirname);
         }
         // =========== [ help ] ===========
         else {

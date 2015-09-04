@@ -140,7 +140,7 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescrip
         // =========== [ 11 create local link ] ===========
         var createLocalLinkTask = require("./../../tasks/linkLocal/index.js");
         var createLocalLinkResult =
-            yield createLocalLinkTask.run();
+            yield createLocalLinkTask.start();
 
         // =========== [ done ] ===========
         console.log("init done".yellow);

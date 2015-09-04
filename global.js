@@ -32,10 +32,11 @@ jobs.index = co.wrap(function*() {
             task.run();
         }
         // =========== [ install global ] ===========
-        else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
-            var task = require("./tasks/installGlobal/index.js");
-            yield task.run(result);
-        }
+        //else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
+            //var task = require("./tasks/installGlobal/index.js");
+            //yield task.run(result);
+        //}
+        
         // =========== [ linkConfigFiles] ===========
         else if (["linkConfigFiles", "lc"].indexOf(argv2) > -1) {
             var task = require("./tasks/linkConfigFiles/index.js");

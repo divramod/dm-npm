@@ -15,10 +15,10 @@ var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
-var job = {};
+var task = {};
 
-// =========== [ job.create ] ===========
-job.run = co.wrap(function*(dirname) {
+// =========== [ task.create ] ===========
+task.start = co.wrap(function*(dirname) {
     var dirname = dirname || process.cwd();
     console.log("task create local link started".yellow);
     var taskResult = {};
@@ -66,7 +66,7 @@ job.run = co.wrap(function*(dirname) {
     };
     console.log("task create local link done".yellow);
     return yield Promise.resolve(taskResult);
-}); // job.create
+}); // task.create
 
 // =========== [ MODULE EXPORT ] ===========
-module.exports = job;
+module.exports = task;

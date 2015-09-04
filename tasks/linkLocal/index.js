@@ -33,6 +33,10 @@ task.start = co.wrap(function*(dirname) {
     if (currentDirectory === "Y") {
 
         var dirname = dirname || process.cwd();
+        if (dirname.indexOf("node_modules") > -1) {
+            dirname = process.cwd();
+        }
+        console.log(dirname);
         var taskResult = {};
         var pathNodeModules = "/usr/local/lib/node_modules";
         var pathBin = "/usr/local/bin";

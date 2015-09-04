@@ -190,6 +190,58 @@ Most of the tasks here use the yield style and assume the code is contained with
 
 ## Tasks
 
+### [configGet](tasks/configGet/index.js)
+* Returns json from the config file
+
+#### configGet global usage
+```
+dmn [configGet|cg]
+```
+
+#### configGet programmatically usage
+```javascript
+var configGet = require("dm-npm").configGet;
+var configGetResult = configGet.start();
+```
+
+#### configGet steps
+
+#### configGet features
+
+#### configGet config
+```javascript
+{
+    "configGet": {
+    }
+}
+```
+
+### [configEdit](tasks/configEdit/index.js)
+* Opens the config file for editing
+
+#### configEdit global usage
+```
+dmn [configEdit|ce]
+```
+
+#### configEdit programmatically usage
+```javascript
+var configEdit = require("dm-npm").configEdit;
+var configEditResult = configEdit.start();
+```
+
+#### configEdit steps
+
+#### configEdit features
+
+#### configEdit config
+```javascript
+{
+    "configEdit": {
+    }
+}
+```
+
 ### [help](tasks/help/index.js)
 * provides the README.md of the module (if markdown and lynx are installed with terminal browsing ;-))
 

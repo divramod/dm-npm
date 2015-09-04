@@ -1,6 +1,7 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var colors = require("colors");
+var spawn = require("dm-shell").spawn;
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -13,11 +14,9 @@ var job = {};
 job.create = co.wrap(function*() {
     console.log("task npm install started".yellow);
 
+    spawn("npm install");
     var taskResult = {};
 
-    exec('npm install', {
-        silent: false
-    });
     taskResult.success = true;
     taskResult.message = "npm install ran successfully";;
     console.log(taskResult.message.green);

@@ -19,8 +19,6 @@ var run = co.wrap(function*(argv2, dirname) {
     try {
 
         //TODO
-        // add configFileAdd --> look at dm-tmux
-        // add installGlobal
         // add reinstall
         // add reinit
         // add upate dm-npm
@@ -28,6 +26,18 @@ var run = co.wrap(function*(argv2, dirname) {
         // =========== [ bumpVersion ] ===========
         if (["bumpVersion", "bump"].indexOf(argv2) > -1) {
             require("dm-npm").bumpVersion(dirname);
+        }
+        // =========== [ configAdd ] ===========
+        else if (["configAdd", "ca"].indexOf(argv2) > -1) {
+            require("./../configAdd/index.js").start(dirname);
+        }
+        // =========== [ configAdd ] ===========
+        else if (["configEdit", "ce"].indexOf(argv2) > -1) {
+            require("./../configEdit/index.js").start(dirname);
+        }
+        // =========== [ configLink ] ===========
+        else if (["configLink", "cl"].indexOf(argv2) > -1) {
+            require("./../configLink/index.js").start(dirname);
         }
         // =========== [ todo ] ===========
         else if (["todo"].indexOf(argv2) > -1) {

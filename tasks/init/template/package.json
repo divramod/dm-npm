@@ -23,15 +23,13 @@
         "url": "https://github.com/GITHUB_USERNAME/NPM_MODULE_NAME/issues"
     },
     "homepage": "https://github.com/GITHUB_USERNAME/NPM_MODULE_NAME",
-    "devDependencies": {
-        "chai": "^2.1.0",
-        "co-mocha": "^1.1.0",
-        "mocha": "^2.1.0"
-    },
     "dependencies": {
+        "chai": "^2.1.0",
         "co": "^4.4.0",
+        "co-mocha": "^1.1.0",
         "colors": "^1.1.2",
         "dm-npm": "^0.1.14",
+        "mocha": "^2.1.0",
         "shelljs": "^0.5.3"
     },
     "bin": {

@@ -11,7 +11,7 @@ job.start = co.wrap(function*(dirname, taskName) {
     try {
         console.log(dirname);
         var specPath = path.join("tasks", taskName, "test", "test.js");
-        var command = "cd " + dirname + "&& node_modules/mocha/bin/mocha --harmony " + specPath + " --require co-mocha --watch";
+        var command = "cd " + dirname + "&& node_modules/mocha/bin/mocha --harmony " + specPath + " --require co-mocha --watch --timeout 15000";
         spawn(command);
 
 

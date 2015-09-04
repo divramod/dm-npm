@@ -1,9 +1,9 @@
 var colors = require("colors");
 var co = require("co");
-require("shelljs/global");
 var jobs = {};
 var result = {};
 var module_path = __dirname;
+require("shelljs/global");
 
 process.on('exit', function(code) {
     //console.log(code);
@@ -19,12 +19,18 @@ jobs.index = co.wrap(function*() {
         // =========== [ get params from user input ] ===========
         var argv2 = process.argv[2] || "help";
 
-        // automatically add tasks here
-
         // =========== [ getCommonTasks ] ===========
         if (['getCommonTasks','gct'].indexOf(argv2) > -1) {
             var task = require("./tasks/getCommonTasks/index.js");
             yield task.start();
+        }
+
+        // automatically add tasks here
+
+        // =========== [ configGet ] ===========
+        else if (['configGet','cg'].indexOf(argv2) > -1) {
+            var task = require("./tasks/configGet/index.js");
+            task.start();
         }
         // =========== [ init ] ===========
         else if (["init", "-init", "i", "-i"].indexOf(argv2) > -1) {
@@ -32,21 +38,10 @@ jobs.index = co.wrap(function*() {
             task.run();
         }
         // =========== [ install global ] ===========
-        //else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
-            //var task = require("./tasks/installGlobal/index.js");
-            //yield task.run(result);
-        //}
-        
-        // =========== [ linkConfigFiles] ===========
-        else if (["linkConfigFiles", "lc"].indexOf(argv2) > -1) {
-            var task = require("./tasks/linkConfigFiles/index.js");
-            yield task.start();
+        else if (["installGlobal", "-g", "g", "global"].indexOf(argv2) > -1) {
+            var task = require("./tasks/installGlobal/index.js");
+            yield task.run(result);
         }
-        // =========== [ link local ] ===========
-        //else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
-            //var task = require("./tasks/linkLocal/index.js");
-            //yield task.run(result);
-        //}
         // =========== [ link modules to node_modules ] ===========
         else if (["linkNode", "node", "ln", "-ln"].indexOf(argv2) > -1) {
             var task = require("./tasks/linkNodeModules/index.js");
@@ -67,13 +62,6 @@ jobs.index = co.wrap(function*() {
             var task = require("./tasks/reinstall/index.js");
             yield task.start();
         }
-
-        // =========== [ configFileAdd ] ===========
-        else if (["config", "configFileAdd", "c", "-c"].indexOf(argv2) > -1) {
-            var task = require("./tasks/configFileAdd/index.js");
-            yield task.start();
-        }
-
         // =========== [ getCommonTasks ] ===========
         else {
             require("dm-npm").getCommonTasks(argv2, __dirname);

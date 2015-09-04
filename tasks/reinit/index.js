@@ -2,6 +2,7 @@
 var co = require("co");
 var dmPrompt = require("dm-prompt").Inquirer;
 var dmnInit = require("./../init/index.js");
+var spawn = require("dm-shell").spawn;
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -22,7 +23,7 @@ job.start = co.wrap(function* publishStart(module_name) {
             });
         var deleteIt = deleteAnswer.delete;
         if (deleteIt === "Y") {
-            exec("find . -type f -not -name '*md' -not -path '*/.*/*' | xargs rm", {
+            exec("find . -type f -not -name '*md' -not -name 'index.js' -not -path '*/.*/*' | xargs rm", {
                 silent: false
             });
             dmnInit.run();

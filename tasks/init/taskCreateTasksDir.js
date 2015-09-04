@@ -1,6 +1,7 @@
 // =========== [ REQUIRE ] ===========
 var co = require("co");
 var colors = require("colors");
+var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
@@ -16,7 +17,11 @@ job.create = co.wrap(function*(templateDirPath, npmModuleName) {
     var taskResult = {};
 
     // =========== [ copy template directory ] ===========
-    cp('-R', templateDirPath + 'tasks', '.');
+    //cp('-R', templateDirPath + 'tasks', '.');
+
+    mkdir("tasks");
+    yield require("./../taskAdd/index.js").start(process.cwd(), "sync", "exampleSync");
+    yield require("./../taskAdd/index.js").start(process.cwd(), "async", "exampleAsync");
 
     // =========== [ test ] ===========
     if (test('-d', "./tasks")) {

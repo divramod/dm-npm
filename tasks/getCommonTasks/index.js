@@ -19,7 +19,6 @@ var run = co.wrap(function*(argv2, dirname) {
     try {
 
         //TODO
-        // add bumpVersion
         // add configFileAdd --> look at dm-tmux
         // add installGlobal
         // add linkLocal
@@ -56,6 +55,10 @@ var run = co.wrap(function*(argv2, dirname) {
         // =========== [ prompt ] ===========
         else if (["publish"].indexOf(argv2) > -1) {
             require("dm-npm").publish(dirname);
+        }
+        // =========== [ prompt ] ===========
+        else if (["linkLocal", "local"].indexOf(argv2) > -1) {
+            require("dm-npm").linkLocal(dirname);
         }
         // =========== [ help ] ===========
         else {

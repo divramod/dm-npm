@@ -11,24 +11,24 @@ var co = require("co");
 var colors = require("colors");
 var fs = require("fs");
 var inquirer = require("inquirer");
+var path = require("path");
 require("shelljs/global");
 
 // =========== [ MODULE DEFINE ] ===========
 var job = {};
 
 // =========== [ job.create ] ===========
-job.run = co.wrap(function*() {
+job.run = co.wrap(function*(dirname) {
+    var dirname = dirname || process.cwd();
     console.log("task create local link started".yellow);
     var taskResult = {};
     var pathNodeModules = "/usr/local/lib/node_modules";
     var pathBin = "/usr/local/bin";
-    if (test('-f', "package.json")) {
+    var pathPackageJson = path.join(dirname, "package.json");
+    if (test('-f', pathPackageJson)) {
         // =========== [ vars ] ===========
-        var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+        var packageJson = JSON.parse(fs.readFileSync(pathPackageJson, 'utf8'));
         var moduleName = packageJson.name;
-        var currentDirectory = exec('pwd', {
-            silent: true
-        }).output.trim();
 
         // =========== [ create link from pathNodeModules to current Directory ] ===========
         var linkTarget = pathNodeModules + "/" + moduleName;
@@ -36,7 +36,7 @@ job.run = co.wrap(function*() {
             console.log("linkTarget", linkTarget);
             rm("-rf", linkTarget);
         }
-        var commandNodeModules = "ln -s " + currentDirectory + " " + pathNodeModules + "/" + moduleName;
+        var commandNodeModules = "ln -s " + dirname + " " + pathNodeModules + "/" + moduleName;
         //console.log(commandNodeModules);
         exec(commandNodeModules, {
             silent: false

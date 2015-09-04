@@ -42,10 +42,10 @@ jobs.index = co.wrap(function*() {
             yield task.start();
         }
         // =========== [ link local ] ===========
-        else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
-            var task = require("./tasks/linkLocal/index.js");
-            yield task.run(result);
-        }
+        //else if (["linkLocal", "-l", "l", "local"].indexOf(argv2) > -1) {
+            //var task = require("./tasks/linkLocal/index.js");
+            //yield task.run(result);
+        //}
         // =========== [ link modules to node_modules ] ===========
         else if (["linkNode", "node", "ln", "-ln"].indexOf(argv2) > -1) {
             var task = require("./tasks/linkNodeModules/index.js");

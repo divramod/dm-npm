@@ -8,11 +8,8 @@ jobs.index = co.wrap(function*() {
         // =========== [ get params from user input ] ===========
         var argv2 = process.env.dmnJob || process.argv[2] || "help";
 
-        // =========== [ test ] ===========
-        if (["example", "-example"].indexOf(argv2) > -1) {
-            var task = require("./tasks/example/index.js");
-            yield task.start();
-        }
+        // =========== [ open if ] ===========
+        if (false) {}
 
         // automatically add tasks here
 

@@ -55,7 +55,7 @@ job.start = co.wrap(function* publishStart(modulePath) {
             var bumpJob = require("../bumpVersion/index.js");
             var pathPackageJson = path.resolve(modulePath, "package.json");
             var bumpSuccessful =
-                yield bumpJob.start(pathPackageJson);
+                yield bumpJob.start(modulePath, pathPackageJson);
 
             // =========== [ 6 commit the bump Version change (only the version in package.json) ] ===========
             // git commit "bumped version to ..."

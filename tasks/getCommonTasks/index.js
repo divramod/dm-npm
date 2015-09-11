@@ -19,6 +19,7 @@ var run = co.wrap(function*(argv2, dirname) {
     try {
 
         //TODO
+        // add link Node
         // add reinstall
         // add reinit
         // add upate dm-npm

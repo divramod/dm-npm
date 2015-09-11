@@ -155,7 +155,7 @@ job.start = co.wrap(function*(modulePath, taskType, taskName) {
 
             var command = "cd " + modulePath + " && " + env["EDITOR"] + " " + path.join(modulePath, "tasks", taskName, "index.js");
             spawn(command);
-            var command = moduleName + " test  " + taskName;
+            var command = "zsh && " + moduleName + " test  " + taskName;
             spawn(command);
 
         } else {

@@ -13,7 +13,7 @@ describe('TASKNAME async'.red, function() {
     });
 
     // =========== [ start ] ===========
-    it('error: should ...', function* error() {
+    it.skip('error: should ...', function* error() {
         var result =
             yield require('./../index.js').start("TASKNAME");
         result.should.equal("falseTASKNAME");

@@ -12,7 +12,7 @@ describe('TASKNAME sync'.red, function() {
     });
 
     // =========== [ start ] ===========
-    it('error: should ...', function error() {
+    it.skip('error: should ...', function error() {
         var result = require('./../index.js').start("TASKNAME");
         result.should.equal("falseTASKNAME");
     });

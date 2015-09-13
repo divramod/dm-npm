@@ -127,10 +127,6 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescrip
         var createBinDirResult =
             yield createBinDirTask.create(templateDirPath, npmModuleName);
 
-        // =========== [ 9 tasks directory ] ===========
-        var task = require("./taskCreateTasksDir.js");
-        var taskResult =
-            yield task.create(templateDirPath, npmModuleName);
 
         // =========== [ 10 npm install ] ===========
         var npmInstallTask = require("./taskNpmInstall.js");
@@ -141,6 +137,11 @@ var runTasks = co.wrap(function*(npmModuleName, npmModuleShortcut, moduleDescrip
         var createLocalLinkTask = require("./../../tasks/linkLocal/index.js");
         var createLocalLinkResult =
             yield createLocalLinkTask.start();
+
+        // =========== [ 9 tasks directory ] ===========
+        var task = require("./taskCreateTasksDir.js");
+        var taskResult =
+            yield task.create(templateDirPath, npmModuleName);
 
         // =========== [ done ] ===========
         console.log("init done".yellow);

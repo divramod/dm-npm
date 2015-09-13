@@ -145,6 +145,7 @@ job.start = co.wrap(function*(modulePath, taskType, taskName) {
             ].join("\n");
             sed('-i', /.*## Tasks.*\n/, replacer, path.join(modulePath, "README.md"));
 
+            console.log(taskPath);
             cp("-Rf", __dirname + "/templates/" + taskType + "/*", taskPath);
             var files = find(taskPath).filter(function(file) {
                 if (test("-f", file)) {
@@ -156,7 +157,7 @@ job.start = co.wrap(function*(modulePath, taskType, taskName) {
             var command = "cd " + modulePath + " && " + env["EDITOR"] + " " + path.join(modulePath, "tasks", taskName, "index.js");
             spawn(command);
             var command = "zsh && " + moduleName + " test  " + taskName;
-            spawn(command);
+            //spawn(command);
 
         } else {
             var message = "Task path " + taskPath.red + " is already existing. Creation aborted!";

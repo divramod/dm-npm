@@ -32,7 +32,7 @@
     "bluebird": "^2.9.34",
     "co": "^4.4.0",
     "co-prompt": "^1.0.0",
-    "colors": "~1.0.3",
+    "@dabh/colors": "~1.0.3",
     "commander": "^2.6.0",
     "dm-file": "^0.1.0",
     "dm-path": "^0.1.0",
